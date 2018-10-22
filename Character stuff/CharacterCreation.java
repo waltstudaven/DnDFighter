@@ -3,8 +3,6 @@ public class CharacterCreation {
     private CharacterClass characterClass;
     int level;
 
-
-    ///asdgbwour
     private int strScore;
     private int dexScore;
     private int conScore;
