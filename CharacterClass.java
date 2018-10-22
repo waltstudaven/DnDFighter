@@ -15,6 +15,7 @@ public abstract class CharacterClass {
     }
     public void setProfBonus(int profBonus) { this.profBonus = profBonus; }
     public int getProfBonus() { return profBonus; }
+
     public void setLevel(int level) { this.level = level; }
     public int getLevel() { return this.level; }
 }
