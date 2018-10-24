@@ -108,8 +108,7 @@ public abstract class Monster {
 	public void setStrSave(int strSave) {
 		this.strSave = strSave;
 	}
-	public void setStrSaveProf(boolean hasProf) {
-		if (hasProf)
+	public void setStrSaveProf() {
 		strSave = strMod + profBonus;
 	}
 	public int getStrScore() {
@@ -137,8 +136,7 @@ public abstract class Monster {
 	public void setDexSave(int dexSave) {
 		this.dexSave = dexSave;
 	}
-	public void setDexSave(boolean hasProf) {
-		if (hasProf)
+	public void setDexSaveProf() {
 		dexSave = dexMod + profBonus;
 	}
 	public int getDexScore() {
