@@ -1,4 +1,4 @@
-public abstract class haracter extends Monster {
+public abstract class Character extends Monster {
   private final String NAME;
   public CharacterClass characterClass;
   public Race characterRace;
