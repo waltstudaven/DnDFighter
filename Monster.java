@@ -87,12 +87,9 @@ public abstract class Monster {
 		return damageDie;
 	}
 
-	public boolean isResistant(DamageType damage) {
-		return false;
-	}
-	public boolean isImmune(DamageType damage) {
-		return false;
-	}
+	public abstract boolean isResistant(DamageType damage);
+	public abstract boolean isImmune(DamageType damage);
+
 	/*
 	all getters and setters
 	*/
