@@ -40,7 +40,6 @@ public abstract class Monster {
 	abstract int rollInitiative();
 	abstract void action(Monster enemy);
 	abstract void resetHealth();
-	public Monster clone();
 
 	public void setHp(int hp) {
 		this.hp = hp;
