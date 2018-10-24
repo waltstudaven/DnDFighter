@@ -1,7 +1,7 @@
 public abstract class CharacterClass {
     int level;
     int profBonus;
-
+    Die hitDie;
 
     public void setProfBonusViaLevel(int level) {
         if (level < 5) setProfBonus(2);
@@ -18,5 +18,8 @@ public abstract class CharacterClass {
 
     public void setLevel(int level) { this.level = level; }
     public int getLevel() { return this.level; }
-}
 
+    public abstract void setSaveThrowsProf();
+    
+    public abstract void determineHealth();
+}
