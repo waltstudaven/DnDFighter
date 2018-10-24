@@ -1,0 +1,3 @@
+public enum MonsterTags {
+    DEMON, DEVIL, GOBLINOID, SHAPECHANGER, TITAN, YUGOLOTH;
+}
