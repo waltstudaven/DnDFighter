@@ -20,6 +20,6 @@ public abstract class CharacterClass {
     public int getLevel() { return this.level; }
 
     public abstract void setSaveThrowsProf();
-    
+
     public abstract void determineHealth();
 }
