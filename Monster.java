@@ -8,9 +8,7 @@ public abstract class Monster {
 	public Die damageDie, damageDie4, damageDie6, damageDie8, damageDie10, damageDie12, d20;
 
 	private int strScore, dexScore, conScore, intScore, wisScore, charScore;
-
 	private int strMod, dexMod, conMod, intMod, wisMod, charMod;
-
 	private int strSave, dexSave, conSave, intSave, wisSave, charSave;
 
 	public int athletics, insight, intimidation, stealth, perception;
@@ -22,7 +20,7 @@ public abstract class Monster {
 
 	public Conditions conditions;
 
-	public Monster(int hp, Sizes size, int speed, int ac, int profBonus, int strScore, int dexScore, int conScore,
+	public Monster(int hp, Sizes size, int ac, int profBonus, int strScore, int dexScore, int conScore,
 	int intScore, int wisScore, int charScore) {
 		super();
 		setHp(hp);
