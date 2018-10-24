@@ -5,35 +5,13 @@ public abstract class Monster {
 	private int speed;
 	private int ac;
 	private int profBonus;
-	public Die damageDie;
-	public Die damageDie4;
-	public Die damageDie6;
-	public Die damageDie8;
-	public Die damageDie10;
-	public Die damageDie12;
-	public Die d20;
+	public Die damageDie, damageDie4, damageDie6, damageDie8, damageDie10, damageDie12, d20;
 
+	private int strScore, dexScore, conScore, intScore, wisScore, charScore;
 
-	private int strScore;
-	private int dexScore;
-	private int conScore;
-	private int intScore;
-	private int wisScore;
-	private int charScore;
+	private int strMod, dexMod, conMod, intMod, wisMod, charMod;
 
-	private int strMod;
-	private int dexMod;
-	private int conMod;
-	private int intMod;
-	private int wisMod;
-	private int charMod;
-
-	private int strSave;
-	private int dexSave;
-	private int conSave;
-	private int intSave;
-	private int wisSave;
-	private int charSave;
+	private int strSave, dexSave, conSave, intSave, wisSave, charSave;
 
 	public int athletics, insight, intimidation, stealth, perception;
 	public boolean athleticsAdv, insightAdv, intimidationAdv, stealthAdv, perceptionAdv;
