@@ -1,0 +1,3 @@
+public Fighter extends CharacterClass{
+  
+}

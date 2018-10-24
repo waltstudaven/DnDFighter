@@ -22,4 +22,6 @@ public abstract class CharacterClass {
     public abstract void setSaveThrowsProf();
 
     public abstract void determineHealth();
+
+    public abstract void setLvlOne();
 }
