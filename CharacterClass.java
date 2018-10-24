@@ -23,5 +23,10 @@ public abstract class CharacterClass {
 
     public abstract void determineHealth();
 
-    public abstract void setLvlOne();
+    public void setLvl(int level){
+      if(level >= 1) setLvlOne();
+    }
+
+    private abstract void setLvlOne();
+
 }
