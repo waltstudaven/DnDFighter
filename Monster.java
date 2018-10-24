@@ -35,7 +35,6 @@ public abstract class Monster {
 		setCharScore(charScore);
 		d20 = new Die(20);
 
-		conditions = new Conditions();
 	}
 
 	abstract int rollInitiative();
@@ -95,8 +94,6 @@ public abstract class Monster {
 	public boolean isImmune(DamageType damage) {
 		return false;
 	}
-	public boolean isImmune(Conditions condition){return false;}
-
 	/*
 	all getters and setters
 	*/
@@ -272,28 +269,5 @@ public abstract class Monster {
 	}
 	public int getCharSave() {
 		return charSave;
-	}
-
-	public void setBlinded(Monster attacker){
-		attacker.attackAdv = true;
-		this.attackDisAdv = true;
-		conditions.BLINDED = true;
-	}
-	public void setCharmed(Monster attacker){ conditions.CHARMED = true; }
-	public void setDeafened(Monster attacker){ conditions.DEAFENED = true; }
-	public void setFrightened(Monster attacker){
-		this.athleticsDisAdv = true;
-		this.insightDisAdv = true;
-		this.intimidationDisAdv= true;
-		this.stealthDisAdv= true;
-		this.perceptionDisAdv = true;
-		conditions.FRIGHTENED = true;
-	}
-	public void setGrappled(Monster attacker){ conditions.GRAPPLED = true; }
-	public void setIncapacitated(Monster attacker){ conditions.INCAPACITATED = true; }
-	public void setInvisible(Monster attacker){ this.setBlinded(attacker); }
-	public void setParalized(Monster attacker){
-		this.setIncapacitated(attacker);
-		attacker.attackAdv = true;
 	}
 }
