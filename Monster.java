@@ -18,8 +18,6 @@ public abstract class Monster {
 	public boolean attackAdv;
 	public boolean attackDisAdv;
 
-	public Conditions conditions;
-
 	public Monster(int hp, Sizes size, int ac, int profBonus, int strScore, int dexScore, int conScore,
 	int intScore, int wisScore, int charScore) {
 		super();
