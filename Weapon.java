@@ -1,9 +1,9 @@
 /**
- * Weapon class
- *
- * @author Katie Spiese
- * @version 10-26-18
- */
+* Weapon class
+*
+* @author Katie Spiese
+* @version 10-26-18
+*/
 enum Weapon{
 
   CLUB("1d4", "bludgeoning", "light"),
@@ -111,23 +111,28 @@ enum Weapon{
 
 
   //returns if its ranged
-  public boolean ranged(){
+  public boolean isRanged(){
     return false;
   }
 
   //returns if its mele
-  public boolean mele(){
+  public boolean isMelee(){
+
+
     return false;
   }
 
   //returns if its twohanded
-  public boolean twoHanded(){
+  public boolean isTwoHanded(){
+    if(properties.contains("two-handed")){
+      return true;
+    }
     return false;
   }
 
 
   //returns if its versatile
-  public boolean versatile(){
+  public boolean isVersatile(){
     return false;
   }
 
