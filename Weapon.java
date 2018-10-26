@@ -1,72 +1,138 @@
+/**
+ * Weapon class
+ *
+ * @author Katie Spiese
+ * @version 10-26-18
+ */
 enum Weapon{
 
-CLUB("1d4", "bludgeoning", "light"),
-DAGGER("1d4", "piercing", "finesse, light, thrown (range 20/60)"),
-GREATCLUB("1d8", "bludgeoning", "two-handed"),
-HANDAXE("1d6", "slashing", "light, thrown (range 20/60)"),
-JAVELIN("1d6", "type", "thrown (range 30/120)"),
-LIGHTHAMMER("1d4", "bludgeoning", "light, thrown (range 20/60)"),
-MACE("1d6", "bludgeoning", ""),
-QUARTERSTAFF("1d6", "bludgeoning", "versatile (1d8)"),
-SICKLE("1d4", "slashing", "light"),
-SPEAR("1d6", "piercing", "thrown (range 20/60), versatile (1d8)"),
-CROSSBOWLIGHT("1d8", "piercing", "ammunition (range 80/320), loading, two-handed"),
-DART("1d4", "piercing", "finesse, thrown (range 20/60)"),
-SHORTBOW("1d6", "piercing", "ammunition (range 80/320), two-handed"),
-SLING("1d4", "bludgeoning", "ammunition (range 30/120)"),
-BATTLEAXE("1d8", "slashing", "versatile (1d10)"),
-FLAIL("1d8", "bludgeoning", ""),
-GLAIVE("1d10", "slashing", "heavy, reach, two-handed"),
-GREATAXE("1d12", "slashing", "heavy, two-handed"),
-GREATSWORD("2d6", "slashing", "heavy, two-handed"),
-HALBERD("1d10", "slashing", "heavy, reach, two-handed"),
-LANCE("1d12", "piercing", "reach, special"),
-LONGSWORD("1d8", "slashing", "versatile (1d10)"),
-MAUL("2d6", "bludgeoning", "heavy, two-handed"),
-MORNINGSTAR("1d8", "piercing", ""),
-PIKE("1d10", "piercing", "heavy, reach, two-handed"),
-RAPIER("1d8", "piercing", "finesse"),
-SCHIMITAR("1d6", "slashing", "finesse, light"),
-SHORTSWORD("1d6", "piercing", "finesse, light"),
-TRIDENT("1d6", "piercing", "thrown (range 20/60), versatile (1d8)"),
-WARPICK("1d8", "piercing", ""),
-WARHAMMER("1d8", "bludgeoning", "versatile (1d10)"),
-WHIP("1d4", "slashing", "finesse, reach"),
-
-
-NAME("die", "type", "properties"),
 
 
 
-//constructs the weapons stuff
-private Weapon(String die, String type, String properties){
+  CLUB("1d4", "bludgeoning", "light"),
+  DAGGER("1d4", "piercing", "finesse, light, thrown (range 20/60)"),
+  GREATCLUB("1d8", "bludgeoning", "two-handed"),
+  HANDAXE("1d6", "slashing", "light, thrown (range 20/60)"),
+  JAVELIN("1d6", "type", "thrown (range 30/120)"),
+  LIGHTHAMMER("1d4", "bludgeoning", "light, thrown (range 20/60)"),
+  MACE("1d6", "bludgeoning", ""),
+  QUARTERSTAFF("1d6", "bludgeoning", "versatile (1d8)"),
+  SICKLE("1d4", "slashing", "light"),
+  SPEAR("1d6", "piercing", "thrown (range 20/60), versatile (1d8)"),
+  CROSSBOWLIGHT("1d8", "piercing", "ammunition (range 80/320), loading, two-handed"),
+  DART("1d4", "piercing", "finesse, thrown (range 20/60)"),
+  SHORTBOW("1d6", "piercing", "ammunition (range 80/320), two-handed"),
+  SLING("1d4", "bludgeoning", "ammunition (range 30/120)"),
+  BATTLEAXE("1d8", "slashing", "versatile (1d10)"),
+  FLAIL("1d8", "bludgeoning", ""),
+  GLAIVE("1d10", "slashing", "heavy, reach, two-handed"),
+  GREATAXE("1d12", "slashing", "heavy, two-handed"),
+  GREATSWORD("2d6", "slashing", "heavy, two-handed"),
+  HALBERD("1d10", "slashing", "heavy, reach, two-handed"),
+  LANCE("1d12", "piercing", "reach, special"),
+  LONGSWORD("1d8", "slashing", "versatile (1d10)"),
+  MAUL("2d6", "bludgeoning", "heavy, two-handed"),
+  MORNINGSTAR("1d8", "piercing", ""),
+  PIKE("1d10", "piercing", "heavy, reach, two-handed"),
+  RAPIER("1d8", "piercing", "finesse"),
+  SCHIMITAR("1d6", "slashing", "finesse, light"),
+  SHORTSWORD("1d6", "piercing", "finesse, light"),
+  TRIDENT("1d6", "piercing", "thrown (range 20/60), versatile (1d8)"),
+  WARPICK("1d8", "piercing", ""),
+  WARHAMMER("1d8", "bludgeoning", "versatile (1d10)"),
+  WHIP("1d4", "slashing", "finesse, reach"),
+  CROSSBOWHAND("1d6", "piercing", "ammunition (range 30/120), light, loading"),
+  CROSSBOWHEAVY("1d10", "piercing", "ammunition (range 100/400), heavy, loading, two-handed"),
+  LONGBOW("1d8", "piercing", "ammunition (range 150/600), heavy, two-handed");
 
-}
+
+  public String die;
+  public String type;
+  public String properties;
+  private Die d;
+
+
+
+  //constructs the weapons stuff
+  private Weapon(String die, String type, String properties){
+    this.die = die;
+    this.type = type;
+    this.properties = properties;
+    d = new Die();
+  }
+
+
+  /**
+  * Returns the Die of the Weapon
+  */
+  public String getDie(){
+    return die;
+  }
+
+  /**
+  * Returns the Die of the Weapon
+  */
+  public String getType(){
+    return type;
+  }
+
+  /**
+  * Returns the Die of the Weapon
+  */
+  public String getProperties(){
+    return properties;
+  }
+
+
+  /**
+  * Rolls a d20 and returns what it rolled
+  */
+  public int rollToAttack(){
+    return d.roll(20);
+  }
+
+
+
+  /**
+  * Rolls the die of the given weapon and returns the roll
+  */
+  public int rollDamage(){
+    String s[] = die.split("d");
+    int rollDamage = 0;
+
+    for(int i = 0; i < Integer.parseInt(s[0]); i++){
+      rollDamage += d.roll(Integer.parseInt(s[1]));
+    }
+
+    return rollDamage;
+  }
 
 
 
 
-//roll a d20 and return number
-public int rollToAttack()
 
 
 
-//roll damage die and return number
-rollDamage()
+  //returns if its ranged
+  public boolean ranged(){
+    return false;
+  }
+
+  //returns if its mele
+  public boolean mele(){
+    return false;
+  }
+
+  //returns if its twohanded
+  public boolean twoHanded(){
+    return false;
+  }
 
 
-//returns if its ranged
-public boolean ranged()
-
-//returns if its mele
-mele()
-
-//returns if its twohanded
-twoHanded()
-
-
-//returns if its versatile
-versatile()
+  //returns if its versatile
+  public boolean versatile(){
+    return false;
+  }
 
 
 
