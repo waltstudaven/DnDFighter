@@ -19,15 +19,15 @@ Character thisCharacter;
 
     private void setFightStyle(String fightStyle) {
         if (fightStyle.equalsIgnoreCase("archery")) {
-            if (thisCharacter.Weapon.Ranged()) thisCharacter.Weapon.attackRole = thisCharacter.Weapon.attackRole +2;
+            if (thisCharacter.Weapon.ranged()) thisCharacter.Weapon.roleToAttack() = thisCharacter.Weapon.roleToAttack() +2;
         }
         else if (fightStyle.equalsIgnoreCase("defense")) thisCharacter.setAc(thisCharacter.getAc() +1);
         else if (fightStyle.equalsIgnoreCase("dueling")) {
           if (thisCharacter.numEquiptWeapon == 1 && thisCharacter.Weapon.melee()) {
-            thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage() + 2;
+            thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage() +2;
           }
         }
-        else if (fightStyle.equalsIgnoreCase("Great Weapon Fighting")) {
+        else if (fightStyle.equalsIgnoreCase("great weapon fighting")) {
           if (thisCharacter.Weapon.twoHanded() || thisCharacter.Weapon.versatile() && thisCharacter.numEquiptWeapon == 2) {
             if (thisCharacter.Weapon.rollDamage() == 1 || thisCharacter.Weapon.rollDamage() == 2) {
               thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage();
