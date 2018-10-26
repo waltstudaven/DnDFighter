@@ -6,9 +6,6 @@
  */
 enum Weapon{
 
-
-
-
   CLUB("1d4", "bludgeoning", "light"),
   DAGGER("1d4", "piercing", "finesse, light, thrown (range 20/60)"),
   GREATCLUB("1d8", "bludgeoning", "two-handed"),
