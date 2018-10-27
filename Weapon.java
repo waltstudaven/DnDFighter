@@ -106,23 +106,26 @@ enum Weapon{
 
 
 
-
-
-
-
-  //returns if its ranged
+  /**
+  * Returns true if the dagger is ranged
+  */
   public boolean isRanged(){
+    if(properties.contains("range")){
+      return true;
+    }
     return false;
   }
 
-  //returns if its mele
+  /**
+  * Returns true if the dagger is melee
+  */
   public boolean isMelee(){
-
-
     return false;
   }
 
-  //returns if its twohanded
+  /**
+  * Returns true if the dagger is two-handed
+  */
   public boolean isTwoHanded(){
     if(properties.contains("two-handed")){
       return true;
@@ -131,8 +134,13 @@ enum Weapon{
   }
 
 
-  //returns if its versatile
+  /**
+  * Returns true if the dagger is versatile
+  */
   public boolean isVersatile(){
+    if(properties.contains("versatile")){
+      return true;
+    }
     return false;
   }
 
