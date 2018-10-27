@@ -10,7 +10,7 @@ enum Weapon{
   DAGGER("1d4", "piercing", "finesse, light, thrown (range 20/60)"),
   GREATCLUB("1d8", "bludgeoning", "two-handed"),
   HANDAXE("1d6", "slashing", "light, thrown (range 20/60)"),
-  JAVELIN("1d6", "type", "thrown (range 30/120)"),
+  JAVELIN("1d6", "piercing", "thrown (range 30/120)"),
   LIGHTHAMMER("1d4", "bludgeoning", "light, thrown (range 20/60)"),
   MACE("1d6", "bludgeoning", ""),
   QUARTERSTAFF("1d6", "bludgeoning", "versatile (1d8)"),
