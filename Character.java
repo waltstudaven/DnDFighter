@@ -1,4 +1,4 @@
-public abstract class Character extends Monster {
+public class Character extends Monster {
   private final String NAME;
   public CharacterClass characterClass;
   public Race characterRace;
@@ -14,5 +14,10 @@ public abstract class Character extends Monster {
     this.characterRace = characterRace;
     this.level = level;
     this.profBonus = profBonus;
+  }
+
+  @Override
+  public void resetHealth() {
+    this.setHp(this.getHp());
   }
 }

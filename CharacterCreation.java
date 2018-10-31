@@ -6,7 +6,7 @@ public class CharacterCreation {
   protected int level;
   protected Character newCharacter;
   private HashMap<String, CharacterClass> allClasses;
-  private HashMap<String, CharacterRace> allRaces;
+  private HashMap<String, Race> allRaces;
 
   public CharacterCreation() {
     allClasses.put("Fighter", new Fighter(1, newCharacter));
