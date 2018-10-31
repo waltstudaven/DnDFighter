@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.HashMap;
 public class CharacterCreation {
   private Race characterRace;
   private CharacterClass characterClass;
