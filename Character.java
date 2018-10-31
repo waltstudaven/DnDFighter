@@ -6,7 +6,7 @@ public class Character extends Monster {
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
-    super (hp, Sizes.MEDIUM, ac, 0, strScore, dexScore, conScore,
+    super (Sizes.MEDIUM, 0, strScore, dexScore, conScore,
   	intScore, wisScore, charScore);
 
     this.NAME = NAME;
