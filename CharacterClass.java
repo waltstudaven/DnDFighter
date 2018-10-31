@@ -1,3 +1,7 @@
+/**
+ * The abstract character class will be extended by all of the different
+ * classes such as Fighter, Barbarian, etc.
+ */
 public abstract class CharacterClass {
     int level;
     int profBonus;
