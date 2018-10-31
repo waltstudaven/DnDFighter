@@ -7,7 +7,7 @@ public class Character extends Monster {
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
     super (Sizes.MEDIUM, 0, strScore, dexScore, conScore,
-  	intScore, wisScore, charScore);
+    intScore, wisScore, charScore);
 
     this.NAME = NAME;
     this.characterClass = characterClass;
@@ -17,7 +17,9 @@ public class Character extends Monster {
   }
 
   @Override
-  public void resetHealth() {
-    this.setHp(this.getHp());
-  }
+  public boolean isImmune(DamageType damage) {return false;}
+
+
+  @Override
+  public boolean isResistant(DamageType damage) {return false;}
 }

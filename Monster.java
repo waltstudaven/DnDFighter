@@ -39,7 +39,7 @@ public abstract class Monster {
 
 	abstract int rollInitiative();
 	abstract void action(Monster enemy);
-	abstract void resetHealth();
+  public void resetHealth() { this.setCurrentHp(this.getMaxHp()); }
 
 	public void setMaxHp(int hp) {
 		this.maxHp = hp;
