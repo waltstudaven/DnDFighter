@@ -33,13 +33,32 @@ public class Character extends Monster {
     }
   }
 
+  /**
+   * Equip a weapon in either one or two hands
+   * @param weapon
+   */
   public void equipWeapon(Weapon weapon) {
     if (weapon.isTwoHanded() && handsAvailable > 1) {
       handsAvailable -= 2;
       rightHand = weapon;
       leftHand = weapon;
     }
-    else if (weapon.isVersatile() )
+    else if(!weapon.isTwoHanded() && handsAvailable >0){
+      if(rightHand == null){
+        rightHand = weapon;
+        handsAvailable -= 1;
+      }else{
+        leftHand = weapon;
+        handsAvailable -= 1;
+      }
+      //if no hands are available de-equip and call equipWeapon again
+    } else if(handsAvailable == 0) {
+      rightHand = null;
+      leftHand = null;
+      handsAvailable += 2;
+      equipWeapon(weapon);
+    }
+    
   }
 
   @Override
