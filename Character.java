@@ -4,7 +4,7 @@ public abstract class Character extends Monster {
   public Race characterRace;
   public int level, profBonus;
 
-  public Character (String NAME, CharacterClass characterClass, Race characterRace, int hp, int ac, int level, int profBonus,
+  public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
     super (hp, Sizes.MEDIUM, ac, 0, strScore, dexScore, conScore,
   	intScore, wisScore, charScore);
