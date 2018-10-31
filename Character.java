@@ -58,7 +58,7 @@ public class Character extends Monster {
       handsAvailable += 2;
       equipWeapon(weapon);
     }
-    
+
   }
 
   @Override
