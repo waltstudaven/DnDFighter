@@ -6,6 +6,9 @@ public class Character extends Monster {
   public int level, profBonus;
   public ArrayList<String> allActions;
   public int i = 0;
+  public int handsAvailable;
+  public Weapon rightHand;
+  public Weapon leftHand;
 
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
@@ -28,6 +31,15 @@ public class Character extends Monster {
     for(String action: allActions){
       System.out.println(action);
     }
+  }
+
+  public void equipWeapon(Weapon weapon) {
+    if (weapon.isTwoHanded() && handsAvailable > 1) {
+      handsAvailable -= 2;
+      rightHand = weapon;
+      leftHand = weapon;
+    }
+    else if (weapon.isVersatile() )
   }
 
   @Override
