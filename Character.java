@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Character extends Monster {
   private final String NAME;
   public CharacterClass characterClass;
@@ -32,6 +33,11 @@ public class Character extends Monster {
   @Override
   public void action(Monster enemy) {
     System.out.println(characterClass);
+  }
+
+  @Override
+  public int rollInitiative() {
+    return d20.roll() + this.getDexMod();
   }
 
   @Override

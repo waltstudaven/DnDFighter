@@ -26,6 +26,6 @@ public abstract class CharacterClass {
       if(level >= 1) setLvlOne();
     }
 
-    private abstract void setLvlOne();
+    public abstract void setLvlOne();
 
 }

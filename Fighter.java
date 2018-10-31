@@ -3,23 +3,23 @@ public class Fighter extends CharacterClass{
 
   public Fighter(int level, Character thisCharacter) {
     super.level = level;
-    super.profBonus = setProfBonusViaLevel(level);
+    setProfBonusViaLevel(level);
     super.hitDie = new Die(10);
     this.thisCharacter = thisCharacter;
   }
 
   @Override
-  private void setLvlOne() {
+  public void setLvlOne() {
     thisCharacter.setStrSaveProf();
     thisCharacter.setConSaveProf();
   }
 
   @Override
   public void determineHealth() {
-    int health = 10 + thisCharacter.getConMod;
+    int health = 10 + thisCharacter.getConMod();
 
     for (int i = 2; i <= level; i++) {
-      health += 6 + thisCharacter.getConMod;
+      health += 6 + thisCharacter.getConMod();
     }
     thisCharacter.setMaxHp(health);
   }
