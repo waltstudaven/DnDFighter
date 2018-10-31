@@ -2,7 +2,6 @@ public abstract class CharacterClass {
     int level;
     int profBonus;
     Die hitDie;
-
     public void setProfBonusViaLevel(int level) {
         if (level < 5) setProfBonus(2);
         else if (level < 9 && level >= 5) setProfBonus(3);

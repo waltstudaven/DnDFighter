@@ -3,6 +3,9 @@ public class Character extends Monster {
   public CharacterClass characterClass;
   public Race characterRace;
   public int level, profBonus;
+  public ArrayList<String> allActions;
+  public int i = 0;
+
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
@@ -16,10 +19,23 @@ public class Character extends Monster {
     this.profBonus = profBonus;
   }
 
+  public void addAction(String methodName) {
+    allActions.add(methodName);
+  }
+
+  public void displayActions(){
+    for(String action: allActions){
+      System.out.println(action);
+    }
+  }
+
+  @Override
+  public void action(Monster enemy) {
+    System.out.println(characterClass);
+  }
+
   @Override
   public boolean isImmune(DamageType damage) {return false;}
-
-
   @Override
   public boolean isResistant(DamageType damage) {return false;}
 }
