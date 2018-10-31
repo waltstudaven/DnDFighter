@@ -1,22 +1,37 @@
+/**
+ * Fighter is a character's class that will determine a character's
+ * skills, attacks, and health.
+ */
 public class Fighter extends CharacterClass{
 Character thisCharacter;
-
+	/*
+	 * Constructor for a fighter.
+	 * @param level Level of character
+	 * @param thisCharacter 
+	 */
     public Fighter(int level, Character thisCharacter) {
       super.level = level;
       super.profBonus = setProfBonusViaLevel(level);
       super.hitDie = new Die(10);
       this.thisCharacter = thisCharacter;
     }
-
+    /**
+     * 
+     */
     @Override
     private void setLvlOne() {
       thisCharacter.setStrSaveProf();
       thisCharacter.setConSaveProf();
     }
-
+    /**
+     * Sets the skills of the Fighter. A fighter has 2 skills.
+     */
     private void setSkills(String skill1, String skill2) {
     }
-
+    /**
+     * The fighting style for Fighter determines specific attributes of a character such as their AC, Weapon Type, and
+     * Weapon Damage.
+     */
     private void setFightStyle(String fightStyle) {
         if (fightStyle.equalsIgnoreCase("archery")) {
             if (thisCharacter.Weapon.ranged()) thisCharacter.Weapon.roleToAttack() = thisCharacter.Weapon.roleToAttack() +2;
