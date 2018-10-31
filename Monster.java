@@ -1,6 +1,8 @@
 public abstract class Monster {
 
-	public int hp;
+	public int currentHp;
+	private int maxHp;
+
 	private Sizes size;
 	private int speed;
 	private int ac;
@@ -18,13 +20,11 @@ public abstract class Monster {
 	public boolean attackAdv;
 	public boolean attackDisAdv;
 
-	public Monster(int hp, Sizes size, int ac, int profBonus, int strScore, int dexScore, int conScore,
+	public Monster(Sizes size, int profBonus, int strScore, int dexScore, int conScore,
 	int intScore, int wisScore, int charScore) {
 		super();
-		setHp(hp);
 		setSize(size);
 		setSpeed(speed);
-		setAc(ac);
 		setProfBonus(profBonus);
 
 		setStrScore(strScore);
@@ -41,11 +41,18 @@ public abstract class Monster {
 	abstract void action(Monster enemy);
 	abstract void resetHealth();
 
-	public void setHp(int hp) {
-		this.hp = hp;
+	public void setMaxHp(int hp) {
+		this.maxHp = hp;
 	}
-	public int getHp() {
-		return hp;
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setCurrentHp(int hp) {
+		this.currentHp = hp;
+	}
+	public int getCurrentHp() {
+		return currentHp;
 	}
 
 	public void setSize(Sizes size) {
