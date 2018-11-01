@@ -6,14 +6,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class MainMenu {
+public class SelectMonster {
     private JFrame f;
     private JButton b1, b2;
     private Image backImage;
     private Graphics g;
     private JLabel lab;
 
-    public MainMenu(){
+    public SelectMonster(){
 
         //This sets the background image for the main menu
         backImage = new Image("C:\\Users\\Brandon\\Desktop\\School\\Senior\\SoftwareEngineering\\HelloWorld\\data\\Red Dragon vs Blue Dragon.png");
