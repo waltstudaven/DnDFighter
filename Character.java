@@ -6,9 +6,7 @@ public class Character extends Monster {
   public int level, profBonus;
   public ArrayList<String> allActions;
   public int i = 0;
-  public int handsAvailable;
-  public Weapon rightHand;
-  public Weapon leftHand;
+  public Weapon weapon;
 
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
@@ -38,26 +36,7 @@ public class Character extends Monster {
    * @param weapon
    */
   public void equipWeapon(Weapon weapon) {
-    if (weapon.isTwoHanded() && handsAvailable > 1) {
-      handsAvailable -= 2;
-      rightHand = weapon;
-      leftHand = weapon;
-    }
-    else if(!weapon.isTwoHanded() && handsAvailable >0){
-      if(rightHand == null){
-        rightHand = weapon;
-        handsAvailable -= 1;
-      }else{
-        leftHand = weapon;
-        handsAvailable -= 1;
-      }
-      //if no hands are available de-equip and call equipWeapon again
-    } else if(handsAvailable == 0) {
-      rightHand = null;
-      leftHand = null;
-      handsAvailable += 2;
-      equipWeapon(weapon);
-    }
+this.weapon = weapon;
 
   }
 

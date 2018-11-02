@@ -1,11 +1,13 @@
 public class Fighter extends CharacterClass{
   Character thisCharacter;
+  String fightStyle;
 
   public Fighter(int level, Character thisCharacter) {
     super.level = level;
     setProfBonusViaLevel(level);
     super.hitDie = new Die(10);
     this.thisCharacter = thisCharacter;
+    fightStyle = "";
   }
 
   @Override
@@ -30,25 +32,65 @@ public class Fighter extends CharacterClass{
     thisCharacter.setConSaveProf();
   }
 
-  private void setSkills(String skill1, String skill2) {
-  }
+  // private void setSkills(String skill1, String skill2) {
+  // }
 
   private void setFightStyle(String fightStyle) {
-    if (fightStyle.equalsIgnoreCase("archery")) {
-      if (thisCharacter.Weapon.ranged()) thisCharacter.Weapon.roleToAttack() = thisCharacter.Weapon.roleToAttack() +2;
+    if (fightStyle.equalsIgnoreCase("archery")) fightStyle += "archery";
+    else if (fightStyle.equalsIgnoreCase("defense")) {
+      thisCharacter.setAc(thisCharacter.getAc() +1);
+      fightStyle += "defense";
     }
-    else if (fightStyle.equalsIgnoreCase("defense")) thisCharacter.setAc(thisCharacter.getAc() +1);
-    else if (fightStyle.equalsIgnoreCase("dueling")) {
-      if (thisCharacter.numEquiptWeapon == 1 && thisCharacter.Weapon.melee()) {
-        thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage() +2;
-      }
-    }
-    else if (fightStyle.equalsIgnoreCase("great weapon fighting")) {
-      if (thisCharacter.Weapon.twoHanded() || thisCharacter.Weapon.versatile() && thisCharacter.numEquiptWeapon == 2) {
-        if (thisCharacter.Weapon.rollDamage() == 1 || thisCharacter.Weapon.rollDamage() == 2) {
-          thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage();
-        }
-      }
-    }
+
+    else if (fightStyle.equalsIgnoreCase("dueling")) fightStyle += "dueling";
+    else if (fightStyle.equalsIgnoreCase("great weapon fighting"))
+    fightStyle += "great weapon fighting";
   }
+
+
+  public int rollToAttack(Weapon weapon) {
+    int attackRoll = weapon.rollToAttack();
+    String weaponProperties = weapon.getProperties();
+
+    if (weaponProperties.contains("finesse") || weaponProperties.contains("ranged")){
+      if (fightStyle.contains("archery")) {
+        attackRoll += thisCharacter.getDexMod() + 2;
+      }
+      attackRoll += thisCharacter.getDexMod() + thisCharacter.getProfBonus();
+    }
+    else {
+      attackRoll += thisCharacter.getStrMod() + thisCharacter.getProfBonus();
+    }
+
+    return attackRoll;
+  }
+
+  public int rollDamage(Weapon weapon) {
+    int damage = weapon.rollDamage();
+    String weaponProperties = weapon.getProperties();
+
+    if (weaponProperties.contains("range") || weaponProperties.contains("finesse")) {
+      if (fightStyle.contains("dueling") && !weaponProperties.contains("range")) {
+        damage += thisCharacter.getDexMod() + 2;
+      }
+      else {
+        damage += thisCharacter.getDexMod();
+      }
+    }
+    else {
+      if (weaponProperties.contains("twoHanded")) {
+        if (fightStyle.contains("great weapon fighting")) {
+          if (damage == 1 || damage == 2) {
+            damage = thisCharacter.weapon.rollDamage() + thisCharacter.getStrMod();
+          }
+        }
+        damage += thisCharacter.getStrMod();
+      }
+      if (fightStyle.contains("dueling") && !weaponProperties.contains("range")) {
+        damage += thisCharacter.getStrMod() + 2;
+      }
+    }
+      return damage;
+  }
+
 }
