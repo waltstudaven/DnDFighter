@@ -1,8 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * The abstract character class will be extended by all of the different
  * classes such as Fighter, Barbarian, etc.
  */
+=======
+import java.util.ArrayList;
+
+>>>>>>> 2a7e55d2e85f867d7537133475e6d891023bf41d
 =======
 import java.util.ArrayList;
 

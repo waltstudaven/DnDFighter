@@ -93,6 +93,9 @@ Character thisCharacter;
   // private void setSkills(String skill1, String skill2) {
   // }
 
+  // private void setSkills(String skill1, String skill2) {
+  // }
+
   private void setFightStyle(String fightStyle) {
     if (fightStyle.equalsIgnoreCase("archery")) fightStyle += "archery";
     else if (fightStyle.equalsIgnoreCase("defense")) {
