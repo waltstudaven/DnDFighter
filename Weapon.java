@@ -26,7 +26,7 @@ enum Weapon{
   GREATAXE("1d12", DamageType.SLASHING, "heavy, two-handed"),
   GREATSWORD("2d6", DamageType.SLASHING, "heavy, two-handed"),
   HALBERD("1d10", DamageType.SLASHING, "heavy, reach, two-handed"),
-  LANCE("1d12", DamageType.PIERCING, "reach, special"),
+  //LANCE("1d12", DamageType.PIERCING, "reach, special"),
   LONGSWORD("1d8", DamageType.SLASHING, "versatile (1d10)"),
   MAUL("2d6", DamageType.BLUDGEONING, "heavy, two-handed"),
   MORNINGSTAR("1d8", DamageType.PIERCING, ""),

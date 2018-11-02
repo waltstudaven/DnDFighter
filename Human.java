@@ -1,3 +1,6 @@
+/**
+ * A race class that determines certain attributes about a character.
+ */
 public class Human implements Race {
     Character character;
 

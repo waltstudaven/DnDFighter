@@ -8,6 +8,11 @@ public class CharacterCreation {
   private HashMap<String, CharacterClass> allClasses;
   private HashMap<String, Race> allRaces;
 
+  public static void main(String[] args) {
+    CharacterCreation test = new CharacterCreation();
+    test.characterCreator();
+  }
+
   public CharacterCreation() {
     allClasses.put("Fighter", new Fighter(1, newCharacter));
     allRaces.put("Human", new Human());

@@ -1,11 +1,17 @@
+<<<<<<< HEAD
 /**
  * The abstract character class will be extended by all of the different
  * classes such as Fighter, Barbarian, etc.
  */
+=======
+import java.util.ArrayList;
+
+>>>>>>> 2a7e55d2e85f867d7537133475e6d891023bf41d
 public abstract class CharacterClass {
     int level;
     int profBonus;
     Die hitDie;
+    ArrayList<String> allClassActions;
 
     public void setProfBonusViaLevel(int level) {
         if (level < 5) setProfBonus(2);
@@ -31,6 +37,8 @@ public abstract class CharacterClass {
       if(level >= 1) setLvlOne();
     }
 
-    private abstract void setLvlOne();
+    public abstract void setLvlOne();
+
+    public abstract String getSaveThrows();
 
 }

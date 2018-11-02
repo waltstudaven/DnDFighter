@@ -171,8 +171,7 @@ public abstract class Monster {
 	public void setConSave(int conSave) {
 		this.conSave = conSave;
 	}
-	public void setConSave(boolean hasProf) {
-		if (hasProf)
+	public void setConSaveProf() {
 		conSave = conMod + profBonus;
 	}
 	public int getConScore() {
