@@ -32,6 +32,11 @@ public class Fighter extends CharacterClass{
     thisCharacter.setConSaveProf();
   }
 
+  @Override
+  public String getSaveThrows() {
+    return "Strength: " + thisCharacter.getStrSave() + "\t" + "Constitution: " + thisCharacter.getConSave();
+  }
+
   // private void setSkills(String skill1, String skill2) {
   // }
 

@@ -32,4 +32,6 @@ public abstract class CharacterClass {
 
     public abstract void setLvlOne();
 
+    public abstract String getSaveThrows();
+
 }

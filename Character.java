@@ -32,12 +32,20 @@ public class Character extends Monster {
   }
 
   /**
-   * Equip a weapon in either one or two hands
-   * @param weapon
-   */
+  * Equip a weapon in either one or two hands
+  * @param weapon
+  */
   public void equipWeapon(Weapon weapon) {
-this.weapon = weapon;
+    this.weapon = weapon;
 
+  }
+
+  public CharacterClass getCharacterClass() {
+    return this.characterClass;
+  }
+
+  public Race getCharacterRace() {
+    return this.characterRace;
   }
 
   @Override
@@ -54,4 +62,28 @@ this.weapon = weapon;
   public boolean isImmune(DamageType damage) {return false;}
   @Override
   public boolean isResistant(DamageType damage) {return false;}
+
+  public String toString() {
+    String toString = "";
+    toString += "Max HP: " + this.getMaxHp() + " \n";
+
+    toString += "AC: " + this.getAc() + " \n";
+
+    toString += "STR: " + this.getStrScore() + " (" + this.getStrMod() + ")" + " \n";
+    toString += "STR: " + this.getDexScore() + " (" + this.getDexMod() + ")" + " \n";
+    toString += "STR: " + this.getConScore() + " (" + this.getConMod() + ")" + " \n";
+    toString += "STR: " + this.getIntScore() + " (" + this.getIntMod() + ")" + " \n";
+    toString += "STR: " + this.getWisScore() + " (" + this.getWisMod() + ")" + " \n";
+    toString += "STR: " + this.getCharScore() + " (" + this.getCharMod() + ")" + " \n";
+
+    toString += "Save Throws: " + this.characterClass.getSaveThrows();
+
+
+    toString += "Class: " + this.getCharacterClass() + " \n";
+
+    toString += "Race: " + this.getCharacterRace() + " \n";
+
+    return toString;
+
+  }
 }
