@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
- * This is code I found on Yahoo Answers as to how to
  * Import a Picture as the Background of a JPanel
  *
  */
