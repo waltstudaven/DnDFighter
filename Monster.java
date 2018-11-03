@@ -51,6 +51,13 @@ public abstract class Monster {
 	public void setCurrentHp(int hp) {
 		this.currentHp = hp;
 	}
+
+	public void damageTaken(int damage, DamageType damageType) {
+		if (this.isResistant(damageType)) damage = damage/2;
+		if (this.isImmune(damageType)) damage = 0;
+
+		this.setCurrentHp(this.getCurrentHp() - damage);
+	}
 	public int getCurrentHp() {
 		return currentHp;
 	}
