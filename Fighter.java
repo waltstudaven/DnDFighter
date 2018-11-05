@@ -17,7 +17,7 @@ Character thisCharacter;
       this.thisCharacter = thisCharacter;
     }
     /**
-     * 
+     * Determines the strength and other bonuses for level 1 character.
      */
     @Override
     private void setLvlOne() {
