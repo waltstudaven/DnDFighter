@@ -23,32 +23,32 @@ public class CharacterCreation {
 
   protected void characterCreator() {
     Scanner scan = new Scanner(System.in);
-    System.out.println("What is your character's strength score?");
+    System.out.println("What is your character's Strength score?");
     int inputStrScore = scan.nextInt();
 
-    System.out.println("What is your character's dexterity score?");
+    System.out.println("What is your character's Dexterity score?");
     int inputDexScore = scan.nextInt();
 
-    System.out.println("What is your character's constitution score?");
+    System.out.println("What is your character's Constitution score?");
     int inputConScore = scan.nextInt();
 
-    System.out.println("What is your character's intelligence score?");
+    System.out.println("What is your character's Intelligence score?");
     int inputIntScore = scan.nextInt();
 
-    System.out.println("What is your character's wisdom score?");
+    System.out.println("What is your character's Wisdom score?");
     int inputWisScore = scan.nextInt();
 
-    System.out.println("What is your character's charisma score?");
+    System.out.println("What is your character's Charisma score?");
     int inputCharScore = scan.nextInt();
 
     scan.nextLine();
-    System.out.println("What is your character's race?");
+    System.out.println("What is your character's Race?");
     String inputRace = scan.nextLine();
 
-    System.out.println("What is your character's class?");
+    System.out.println("What is your character's Class?");
     String inputClass = scan.nextLine();
 
-    System.out.println("What is your character's name?");
+    System.out.println("What is your character's Name?");
     String inputName = scan.nextLine();
 
     newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), 1, inputStrScore, inputDexScore,
