@@ -1,11 +1,9 @@
+import java.util.Scanner;
 /**
 * Fighter is a character's class that will determine a character's
 * skills, attacks, and health.
 */
 public class Fighter extends CharacterClass{
-
-
-
 
   /**
   * The fighting style for Fighter determines specific attributes of a character such as their AC, Weapon Type, and
@@ -17,8 +15,7 @@ public class Fighter extends CharacterClass{
   * @param level Level of character
   * @param thisCharacter
   */
-  public Fighter(int level) {
-    super.level = level;
+  public Fighter() {
     setProfBonusViaLevel(level);
     super.hitDie = new Die(10);
     fightStyle = "";
@@ -32,6 +29,13 @@ public class Fighter extends CharacterClass{
   public void setLvlOne() {
     super.thisCharacter.setStrSaveProf();
     super.thisCharacter.setConSaveProf();
+
+    System.out.println("What would you like your fighting style to be from this list:" + "\nArchery" +
+    "\nDefense" + "\nDueling" +"\nGreat Weapon Fighting");
+    Scanner scan = new Scanner(System.in);
+    String fightSyle = scan.nextLine();
+    setFightStyle(fightStyle);
+    determineHealth();
   }
 
   @Override
@@ -75,6 +79,12 @@ public class Fighter extends CharacterClass{
     fightStyle += "great weapon fighting";
   }
 
+  public void setLevel(int level) {
+    if (level == 1) {
+      setLvlOne();
+      super.thisCharacter.setProfBonus(2);
+    }
+  }
 
   public int rollToAttack(Weapon weapon) {
     int attackRoll = weapon.rollToAttack();

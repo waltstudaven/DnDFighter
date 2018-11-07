@@ -3,6 +3,14 @@
  * Each Race will determine certain attributes of a character.
  * @version 1.0
  */
-public interface Race {
-    public void editScores();
+public abstract class Race {
+  Character thisCharacter;
+    public abstract void editScores();
+    public void setCharacter(Character character) {
+      this.thisCharacter = character;
+    }
+
+    public Character getCharacter() {
+      return thisCharacter;
+    }
 }
