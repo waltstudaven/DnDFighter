@@ -18,14 +18,16 @@ public class Fighter extends CharacterClass{
   * @param level Level of character
   * @param thisCharacter
   */
-  public Fighter(int level, Character thisCharacter) {
+  public Fighter(int level) {
     super.level = level;
     setProfBonusViaLevel(level);
     super.hitDie = new Die(10);
-    this.thisCharacter = thisCharacter;
     fightStyle = "";
   }
 
+  public void setCharacter(Character character) {
+    this.thisCharacter = character;
+  }
 
   /**
   * Determines the strength and other bonuses for level 1 character.
