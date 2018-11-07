@@ -8,7 +8,10 @@ import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
 
-
+/**
+ * This class is apart of the UI component that helps the Select Monster
+ * screen function.
+ */
 public class SelectMonster {
     Image backImage;
     public ArrayList<String>  monsterList = new ArrayList<>();
