@@ -18,7 +18,7 @@ public class CharacterCreation {
     allRaces.put("Human", new Human());
   }
 
-  private void characterCreator() {
+  protected void characterCreator() {
     Scanner scan = new Scanner(System.in);
     System.out.println("What is your character's strength score?");
     int inputStrScore = scan.nextInt();
