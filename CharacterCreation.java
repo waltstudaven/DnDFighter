@@ -14,6 +14,9 @@ public class CharacterCreation {
   }
 
   public CharacterCreation() {
+    allClasses = new HashMap<>();
+    allRaces = new HashMap<>();
+
     allClasses.put("Fighter", new Fighter(1));
     allRaces.put("Human", new Human());
   }
@@ -38,6 +41,7 @@ public class CharacterCreation {
     System.out.println("What is your character's charisma score?");
     int inputCharScore = scan.nextInt();
 
+    scan.nextLine();
     System.out.println("What is your character's race?");
     String inputRace = scan.nextLine();
 

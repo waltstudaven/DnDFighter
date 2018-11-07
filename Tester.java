@@ -13,9 +13,6 @@ public class Tester{
      CharacterCreation character = new CharacterCreation();
      character.characterCreator();
 
-
-
-
   //  Character myCharacter = new Character("Me", tester.allClasses.get("Fighter"), tester.race.get("Human"), 1, 50, 50, 50, 50, 50, 50);
 
 
