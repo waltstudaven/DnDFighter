@@ -14,7 +14,7 @@ public class CharacterCreation {
   }
 
   public CharacterCreation() {
-    allClasses.put("Fighter", new Fighter(1, newCharacter));
+    allClasses.put("Fighter", new Fighter(1));
     allRaces.put("Human", new Human());
   }
 
