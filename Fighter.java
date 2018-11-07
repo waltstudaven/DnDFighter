@@ -3,12 +3,11 @@
  * skills, attacks, and health.
  */
 public class Fighter extends CharacterClass{
-<<<<<<< HEAD
 Character thisCharacter;
 	/*
 	 * Constructor for a fighter.
 	 * @param level Level of character
-	 * @param thisCharacter 
+	 * @param thisCharacter
 	 */
     public Fighter(int level, Character thisCharacter) {
       super.level = level;
@@ -50,7 +49,6 @@ Character thisCharacter;
             }
           }
         }
-=======
   Character thisCharacter;
   String fightStyle;
 
@@ -88,7 +86,6 @@ Character thisCharacter;
   public String getSaveThrows() {
     return "Strength: " + thisCharacter.getStrSave() + "\t" + "Constitution: " + thisCharacter.getConSave();
   }
->>>>>>> 5b1079f08d647d799ccaf2222bb86eb2f0298988
 
   // private void setSkills(String skill1, String skill2) {
   // }
