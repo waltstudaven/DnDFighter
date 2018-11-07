@@ -53,6 +53,10 @@ public class CharacterCreation {
 
     newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), 1, inputStrScore, inputDexScore,
     inputConScore, inputIntScore, inputWisScore, inputCharScore);
+
+    //System.out.println(inputClass);
+    allClasses.get(inputClass).setCharacter(newCharacter);
+    System.out.println(newCharacter);
   }
 
   public Race getCharacterRace() { return this.characterRace; }
