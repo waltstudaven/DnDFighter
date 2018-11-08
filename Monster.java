@@ -123,7 +123,8 @@ public abstract class Monster {
 		this.strSave = strSave;
 	}
 	public void setStrSaveProf() {
-		strSave = strMod + profBonus;
+		//System.out.println("got here" + this.profBonus + " " + this.strMod);
+		setStrSave(strMod+profBonus);
 	}
 	public int getStrScore() {
 		return strScore;

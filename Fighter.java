@@ -27,9 +27,9 @@ public class Fighter extends CharacterClass{
   */
   @Override
   public void setLvlOne() {
+    super.thisCharacter.setProfBonus(2);
     super.thisCharacter.setStrSaveProf();
     super.thisCharacter.setConSaveProf();
-
     System.out.println("What would you like your fighting style to be from this list:" + "\nArchery" +
     "\nDefense" + "\nDueling" +"\nGreat Weapon Fighting");
     Scanner scan = new Scanner(System.in);
@@ -131,4 +131,9 @@ public class Fighter extends CharacterClass{
     return damage;
   }
 
+
+  @Override
+  public String toString() {
+    return "Fighter";
+  }
 }
