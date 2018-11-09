@@ -1,19 +1,21 @@
 /**
- * A race class that determines certain attributes about a character.
- */
-public class Human implements Race {
-    Character character;
+* A race class that determines certain attributes about a character.
+*/
+public class Human extends Race {
 
-    public Human() {
-
-    }
+  public Human() {}
 
     public void editScores(){
-        character.setStrScore(character.getStrScore() +1);
-        character.setDexScore(character.getDexScore() +1);
-        character.setConScore(character.getConScore() +1);
-        character.setIntScore(character.getIntScore() +1);
-        character.setWisScore(character.getWisScore() +1);
-        character.setCharScore(character.getCharScore() +1);
+      super.getCharacter().setStrScore(super.getCharacter().getStrScore() +1);
+      super.getCharacter().setDexScore(super.getCharacter().getDexScore() +1);
+      super.getCharacter().setConScore(super.getCharacter().getConScore() +1);
+      super.getCharacter().setIntScore(super.getCharacter().getIntScore() +1);
+      super.getCharacter().setWisScore(super.getCharacter().getWisScore() +1);
+      super.getCharacter().setCharScore(super.getCharacter().getCharScore() +1);
     }
-}
+
+    @Override
+    public String toString() {
+      return "Human";
+    }
+  }

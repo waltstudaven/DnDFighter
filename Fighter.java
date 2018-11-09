@@ -1,95 +1,66 @@
+import java.util.Scanner;
 /**
- * Fighter is a character's class that will determine a character's
- * skills, attacks, and health.
- */
+* Fighter is a character's class that will determine a character's
+* skills, attacks, and health.
+*/
 public class Fighter extends CharacterClass{
-<<<<<<< HEAD
-Character thisCharacter;
-	/*
-	 * Constructor for a fighter.
-	 * @param level Level of character
-	 * @param thisCharacter 
-	 */
-    public Fighter(int level, Character thisCharacter) {
-      super.level = level;
-      super.profBonus = setProfBonusViaLevel(level);
-      super.hitDie = new Die(10);
-      this.thisCharacter = thisCharacter;
-    }
-    /**
-     * Determines the strength and other bonuses for level 1 character.
-     */
-    @Override
-    private void setLvlOne() {
-      thisCharacter.setStrSaveProf();
-      thisCharacter.setConSaveProf();
-    }
-    /**
-     * Sets the skills of the Fighter. A fighter has 2 skills.
-     */
-    private void setSkills(String skill1, String skill2) {
-    }
-    /**
-     * The fighting style for Fighter determines specific attributes of a character such as their AC, Weapon Type, and
-     * Weapon Damage.
-     */
-    private void setFightStyle(String fightStyle) {
-        if (fightStyle.equalsIgnoreCase("archery")) {
-            if (thisCharacter.Weapon.ranged()) thisCharacter.Weapon.roleToAttack() = thisCharacter.Weapon.roleToAttack() +2;
-        }
-        else if (fightStyle.equalsIgnoreCase("defense")) thisCharacter.setAc(thisCharacter.getAc() +1);
-        else if (fightStyle.equalsIgnoreCase("dueling")) {
-          if (thisCharacter.numEquiptWeapon == 1 && thisCharacter.Weapon.melee()) {
-            thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage() +2;
-          }
-        }
-        else if (fightStyle.equalsIgnoreCase("great weapon fighting")) {
-          if (thisCharacter.Weapon.twoHanded() || thisCharacter.Weapon.versatile() && thisCharacter.numEquiptWeapon == 2) {
-            if (thisCharacter.Weapon.rollDamage() == 1 || thisCharacter.Weapon.rollDamage() == 2) {
-              thisCharacter.Weapon.rollDamage() = thisCharacter.Weapon.rollDamage();
-            }
-          }
-        }
-=======
-  Character thisCharacter;
-  String fightStyle;
 
-  public Fighter(int level, Character thisCharacter) {
-    super.level = level;
+  /**
+  * The fighting style for Fighter determines specific attributes of a character such as their AC, Weapon Type, and
+  * Weapon Damage.
+  */
+  String fightStyle;
+  /*
+  * Constructor for a fighter.
+  * @param level Level of character
+  * @param thisCharacter
+  */
+  public Fighter() {
     setProfBonusViaLevel(level);
     super.hitDie = new Die(10);
-    this.thisCharacter = thisCharacter;
     fightStyle = "";
   }
 
+
+  /**
+  * Determines the strength and other bonuses for level 1 character.
+  */
   @Override
   public void setLvlOne() {
-    thisCharacter.setStrSaveProf();
-    thisCharacter.setConSaveProf();
+    super.thisCharacter.setProfBonus(2);
+    super.thisCharacter.setStrSaveProf();
+    super.thisCharacter.setConSaveProf();
+    System.out.println("What would you like your fighting style to be from this list:" + "\nArchery" +
+    "\nDefense" + "\nDueling" +"\nGreat Weapon Fighting");
+    Scanner scan = new Scanner(System.in);
+    String fightSyle = scan.nextLine();
+    setFightStyle(fightStyle);
+    determineHealth();
   }
 
   @Override
   public void determineHealth() {
-    int health = 10 + thisCharacter.getConMod();
+    int health = 10 + super.thisCharacter.getConMod();
 
     for (int i = 2; i <= level; i++) {
-      health += 6 + thisCharacter.getConMod();
+      health += 6 + super.thisCharacter.getConMod();
     }
-    thisCharacter.setMaxHp(health);
+    super.thisCharacter.setMaxHp(health);
   }
 
   @Override
   public void setSaveThrowsProf() {
-    thisCharacter.setStrSaveProf();
-    thisCharacter.setConSaveProf();
+    super.thisCharacter.setStrSaveProf();
+    super.thisCharacter.setConSaveProf();
   }
 
   @Override
   public String getSaveThrows() {
-    return "Strength: " + thisCharacter.getStrSave() + "\t" + "Constitution: " + thisCharacter.getConSave();
+    return "Strength: " + super.thisCharacter.getStrSave() + "\t" + "Constitution: " + super.thisCharacter.getConSave();
   }
->>>>>>> 5b1079f08d647d799ccaf2222bb86eb2f0298988
-
+  /**
+  * Sets the skills of the Fighter. A fighter has 2 skills.
+  */
   // private void setSkills(String skill1, String skill2) {
   // }
 
@@ -99,7 +70,7 @@ Character thisCharacter;
   private void setFightStyle(String fightStyle) {
     if (fightStyle.equalsIgnoreCase("archery")) fightStyle += "archery";
     else if (fightStyle.equalsIgnoreCase("defense")) {
-      thisCharacter.setAc(thisCharacter.getAc() +1);
+      super.thisCharacter.setAc(super.thisCharacter.getAc() +1);
       fightStyle += "defense";
     }
 
@@ -108,6 +79,12 @@ Character thisCharacter;
     fightStyle += "great weapon fighting";
   }
 
+  public void setLevel(int level) {
+    if (level == 1) {
+      setLvlOne();
+      super.thisCharacter.setProfBonus(2);
+    }
+  }
 
   public int rollToAttack(Weapon weapon) {
     int attackRoll = weapon.rollToAttack();
@@ -115,12 +92,12 @@ Character thisCharacter;
 
     if (weaponProperties.contains("finesse") || weaponProperties.contains("ranged")){
       if (fightStyle.contains("archery")) {
-        attackRoll += thisCharacter.getDexMod() + 2;
+        attackRoll += super.thisCharacter.getDexMod() + 2;
       }
-      attackRoll += thisCharacter.getDexMod() + thisCharacter.getProfBonus();
+      attackRoll += super.thisCharacter.getDexMod() + super.thisCharacter.getProfBonus();
     }
     else {
-      attackRoll += thisCharacter.getStrMod() + thisCharacter.getProfBonus();
+      attackRoll += super.thisCharacter.getStrMod() + super.thisCharacter.getProfBonus();
     }
 
     return attackRoll;
@@ -132,26 +109,31 @@ Character thisCharacter;
 
     if (weaponProperties.contains("range") || weaponProperties.contains("finesse")) {
       if (fightStyle.contains("dueling") && !weaponProperties.contains("range")) {
-        damage += thisCharacter.getDexMod() + 2;
+        damage += super.thisCharacter.getDexMod() + 2;
       }
       else {
-        damage += thisCharacter.getDexMod();
+        damage += super.thisCharacter.getDexMod();
       }
     }
     else {
       if (weaponProperties.contains("twoHanded")) {
         if (fightStyle.contains("great weapon fighting")) {
           if (damage == 1 || damage == 2) {
-            damage = thisCharacter.weapon.rollDamage() + thisCharacter.getStrMod();
+            damage = super.thisCharacter.weapon.rollDamage() + super.thisCharacter.getStrMod();
           }
         }
-        damage += thisCharacter.getStrMod();
+        damage += super.thisCharacter.getStrMod();
       }
       if (fightStyle.contains("dueling") && !weaponProperties.contains("range")) {
-        damage += thisCharacter.getStrMod() + 2;
+        damage += super.thisCharacter.getStrMod() + 2;
       }
     }
-      return damage;
+    return damage;
   }
 
+
+  @Override
+  public String toString() {
+    return "Fighter";
+  }
 }

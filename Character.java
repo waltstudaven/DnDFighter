@@ -70,13 +70,13 @@ public class Character extends Monster {
     toString += "AC: " + this.getAc() + " \n";
 
     toString += "STR: " + this.getStrScore() + " (" + this.getStrMod() + ")" + " \n";
-    toString += "STR: " + this.getDexScore() + " (" + this.getDexMod() + ")" + " \n";
-    toString += "STR: " + this.getConScore() + " (" + this.getConMod() + ")" + " \n";
-    toString += "STR: " + this.getIntScore() + " (" + this.getIntMod() + ")" + " \n";
-    toString += "STR: " + this.getWisScore() + " (" + this.getWisMod() + ")" + " \n";
-    toString += "STR: " + this.getCharScore() + " (" + this.getCharMod() + ")" + " \n";
+    toString += "DEX: " + this.getDexScore() + " (" + this.getDexMod() + ")" + " \n";
+    toString += "CON: " + this.getConScore() + " (" + this.getConMod() + ")" + " \n";
+    toString += "INT: " + this.getIntScore() + " (" + this.getIntMod() + ")" + " \n";
+    toString += "WIS: " + this.getWisScore() + " (" + this.getWisMod() + ")" + " \n";
+    toString += "CHAR: " + this.getCharScore() + " (" + this.getCharMod() + ")" + " \n";
 
-    toString += "Save Throws: " + this.characterClass.getSaveThrows();
+    toString += "Save Throws: " + this.characterClass.getSaveThrows() + "\n";
 
 
     toString += "Class: " + this.getCharacterClass() + " \n";

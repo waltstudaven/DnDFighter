@@ -14,11 +14,14 @@ public class CharacterCreation {
   }
 
   public CharacterCreation() {
-    allClasses.put("Fighter", new Fighter(1, newCharacter));
+    allClasses = new HashMap<>();
+    allRaces = new HashMap<>();
+
+    allClasses.put("Fighter", new Fighter());
     allRaces.put("Human", new Human());
   }
 
-  private void characterCreator() {
+  protected void characterCreator() {
     Scanner scan = new Scanner(System.in);
     System.out.println("What is your character's strength score?");
     int inputStrScore = scan.nextInt();
@@ -38,6 +41,7 @@ public class CharacterCreation {
     System.out.println("What is your character's charisma score?");
     int inputCharScore = scan.nextInt();
 
+    scan.nextLine();
     System.out.println("What is your character's race?");
     String inputRace = scan.nextLine();
 
@@ -47,8 +51,20 @@ public class CharacterCreation {
     System.out.println("What is your character's name?");
     String inputName = scan.nextLine();
 
-    newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), 1, inputStrScore, inputDexScore,
+
+    System.out.println("What is your character's level?");
+    int inputLvl = scan.nextInt();
+
+    newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), inputLvl, inputStrScore, inputDexScore,
     inputConScore, inputIntScore, inputWisScore, inputCharScore);
+
+    //System.out.println(inputClass);
+    allClasses.get(inputClass).setCharacter(newCharacter);
+    newCharacter.getCharacterClass().setLvl(inputLvl);
+
+    allRaces.get(inputRace).setCharacter(newCharacter);
+    newCharacter.getCharacterRace().editScores();
+    System.out.println(newCharacter);
   }
 
   public Race getCharacterRace() { return this.characterRace; }
