@@ -4,7 +4,7 @@
 * @author Katie Spiese
 * @version 10-26-18
 */
-enum Weapon{
+public enum Weapon implements Equipment{
 
   CLUB("1d4", DamageType.BLUDGEONING, "light"),
   DAGGER("1d4", DamageType.PIERCING, "finesse, light, thrown (range 20/60)"),
