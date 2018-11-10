@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 /**
 * Fighter is a character's class that will determine a character's
 * skills, attacks, and health.
