@@ -281,6 +281,6 @@ public abstract class Monster {
 
 
 	public void setStealthDisAdv(boolean disAdv) {
-		this.stealthDisAdv = disAdv
+		this.stealthDisAdv = disAdv;
 	}
 }
