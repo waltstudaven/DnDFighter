@@ -8,6 +8,8 @@ public class Character extends Monster {
   public int i = 0;
   public Weapon weapon;
 
+  public ArrayList<Equipment> allEquipment;
+
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
@@ -19,10 +21,16 @@ public class Character extends Monster {
     this.characterRace = characterRace;
     this.level = level;
     this.profBonus = profBonus;
+
+    allEquipment = new ArrayList<>();
   }
 
   public void addAction(String methodName) {
     allActions.add(methodName);
+  }
+
+  public ArrayList getEquipment() {
+    return allEquipment;
   }
 
   public void displayActions(){

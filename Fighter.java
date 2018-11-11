@@ -37,6 +37,40 @@ public class Fighter extends CharacterClass{
     String fightSyle = scan.nextLine();
     setFightStyle(fightStyle);
     determineHealth();
+    addEquipment();
+  }
+
+
+  public void addEquipment() {
+    ArrayList<Equipment> characterEqupiment = super.thisCharacter.getEquipment();
+
+    characterEqupiment.add(Weapon.LONGBOW);
+    Scanner scan = new Scanner(System.in);
+
+    System.out.println("Would you like (a) chain mail or (b) leather armor?");
+    String armor = scan.nextLine();
+
+    System.out.println("Would you like (a) a martial weapon and a shield or (b) two martial weapons?");
+    String weapons1 = scan.nextLine();
+
+    System.out.println("Would you like (a) a light crossbow or (b) two handaxes?");
+    String weapons2 = scan.nextLine();
+
+    if (armor.equals("a")) {
+      if (super.thisCharacter.getStrMod < Armor.CHAINMAIL.getMinStr()) {
+        System.out.println("Sorry you can not equipt this armor, assigning you Leather Armor");
+        characterEqupiment.add(Armor.LEATHER);
+      }
+      else{
+        Armor.equipt(super.thisCharacter);
+        characterEqupiment.add(Armor.CHAINMAIL);
+      }
+    }
+    else {
+      characterEqupiment.add(Armor.LEATHER);
+    }
+
+
   }
 
   @Override

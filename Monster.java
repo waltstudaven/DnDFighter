@@ -278,4 +278,9 @@ public abstract class Monster {
 	public int getCharSave() {
 		return charSave;
 	}
+
+
+	public void setStealthDisAdv(boolean disAdv) {
+		this.stealthDisAdv = disAdv
+	}
 }
