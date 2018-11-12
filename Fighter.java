@@ -78,10 +78,10 @@ public class Fighter extends CharacterClass{
       System.out.println("What martial weapon would you like?");
 
       ArrayList<Weapon> choices = new ArrayList<>();
-      for (Weapon w: Weapon.allWeapons) {
-        if (w.getWeaponType().contains("martial")){
+      for (String w: Weapon.allWeapons.keySet()) {
+        if (Weapon.allWeapons.get(w).getWeaponType().contains("martial")){
         System.out.println(w);
-        choices.add(w);
+        choices.add(Weapon.allWeapons.get(w));
       }
       }
 
@@ -101,10 +101,10 @@ public class Fighter extends CharacterClass{
       System.out.println("What is the first martial weapon you would like?");
 
       ArrayList<Weapon> choices = new ArrayList<>();
-      for (Weapon w: Weapon.allWeapons) {
-        if (w.getWeaponType().contains("martial")){
+      for (String w: Weapon.allWeapons.keySet()) {
+        if (Weapon.allWeapons.get(w).getWeaponType().contains("martial")){
         System.out.println(w);
-        choices.add(w);
+        choices.add(Weapon.allWeapons.get(w));
       }
       }
 
@@ -129,7 +129,7 @@ public class Fighter extends CharacterClass{
       }
     }
 
-      if (weapon2.equals("a")) {
+      if (weapons2.equals("a")) {
         characterEqupiment.add(Weapon.CROSSBOWLIGHT);
       }
       else {
@@ -174,7 +174,7 @@ private void setFightStyle(String fightStyle) {
   if (fightStyle.equalsIgnoreCase("archery")) this.fightStyle += "archery";
   else if (fightStyle.equalsIgnoreCase("defense")) {
     super.thisCharacter.setAc(super.thisCharacter.getAc() +1);
-    this.ightStyle += "defense";
+    this.fightStyle += "defense";
   }
 
   else if (fightStyle.equalsIgnoreCase("dueling")) this.fightStyle += "dueling";

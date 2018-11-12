@@ -91,6 +91,7 @@ public class Character extends Monster {
 
     toString += "Race: " + this.getCharacterRace() + " \n";
 
+    toString += "Equipment: " + this.getEquipment();
     return toString;
 
   }

@@ -61,12 +61,13 @@ public class CharacterCreation {
 
     newCharacter.getCharacterRace().setCharacter(newCharacter);
     newCharacter.getCharacterRace().editScores();
-    System.out.println(newCharacter);
+
 
     //System.out.println(inputClass);
     newCharacter.getCharacterClass().setCharacter(newCharacter);
     newCharacter.getCharacterClass().setLvl(inputLvl);
 
+System.out.println(newCharacter);
   }
 
   public Race getCharacterRace() { return this.characterRace; }
