@@ -1,4 +1,4 @@
-import java.util.Map;
+import java.util.HashMap;
 /**
 * Weapon class
 *
@@ -167,8 +167,8 @@ public enum Weapon implements Equipment{
 
   public void setAllWeapons() {
     Weapon[] allWeaponsArray = Weapon.values();
-    for (int i = 0; i < allWeapons.length; i++) {
-      allWeapons.put(allWeaponsArray[i], allWeaponsArray[i].getName());
+    for (int i = 0; i < allWeaponsArray.length; i++) {
+      allWeapons.put(allWeaponsArray[i].getName(), allWeaponsArray[i]);
     }
   }
 

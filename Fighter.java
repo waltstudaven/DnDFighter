@@ -59,10 +59,12 @@ public class Fighter extends CharacterClass{
     if (armor.equals("a")) {
       if (super.thisCharacter.getStrMod < Armor.CHAINMAIL.getMinStr()) {
         System.out.println("Sorry you can not equipt this armor, assigning you Leather Armor");
+
+        Armor.equipt(Armor.LEATHER);
         characterEqupiment.add(Armor.LEATHER);
       }
       else{
-        Armor.equipt(super.thisCharacter);
+        Armor.equipt(Armor.CHAINMAIL);
         characterEqupiment.add(Armor.CHAINMAIL);
       }
     }
@@ -75,12 +77,46 @@ public class Fighter extends CharacterClass{
 
       ArrayList<Weapon> choices = new ArrayList<>();
       for (Weapon w: Weapon.) {
-        if w.getProperties().contains("martial");
+        if w.getWeaponType().contains("martial");
         System.out.println(w);
         choices.add(w);
       }
 
-      String martialChoice = scan.nextLine()
+      String martialChoice = scan.nextLine();
+
+      for (Weapon w: choices) {
+        if (martialChoice.equals(w.toString())) {
+          characterEqupiment.add(w);
+          break;
+        }
+      }
+
+      super.thisCharacter.setAc(super.thisCharacter.getAc() + 2);
+    }
+
+    else {
+      System.out.println("What is the first martial weapon you would like?");
+
+      ArrayList<Weapon> choices = new ArrayList<>();
+      for (Weapon w: Weapon.allWeapons) {
+        if w.getWeaponType().contains("martial");
+        System.out.println(w);
+        choices.add(w);
+      }
+
+      String martialChoice = scan.nextLine();
+
+      for (Weapon w: choices) {
+        if (martialChoice.equals(w.toString())) {
+          characterEqupiment.add(w);
+          break;
+        }
+      }
+
+
+        System.out.println("What is the second martial weapon you would like?");
+
+      String martialChoice2 = scan.nextLine();
       for (Weapon w: choices) {
         if (martialChoice.equals(w.toString())) {
           characterEqupiment.add(w);
@@ -88,6 +124,14 @@ public class Fighter extends CharacterClass{
         }
       }
     }
+
+      if (weapon2.equals("a")) {
+        characterEqupiment.add(Weapon.CROSSBOWLIGHT);
+      }
+      else {
+        characterEqupiment.add(Weapon.HANDAXE);
+        characterEqupiment.add(Weapon.HANDAXE);
+      }
   }
 
 
