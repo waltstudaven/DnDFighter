@@ -63,8 +63,8 @@ public enum Armor implements Equipment{
   public static void equipt(Armor armor) {
     int lowerDex = 0;
 
-    if (thisCharacter.getDexMod > armor.getMaxDex) { lowerDex = armor.getMaxDex; }
-    else { lowerDex = thisCharacter.getDexMod; }
+    if (thisCharacter.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+    else { lowerDex = thisCharacter.getDexMod(); }
 
     if (thisCharacter.getStrScore() < armor.getMinStr()) {
       System.out.println("You can not equipt this armor. Your strength score is " + thisCharacter.getStrScore() +
@@ -72,7 +72,7 @@ public enum Armor implements Equipment{
     }
     else {
       thisCharacter.setAc(armor.getBaseAc() + lowerDex);
-      if (getStealthDisAdv) { thisCharacter.setStealthDisAdv(true); }
+      if (this.getStealthDisAdv()) { thisCharacter.setStealthDisAdv(true); }
     }
   }
 
