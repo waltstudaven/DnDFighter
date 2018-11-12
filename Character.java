@@ -29,7 +29,7 @@ public class Character extends Monster {
     allActions.add(methodName);
   }
 
-  public ArrayList getEquipment() {
+  public ArrayList<Equipment> getEquipment() {
     return allEquipment;
   }
 
@@ -93,6 +93,21 @@ public class Character extends Monster {
 
     toString += "Equipment: " + this.getEquipment();
     return toString;
+  }
 
+  public void equipt(Armor armor) {
+    int lowerDex = 0;
+
+    if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+    else { lowerDex = this.getDexMod(); }
+
+    if (this.getStrScore() < armor.getMinStr()) {
+      System.out.println("You can not equipt this armor. Your strength score is " + this.getStrScore() +
+      " and the required minimum strength to equipt this armor is " + armor.getMinStr());
+    }
+    else {
+      this.setAc(armor.getBaseAc() + lowerDex);
+      if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+    }
   }
 }

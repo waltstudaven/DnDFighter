@@ -62,11 +62,11 @@ public class Fighter extends CharacterClass{
       if (super.thisCharacter.getStrMod() < Armor.CHAINMAIL.getMinStr()) {
         System.out.println("Sorry you can not equipt this armor, assigning you Leather Armor");
 
-        Armor.equipt(Armor.LEATHER);
+        thisCharacter.equipt(Armor.LEATHER);
         characterEqupiment.add(Armor.LEATHER);
       }
       else{
-        Armor.equipt(Armor.CHAINMAIL);
+        thisCharacter.equipt(Armor.CHAINMAIL);
         characterEqupiment.add(Armor.CHAINMAIL);
       }
     }
