@@ -95,7 +95,7 @@ public class Character extends Monster {
     return toString;
   }
 
-  public void equipt(Armor armor) {
+  public boolean equipt(Armor armor) {
     int lowerDex = 0;
 
     if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
@@ -104,10 +104,12 @@ public class Character extends Monster {
     if (this.getStrScore() < armor.getMinStr()) {
       System.out.println("You can not equipt this armor. Your strength score is " + this.getStrScore() +
       " and the required minimum strength to equipt this armor is " + armor.getMinStr());
+      return false;
     }
     else {
       this.setAc(armor.getBaseAc() + lowerDex);
       if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+      return true;
     }
   }
 }
