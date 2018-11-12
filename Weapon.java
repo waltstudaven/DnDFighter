@@ -56,10 +56,12 @@ public enum Weapon implements Equipment{
   public String weaponType;
   public String name;
 
-  public HashMap<String, Weapon> allWeapons = new HashMap<>();
+  public static HashMap<String, Weapon> allWeapons;
 
 
   static{
+allWeapons = new HashMap<>();
+
     allWeapons.put(Weapon.CLUB.getName(), Weapon.CLUB);
     allWeapons.put(Weapon.DAGGER.getName(), Weapon.DAGGER);
     allWeapons.put(Weapon.GREATCLUB.getName(), Weapon.GREATCLUB);
@@ -93,7 +95,7 @@ public enum Weapon implements Equipment{
     allWeapons.put(Weapon.WHIP.getName(), Weapon.WHIP);
     allWeapons.put(Weapon.CROSSBOWHAND.getName(), Weapon.CROSSBOWHAND);
     allWeapons.put(Weapon.CROSSBOWHEAVY.getName(), Weapon.CROSSBOWHEAVY);
-    allWeapons.put(Weapon.LONGBOWv.getName(), Weapon.LONGBOW);
+    allWeapons.put(Weapon.LONGBOW.getName(), Weapon.LONGBOW);
   }
 
   //constructs the weapons stuff
@@ -136,7 +138,7 @@ public enum Weapon implements Equipment{
     return name;
   }
 
-  public HashMap<String, Weapon> getAllWeapons{
+  public HashMap<String, Weapon> getAllWeapons(){
     return allWeapons;
   }
 
