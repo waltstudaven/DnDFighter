@@ -44,9 +44,19 @@ public class CharacterCreation {
 
     scan.nextLine();
     System.out.println("What is your character's race?");
+    System.out.print("Options: ");
+    for(String s: allRaces.keySet()){
+      System.out.print(s + ", ");
+    }
+    System.out.println();
     String inputRace = scan.nextLine();
 
     System.out.println("What is your character's class?");
+    System.out.print("Options: ");
+    for(String s: allClasses.keySet()){
+      System.out.print(s + ", ");
+    }
+    System.out.println();
     String inputClass = scan.nextLine();
 
     System.out.println("What is your character's name?");
