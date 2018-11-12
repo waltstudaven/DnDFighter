@@ -51,7 +51,7 @@ public enum Weapon implements Equipment{
   public String weaponType;
   public String name;
 
-  public HashMap<String, Weapon> allWeapons = new HashMap<>();
+  public static HashMap<String, Weapon> allWeapons = new HashMap<>();
 
 
 
