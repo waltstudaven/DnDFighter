@@ -17,10 +17,12 @@ public enum Weapon implements Equipment{
   QUARTERSTAFF("1d6", DamageType.BLUDGEONING, "versatile (1d8)", "simple melee", "quarter staff"),
   SICKLE("1d4", DamageType.SLASHING, "light", "simple melee", "sickle"),
   SPEAR("1d6", DamageType.PIERCING, "thrown (range 20/60), versatile (1d8)", "simple melee", "spear"),
+
   CROSSBOWLIGHT("1d8", DamageType.PIERCING, "ammunition (range 80/320), loading, two-handed", "simple ranged", "light crossbow"),
   DART("1d4", DamageType.PIERCING, "finesse, thrown (range 20/60)", "simple ranged", "dart"),
   SHORTBOW("1d6", DamageType.PIERCING, "ammunition (range 80/320), two-handed", "simple ranged", "shortbow"),
   SLING("1d4", DamageType.BLUDGEONING, "ammunition (range 30/120)", "simple ranged", "sling"),
+
   BATTLEAXE("1d8", DamageType.SLASHING, "versatile (1d10)", "martial melee", "battleaxe"),
   FLAIL("1d8", DamageType.BLUDGEONING, "", "martial melee", "flail"),
   GLAIVE("1d10", DamageType.SLASHING, "heavy, reach, two-handed", "martial melee", "glaive"),
@@ -39,6 +41,7 @@ public enum Weapon implements Equipment{
   WARPICK("1d8", DamageType.PIERCING, "", "martial melee", "warpick"),
   WARHAMMER("1d8", DamageType.BLUDGEONING, "versatile (1d10)", "martial melee", "warhammer"),
   WHIP("1d4", DamageType.SLASHING, "finesse, reach", "martial melee", "whip"),
+
   CROSSBOWHAND("1d6", DamageType.PIERCING, "ammunition (range 30/120), light, loading", "martial ranged", "hand crossbow"),
   CROSSBOWHEAVY("1d10", DamageType.PIERCING, "ammunition (range 100/400), heavy, loading, two-handed", "martial ranged", "heavy crossbow"),
   LONGBOW("1d8", DamageType.PIERCING, "ammunition (range 150/600), heavy, two-handed", "martial ranged", "longbow");
@@ -47,13 +50,51 @@ public enum Weapon implements Equipment{
   public String die;
   public DamageType type;
   public String properties;
+
   private Die d;
+
   public String weaponType;
   public String name;
 
   public HashMap<String, Weapon> allWeapons = new HashMap<>();
 
 
+  static{
+    allWeapons.put(Weapon.CLUB.getName(), Weapon.CLUB);
+    allWeapons.put(Weapon.DAGGER.getName(), Weapon.DAGGER);
+    allWeapons.put(Weapon.GREATCLUB.getName(), Weapon.GREATCLUB);
+    allWeapons.put(Weapon.HANDAXE.getName(), Weapon.HANDAXE);
+    allWeapons.put(Weapon.JAVELIN.getName(), Weapon.JAVELIN);
+    allWeapons.put(Weapon.LIGHTHAMMER.getName(), Weapon.LIGHTHAMMER);
+    allWeapons.put(Weapon.MACE.getName(), Weapon.MACE);
+    allWeapons.put(Weapon.QUARTERSTAFF.getName(), Weapon.QUARTERSTAFF);
+    allWeapons.put(Weapon.SICKLE.getName(), Weapon.SICKLE);
+    allWeapons.put(Weapon.SPEAR.getName(), Weapon.SPEAR);
+    allWeapons.put(Weapon.CROSSBOWLIGHT.getName(), Weapon.CROSSBOWLIGHT);
+    allWeapons.put(Weapon.DART.getName(), Weapon.DART);
+    allWeapons.put(Weapon.SHORTBOW.getName(), Weapon.SHORTBOW);
+    allWeapons.put(Weapon.SLING.getName(), Weapon.SLING);
+    allWeapons.put(Weapon.BATTLEAXE.getName(), Weapon.BATTLEAXE);
+    allWeapons.put(Weapon.FLAIL.getName(), Weapon.FLAIL);
+    allWeapons.put(Weapon.GLAIVE.getName(), Weapon.GLAIVE);
+    allWeapons.put(Weapon.GREATAXE.getName(), Weapon.GREATAXE);
+    allWeapons.put(Weapon.GREATSWORD.getName(), Weapon.GREATSWORD);
+    allWeapons.put(Weapon.HALBERD.getName(), Weapon.HALBERD);
+    allWeapons.put(Weapon.LONGSWORD.getName(), Weapon.LONGSWORD);
+    allWeapons.put(Weapon.MAUL.getName(), Weapon.MAUL);
+    allWeapons.put(Weapon.MORNINGSTAR.getName(), Weapon.MORNINGSTAR);
+    allWeapons.put(Weapon.PIKE.getName(), Weapon.PIKE);
+    allWeapons.put(Weapon.RAPIER.getName(), Weapon.RAPIER);
+    allWeapons.put(Weapon.SCIMITAR.getName(), Weapon.SCIMITAR);
+    allWeapons.put(Weapon.SHORTSWORD.getName(), Weapon.SHORTSWORD);
+    allWeapons.put(Weapon.TRIDENT.getName(), Weapon.TRIDENT);
+    allWeapons.put(Weapon.WARPICK.getName(), Weapon.WARPICK);
+    allWeapons.put(Weapon.WARHAMMER.getName(), Weapon.WARHAMMER);
+    allWeapons.put(Weapon.WHIP.getName(), Weapon.WHIP);
+    allWeapons.put(Weapon.CROSSBOWHAND.getName(), Weapon.CROSSBOWHAND);
+    allWeapons.put(Weapon.CROSSBOWHEAVY.getName(), Weapon.CROSSBOWHEAVY);
+    allWeapons.put(Weapon.LONGBOWv.getName(), Weapon.LONGBOW);
+  }
 
   //constructs the weapons stuff
   private Weapon(String die, DamageType type, String properties, String weaponType, String name){
@@ -63,8 +104,6 @@ public enum Weapon implements Equipment{
     this.weaponType = weaponType;
     this.name = name;
     d = new Die();
-
-    allWeapons.put(name, this);
   }
 
 
@@ -96,6 +135,15 @@ public enum Weapon implements Equipment{
   public String getName(){
     return name;
   }
+
+  public HashMap<String, Weapon> getAllWeapons{
+    return allWeapons;
+  }
+
+
+
+
+
 
   /**
   * Rolls a d20 and returns what it rolled
@@ -162,17 +210,7 @@ public enum Weapon implements Equipment{
     }
     return false;
   }
-  //
-  // public void setAllWeapons() {
-  //   Weapon[] allWeaponsArray = Weapon.values();
-  //   for (int i = 0; i < allWeaponsArray.length; i++) {
-  //     allWeapons.put(allWeaponsArray[i].getName(), allWeaponsArray[i]);
-  //   }
-  // }
 
-  // public static HashMap getAllWeapons() {
-  //   return allWeapons;
-  // }
 
   public String toString() {
     return this.name;
