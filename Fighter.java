@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
 * Fighter is a character's class that will determine a character's
@@ -11,6 +12,7 @@ public class Fighter extends CharacterClass{
   * Weapon Damage.
   */
   String fightStyle;
+
   /*
   * Constructor for a fighter.
   * @param level Level of character
@@ -57,7 +59,7 @@ public class Fighter extends CharacterClass{
     String weapons2 = scan.nextLine();
 
     if (armor.equals("a")) {
-      if (super.thisCharacter.getStrMod < Armor.CHAINMAIL.getMinStr()) {
+      if (super.thisCharacter.getStrMod() < Armor.CHAINMAIL.getMinStr()) {
         System.out.println("Sorry you can not equipt this armor, assigning you Leather Armor");
 
         Armor.equipt(Armor.LEATHER);
@@ -76,10 +78,11 @@ public class Fighter extends CharacterClass{
       System.out.println("What martial weapon would you like?");
 
       ArrayList<Weapon> choices = new ArrayList<>();
-      for (Weapon w: Weapon.) {
-        if w.getWeaponType().contains("martial");
+      for (Weapon w: Weapon.allWeapons) {
+        if (w.getWeaponType().contains("martial")){
         System.out.println(w);
         choices.add(w);
+      }
       }
 
       String martialChoice = scan.nextLine();
@@ -99,9 +102,10 @@ public class Fighter extends CharacterClass{
 
       ArrayList<Weapon> choices = new ArrayList<>();
       for (Weapon w: Weapon.allWeapons) {
-        if w.getWeaponType().contains("martial");
+        if (w.getWeaponType().contains("martial")){
         System.out.println(w);
         choices.add(w);
+      }
       }
 
       String martialChoice = scan.nextLine();
@@ -135,7 +139,7 @@ public class Fighter extends CharacterClass{
   }
 
 
-}
+
 
 @Override
 public void determineHealth() {

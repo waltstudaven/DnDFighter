@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.ArrayList;
 public class CharacterCreation {
   private Race characterRace;
   private CharacterClass characterClass;
@@ -58,12 +59,12 @@ public class CharacterCreation {
     newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), inputLvl, inputStrScore, inputDexScore,
     inputConScore, inputIntScore, inputWisScore, inputCharScore);
 
-    newCharacter.getCharacterRace.setCharacter(newCharacter);
+    newCharacter.getCharacterRace().setCharacter(newCharacter);
     newCharacter.getCharacterRace().editScores();
     System.out.println(newCharacter);
 
     //System.out.println(inputClass);
-    newCharacter.getCharacterClass.setCharacter(newCharacter);
+    newCharacter.getCharacterClass().setCharacter(newCharacter);
     newCharacter.getCharacterClass().setLvl(inputLvl);
 
   }

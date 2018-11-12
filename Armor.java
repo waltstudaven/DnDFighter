@@ -60,7 +60,7 @@ public enum Armor implements Equipment{
   public int getWeight(){ return this.weight; }
   public String armorSize(){ return this.armorSize; }
 
-  public void equipt(Armor armor) {
+  public static void equipt(Armor armor) {
     int lowerDex = 0;
 
     if (thisCharacter.getDexMod > armor.getMaxDex) { lowerDex = armor.getMaxDex; }

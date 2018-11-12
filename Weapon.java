@@ -51,7 +51,7 @@ public enum Weapon implements Equipment{
   public String weaponType;
   public String name;
 
-  public HashMap<String, Weapon> allWeapons;
+  public HashMap<String, Weapon> allWeapons = new HashMap<>();
 
 
 
@@ -64,9 +64,7 @@ public enum Weapon implements Equipment{
     this.name = name;
     d = new Die();
 
-
-    allWeapons = new HashMap<>();
-    setAllWeapons();
+    allWeapons.put(name, this);
   }
 
 
@@ -164,17 +162,17 @@ public enum Weapon implements Equipment{
     }
     return false;
   }
+  //
+  // public void setAllWeapons() {
+  //   Weapon[] allWeaponsArray = Weapon.values();
+  //   for (int i = 0; i < allWeaponsArray.length; i++) {
+  //     allWeapons.put(allWeaponsArray[i].getName(), allWeaponsArray[i]);
+  //   }
+  // }
 
-  public void setAllWeapons() {
-    Weapon[] allWeaponsArray = Weapon.values();
-    for (int i = 0; i < allWeaponsArray.length; i++) {
-      allWeapons.put(allWeaponsArray[i].getName(), allWeaponsArray[i]);
-    }
-  }
-
-  public HashMap getAllWeapons() {
-    return allWeapons;
-  }
+  // public static HashMap getAllWeapons() {
+  //   return allWeapons;
+  // }
 
   public String toString() {
     return this.name;
