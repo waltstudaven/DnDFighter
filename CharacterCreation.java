@@ -58,13 +58,14 @@ public class CharacterCreation {
     newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), inputLvl, inputStrScore, inputDexScore,
     inputConScore, inputIntScore, inputWisScore, inputCharScore);
 
-    //System.out.println(inputClass);
-    allClasses.get(inputClass).setCharacter(newCharacter);
-    newCharacter.getCharacterClass().setLvl(inputLvl);
-
-    allRaces.get(inputRace).setCharacter(newCharacter);
+    newCharacter.getCharacterRace.setCharacter(newCharacter);
     newCharacter.getCharacterRace().editScores();
     System.out.println(newCharacter);
+
+    //System.out.println(inputClass);
+    newCharacter.getCharacterClass.setCharacter(newCharacter);
+    newCharacter.getCharacterClass().setLvl(inputLvl);
+
   }
 
   public Race getCharacterRace() { return this.characterRace; }

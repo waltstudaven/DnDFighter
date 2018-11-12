@@ -74,7 +74,7 @@ public class Fighter extends CharacterClass{
       System.out.println("What martial weapon would you like?");
 
       ArrayList<Weapon> choices = new ArrayList<>();
-      for (Weapon w: Weapon) {
+      for (Weapon w: Weapon.) {
         if w.getProperties().contains("martial");
         System.out.println(w);
         choices.add(w);
@@ -123,15 +123,15 @@ public String getSaveThrows() {
 // }
 
 private void setFightStyle(String fightStyle) {
-  if (fightStyle.equalsIgnoreCase("archery")) fightStyle += "archery";
+  if (fightStyle.equalsIgnoreCase("archery")) this.fightStyle += "archery";
   else if (fightStyle.equalsIgnoreCase("defense")) {
     super.thisCharacter.setAc(super.thisCharacter.getAc() +1);
-    fightStyle += "defense";
+    this.ightStyle += "defense";
   }
 
-  else if (fightStyle.equalsIgnoreCase("dueling")) fightStyle += "dueling";
+  else if (fightStyle.equalsIgnoreCase("dueling")) this.fightStyle += "dueling";
   else if (fightStyle.equalsIgnoreCase("great weapon fighting"))
-  fightStyle += "great weapon fighting";
+  this.fightStyle += "great weapon fighting";
 }
 
 public void setLevel(int level) {
