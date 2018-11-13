@@ -10,7 +10,7 @@ public enum Weapon implements Equipment{
   CLUB("1d4", DamageType.BLUDGEONING, "light", "simple melee", "club"),
   DAGGER("1d4", DamageType.PIERCING, "finesse, light, thrown (range 20/60)", "simple melee", "dagger"),
   GREATCLUB("1d8", DamageType.BLUDGEONING, "two-handed", "simple melee", "great club"),
-  HANDAXE("1d6", DamageType.SLASHING, "light, thrown (range 20/60)", "simple melee", "hand axe"),
+  HANDAXE("1d6", DamageType.SLASHING, "light, thrown (range 20/60)", "simple melee", "handaxe"),
   JAVELIN("1d6", DamageType.PIERCING, "thrown (range 30/120)", "simple melee", "javelin"),
   LIGHTHAMMER("1d4", DamageType.BLUDGEONING, "light, thrown (range 20/60)", "simple melee", "light hammer"),
   MACE("1d6", DamageType.BLUDGEONING, "", "simple melee", "mace"),
