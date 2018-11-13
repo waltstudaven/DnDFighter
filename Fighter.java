@@ -42,7 +42,9 @@ public class Fighter extends CharacterClass{
     addEquipment();
   }
 
-
+  /**
+   * Queries the user for weapons and equipment.
+   */
   public void addEquipment() {
     ArrayList<Equipment> characterEqupiment = super.thisCharacter.getEquipment();
 
@@ -173,22 +175,29 @@ public String getSaveThrows() {
 private void setFightStyle(String fightStyle) {
   if (fightStyle.equalsIgnoreCase("archery")) this.fightStyle += "archery";
   else if (fightStyle.equalsIgnoreCase("defense")) {
+	 System.out.println("AC before defense:" + super.thisCharacter.getAC());
     super.thisCharacter.setAc(super.thisCharacter.getAc() +1);
     this.fightStyle += "defense";
+    System.out.println("AC after defense:"+ super.thisCharacter.getAC());
   }
 
   else if (fightStyle.equalsIgnoreCase("dueling")) this.fightStyle += "dueling";
   else if (fightStyle.equalsIgnoreCase("great weapon fighting"))
   this.fightStyle += "great weapon fighting";
 }
-
+/**
+ * Sets the current level of the fighter.
+ * @param level level
+ */
 public void setLevel(int level) {
   if (level == 1) {
     setLvlOne();
     super.thisCharacter.setProfBonus(2);
   }
 }
-
+/**
+ * Rolls a dice and determines thes attack type and weighs the 
+ */
 public int rollToAttack(Weapon weapon) {
   int attackRoll = weapon.rollToAttack();
   String weaponProperties = weapon.getProperties();
