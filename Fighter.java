@@ -59,17 +59,19 @@ public class Fighter extends CharacterClass{
     String armor = scan.nextLine();
 
     if (armor.equals("a")) {
-      if (!super.thisCharacter.equipt(Armor.CHAINMAIL)) {
+      if (super.thisCharacter.canEquip(Armor.CHAINMAIL)) {
         System.out.println("\tAssigning you Leather Armor");
 
         thisCharacter.equipt(Armor.LEATHER);
         characterEqupiment.add(Armor.LEATHER);
       }
-
     }
     else {
       characterEqupiment.add(Armor.LEATHER);
-    }
+
+        thisCharacter.equipt(Armor.LEATHER);
+      }
+  
 
     System.out.println("Would you like (a) a martial weapon and a shield or (b) two martial weapons?");
     String weapons1 = scan.nextLine();
@@ -123,7 +125,7 @@ public class Fighter extends CharacterClass{
 
       String martialChoice2 = scan.nextLine();
       for (Weapon w: choices) {
-        if (martialChoice.equals(w.toString())) {
+        if (martialChoice2.equals(w.toString())) {
           characterEqupiment.add(w);
           break;
         }
