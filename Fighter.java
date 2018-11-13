@@ -173,7 +173,9 @@ public String getSaveThrows() {
 // }
 
 private void setFightStyle(String fightStyle) {
-  if (fightStyle.equalsIgnoreCase("archery")) this.fightStyle += "archery";
+  if (fightStyle.equalsIgnoreCase("archery")) {
+	  this.fightStyle += "archery";
+  }
   else if (fightStyle.equalsIgnoreCase("defense")) {
 	 System.out.println("AC before defense:" + super.thisCharacter.getAC());
     super.thisCharacter.setAc(super.thisCharacter.getAc() +1);
