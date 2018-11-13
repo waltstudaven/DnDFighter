@@ -100,28 +100,22 @@ public class Character extends Monster {
 
     if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
     else { lowerDex = this.getDexMod(); }
-
-    if (this.getStrScore() < armor.getMinStr()) {
-      System.out.println("You can not equipt this armor. Your strength score is " + this.getStrScore() +
-      " and the required minimum strength to equipt this armor is " + armor.getMinStr());
-    }
-    else {
-      System.out.println("\tBase AC: " + armor.getBaseAc());
-      System.out.println("\tCharacter Ac: " + this.getAc());
       this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
-
-        System.out.println("\tBase AC: " + armor.getBaseAc());
-        System.out.println("\tCharacter Ac: " + this.getAc());
       if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
-    }
   }
 
   public boolean canEquip(Armor armor) {
     if (this.getStrScore() < armor.getMinStr()) {
+      System.out.println("You can not equipt this armor. Your strength score is " + this.getStrScore() +
+      " and the required minimum strength to equipt this armor is " + armor.getMinStr());
       return false;
     }
     else {
       return true;
     }
+  }
+
+  public String getName() {
+    return this.NAME;
   }
 }
