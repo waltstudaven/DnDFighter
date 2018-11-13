@@ -49,65 +49,58 @@ public class Fighter extends CharacterClass{
   * Queries the user for weapons and equipment.
   */
   public void addEquipment() {
-    //create the ArrayList to store all the equipment
-    ArrayList<Equipment> characterEqupiment = super.thisCharacter.getEquipment();
-    //is referenced alot
-    Character mainCharacter = super.thisCharacter;
-    //the main character automatically gets a longbow
-    characterEqupiment.add(Weapon.LONGBOW);
+    ArrayList<Equipment> characterEqupiment = super.thisCharacter.getEquipment();     //create the ArrayList to store all the equipment
+    Character mainCharacter = super.thisCharacter;                                    //is referenced alot
+
+    characterEqupiment.add(Weapon.LONGBOW);                                           //the main character automatically gets a longbow
     Scanner scan = new Scanner(System.in);
-    //choice 1
-    System.out.println("Would you like (a) chainmail or (b) leather armor?");
+
+    System.out.println("Would you like (a) chainmail or (b) leather armor?");         //choice 1
     String armor = scan.nextLine();
-    //makes it easier to say the choice
-    if (armor.equals("a")) {
-      //if the character can equipt chainmail then give it chainmail
-      if (super.thisCharacter.canEquip(Armor.CHAINMAIL)) {
+
+    if (armor.equals("a")){                                                           //makes it easier to say the choice
+      if (super.thisCharacter.canEquip(Armor.CHAINMAIL)) {                            //if the character can equipt chainmail then give it chainmail
         thisCharacter.equipt(Armor.CHAINMAIL);
         characterEqupiment.add(Armor.CHAINMAIL);
       }
-      else {
-        //otherwise it has to take leather armor
+      else {                                                                          //otherwise it has to take leather armor
         System.out.println("Assigning " + mainCharacter.getName() + " Leather Armor");
         characterEqupiment.add(Armor.LEATHER);
         thisCharacter.equipt(Armor.LEATHER);
       }
     }
-    else {
-      //otherwise it chose to take the leather armor
+    else {                                                                            //otherwise it chose to take the leather armor
       System.out.println("Assigning " + mainCharacter.getName() + " Leather Armor");
       characterEqupiment.add(Armor.LEATHER);
       thisCharacter.equipt(Armor.LEATHER);
     }
-    //choice 2
-    System.out.println("Would you like (a) a martial weapon and a shield or (b) two martial weapons?");
+
+    System.out.println("Would you like (a) a martial weapon and a shield " +          //choice 2
+    "or (b) two martial weapons?");
     String weapons1 = scan.nextLine();
-    //create an arraylist that holds all the martial weapons
-    ArrayList<Weapon> choices = new ArrayList<>();
+
+    ArrayList<Weapon> choices = new ArrayList<>();                                    //create an arraylist that holds all the martial weapons
     for (String w: Weapon.allWeapons.keySet()) {
       if (Weapon.allWeapons.get(w).getWeaponType().contains("martial")){
         System.out.println(w);
         choices.add(Weapon.allWeapons.get(w));
       }
     }
-    //if they chose one weapon and one shield
-    if (weapons1.equals("a")) {
+
+    if (weapons1.equals("a")) {                                                       //if they chose one weapon and one shield
       System.out.println("What martial weapon would you like?");
       String martialChoice = scan.nextLine();
-      //if the weapon they chose was in the list then add it to their equipment
-      for (Weapon w: choices) {
+      for (Weapon w: choices) {                                                       //if the weapon they chose was in the list then add it to their equipment
         if (martialChoice.equals(w.toString())) {
           characterEqupiment.add(w);
           break;
         }
       }
-      //shield
-      super.thisCharacter.setAc(super.thisCharacter.getAc() + 2);
+      super.thisCharacter.setAc(super.thisCharacter.getAc() + 2);                     //shield
     }
-    //otherwise they chose two martial weapons
-    else {
-      //first weapon
-      System.out.println("What is the first martial weapon you would like?");
+
+    else {                                                                            //otherwise they chose two martial weapons
+      System.out.println("What is the first martial weapon you would like?");         //first weapon
       String martialChoice = scan.nextLine();
 
       for (Weapon w: choices) {
@@ -116,8 +109,8 @@ public class Fighter extends CharacterClass{
           break;
         }
       }
-      //second weapon
-      System.out.println("What is the second martial weapon you would like?");
+
+      System.out.println("What is the second martial weapon you would like?");        //second weapon
       String martialChoice2 = scan.nextLine();
       for (Weapon w: choices) {
         if (martialChoice2.equals(w.toString())) {
@@ -127,16 +120,11 @@ public class Fighter extends CharacterClass{
       }
     }
 
-    //last choice
-    System.out.println("Would you like (a) a light crossbow or (b) two handaxes?");
+    System.out.println("Would you like (a) a light crossbow or (b) two handaxes?");  //last choice
     String weapons2 = scan.nextLine();
 
-    //they chose a crossbow
-    if (weapons2.equals("a")) {
-      characterEqupiment.add(Weapon.CROSSBOWLIGHT);
-    }
-    //they chose two handaxes
-    else {
+    if (weapons2.equals("a")) {characterEqupiment.add(Weapon.CROSSBOWLIGHT); }      //they chose a crossbow
+    else {                                                                          //they chose two handaxes
       characterEqupiment.add(Weapon.HANDAXE);
       characterEqupiment.add(Weapon.HANDAXE);
     }
