@@ -15,8 +15,6 @@ public class Fighter extends CharacterClass{
 
   /*
   * Constructor for a fighter.
-  * @param level Level of character
-  * @param thisCharacter
   */
   public Fighter() {
     setProfBonusViaLevel(level);
@@ -130,17 +128,19 @@ public class Fighter extends CharacterClass{
     }
   }
 
+  /**
+  * sets the health for a fighter
+  */
   @Override
   public void determineHealth() {
-    //for the first level
-    int health = 10 + super.thisCharacter.getConMod();
-    //for every level after the first
-    for (int i = 2; i <= level; i++) {
-      health += 6 + super.thisCharacter.getConMod();
-    }
+    int health = 10 + super.thisCharacter.getConMod();                                  //for the first level
+    for (int i = 2; i <= level; i++) health += 6 + super.thisCharacter.getConMod();     //for every level after the first
     super.thisCharacter.setMaxHp(health);
   }
 
+  /**
+  * Sets the saving throws of the Fighter. (Str, Dex)
+  */
   @Override
   public void setSaveThrowsProf() {
     super.thisCharacter.setStrSaveProf();
@@ -151,6 +151,7 @@ public class Fighter extends CharacterClass{
   public String getSaveThrows() {
     return "Strength: " + super.thisCharacter.getStrSave() + "\t" + "Constitution: " + super.thisCharacter.getConSave();
   }
+
   /**
   * Sets the skills of the Fighter. A fighter has 2 skills.
   */
@@ -160,6 +161,9 @@ public class Fighter extends CharacterClass{
   // private void setSkills(String skill1, String skill2) {
   // }
 
+  /**
+  * @param fightStyle chosen fighting style of the character
+  */
   private void setFightStyle(String fightStyle) {
     //for later use
     if (fightStyle.equalsIgnoreCase("archery")) this.fightStyle += "archery";
@@ -171,6 +175,7 @@ public class Fighter extends CharacterClass{
     else if (fightStyle.equalsIgnoreCase("dueling")) this.fightStyle += "dueling";
     else if (fightStyle.equalsIgnoreCase("great weapon fighting")) this.fightStyle += "great weapon fighting";
   }
+
   /**
   * Sets the current level of the fighter.
   * @param level level
@@ -181,8 +186,10 @@ public class Fighter extends CharacterClass{
       super.thisCharacter.setProfBonus(2);
     }
   }
+
   /**
-  * Rolls a dice and determines thes attack type and weighs the
+  * Rolls a dice and determines the total of the attack
+  * @param weapon the weapon that is being used to attack with
   */
   public int rollToAttack(Weapon weapon) {
     int attackRoll = weapon.rollToAttack();                                           //base roll
@@ -200,6 +207,10 @@ public class Fighter extends CharacterClass{
     return attackRoll;                                                                    //return the attackrole
   }
 
+  /**
+  * Rolls a dice and determines the total of the attack's damage
+  * @param weapon the weapon that is being used to attack with
+  */
   public int rollDamage(Weapon weapon) {
     int damage = weapon.rollDamage();                                                     //base roll
     String weaponProperties = weapon.getProperties();                                     //holds the weapons properties
