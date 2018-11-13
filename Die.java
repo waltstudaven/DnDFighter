@@ -1,5 +1,5 @@
 /**
- * The Die class is used to roll random values between 1 and 
+ * The Die class is used to roll random values between 1 and
  * however many sides the created Die has.
  */
 class Die {
@@ -12,6 +12,9 @@ class Die {
 	 */
 	public Die(int sides) {
 		this.sides = sides;
+	}
+
+	public Die() {
 	}
 	/**
 	 * Determines a random value between 1 and the number of sides.

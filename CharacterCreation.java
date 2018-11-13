@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.ArrayList;
 public class CharacterCreation {
   private Race characterRace;
   private CharacterClass characterClass;
@@ -43,9 +44,19 @@ public class CharacterCreation {
 
     scan.nextLine();
     System.out.println("What is your character's race?");
+    System.out.print("Options: ");
+    for(String s: allRaces.keySet()){
+      System.out.print(s + ", ");
+    }
+    System.out.println();
     String inputRace = scan.nextLine();
 
     System.out.println("What is your character's class?");
+    System.out.print("Options: ");
+    for(String s: allClasses.keySet()){
+      System.out.print(s + ", ");
+    }
+    System.out.println();
     String inputClass = scan.nextLine();
 
     System.out.println("What is your character's name?");
@@ -58,13 +69,15 @@ public class CharacterCreation {
     newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), inputLvl, inputStrScore, inputDexScore,
     inputConScore, inputIntScore, inputWisScore, inputCharScore);
 
+    newCharacter.getCharacterRace().setCharacter(newCharacter);
+    newCharacter.getCharacterRace().editScores();
+
+
     //System.out.println(inputClass);
-    allClasses.get(inputClass).setCharacter(newCharacter);
+    newCharacter.getCharacterClass().setCharacter(newCharacter);
     newCharacter.getCharacterClass().setLvl(inputLvl);
 
-    allRaces.get(inputRace).setCharacter(newCharacter);
-    newCharacter.getCharacterRace().editScores();
-    System.out.println(newCharacter);
+System.out.println(newCharacter);
   }
 
   public Race getCharacterRace() { return this.characterRace; }

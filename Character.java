@@ -8,6 +8,8 @@ public class Character extends Monster {
   public int i = 0;
   public Weapon weapon;
 
+  public ArrayList<Equipment> allEquipment;
+
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
@@ -19,10 +21,16 @@ public class Character extends Monster {
     this.characterRace = characterRace;
     this.level = level;
     this.profBonus = profBonus;
+
+    allEquipment = new ArrayList<>();
   }
 
   public void addAction(String methodName) {
     allActions.add(methodName);
+  }
+
+  public ArrayList<Equipment> getEquipment() {
+    return allEquipment;
   }
 
   public void displayActions(){
@@ -83,7 +91,25 @@ public class Character extends Monster {
 
     toString += "Race: " + this.getCharacterRace() + " \n";
 
+    toString += "Equipment: " + this.getEquipment();
     return toString;
+  }
 
+  public boolean equipt(Armor armor) {
+    int lowerDex = 0;
+
+    if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+    else { lowerDex = this.getDexMod(); }
+
+    if (this.getStrScore() < armor.getMinStr()) {
+      System.out.println("You can not equipt this armor. Your strength score is " + this.getStrScore() +
+      " and the required minimum strength to equipt this armor is " + armor.getMinStr());
+      return false;
+    }
+    else {
+      this.setAc(armor.getBaseAc() + lowerDex);
+      if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+      return true;
+    }
   }
 }
