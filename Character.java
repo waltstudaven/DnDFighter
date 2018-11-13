@@ -107,7 +107,12 @@ public class Character extends Monster {
       return false;
     }
     else {
-      this.setAc(armor.getBaseAc() + lowerDex);
+      System.out.println("\tBase AC: " + armor.getBaseAc());
+      System.out.println("\tCharacter Ac: " + this.getAc());
+      this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
+
+        System.out.println("\tBase AC: " + armor.getBaseAc());
+        System.out.println("\tCharacter Ac: " + this.getAc());
       if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
       return true;
     }
