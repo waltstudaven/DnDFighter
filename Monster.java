@@ -39,11 +39,15 @@ public abstract class Monster {
 
 	abstract int rollInitiative();
 	abstract void action(Monster enemy);
+	public void turn(Monster enemy) {
+		action(enemy);
+	}
 	public void resetHealth() { this.setCurrentHp(this.getMaxHp()); }
 
 	public void setMaxHp(int hp) { this.maxHp = hp; }
 	public int getMaxHp() { return maxHp; }
 	public void setCurrentHp(int hp) { this.currentHp = hp; }
+	public int getCurrentHp() { return currentHp; }
 
 	public void damageTaken(int damage, DamageType damageType) {
 		if (this.isResistant(damageType)) damage = damage/2;
@@ -51,7 +55,6 @@ public abstract class Monster {
 
 		this.setCurrentHp(this.getCurrentHp() - damage);
 	}
-	public int getCurrentHp() { return currentHp; }
 
 	public void setSize(Sizes size) { this.size = size; }
 	public Sizes getSize() { return size; }
@@ -161,9 +164,14 @@ public abstract class Monster {
 	public int getCharMod() { return charMod; }
 	public int getCharSave() { return charSave; }
 
-	public void setStealthDisAdv(boolean disAdv) { this.stealthDisAdv = disAdv; }
 
-	public void setInsight() { this.insight = insight; }
+	public void setInsight(int insight) { this.insight = insight; }
 	public int getInsight() { return insight; }
 	public int rollInsight() { return d20.roll() + this.getInsight(); }
+
+	public void setStealth(int stealth) { this.stealth = stealth; }
+	public int getStealth() { return stealth; }
+	public int rollStealth() { return d20.roll() + this.getStealth(); }
+
+	public void setStealthDisAdv(boolean disAdv) { this.stealthDisAdv = disAdv; }
 }

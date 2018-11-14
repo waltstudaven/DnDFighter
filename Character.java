@@ -10,12 +10,12 @@ public class Character extends Monster {
   public Weapon offHand;
   public int numHandsAvail;
 
+  public int numFreeActionAvail, numBonusActionAvail, numActionAvail;
+
   public ArrayList<Equipment> allEquipment;
 
 
-  public ArrayList<String> allActions;
-  public ArrayList<String> allBonusActions;
-  public ArrayList<String> allFreeActions;
+  public ArrayList<String> allActions, allBonusActions, allFreeActions;
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
@@ -44,6 +44,9 @@ public class Character extends Monster {
     allActions.add("Skip turn");
 
     numHandsAvail= 2;
+    numFreeActionAvail = 2;
+    numBonusActionAvail = 1;
+    numActionAvail = 1;
   }
 
   public void addAction(String methodName) { allActions.add(methodName); }
@@ -137,10 +140,7 @@ public class Character extends Monster {
     return this.NAME;
   }
 
-  public void turn() {
-    int numFreeActionAvail = 2;
-    int numBonusActionAvail = 1;
-    int numActionAvail = 1;
+  public void turn(Monster enemy) {
 
     Scanner scan = new Scanner(System.in);
 
@@ -157,30 +157,13 @@ public class Character extends Monster {
       String inputAction = scan.nextLine();
 
       if (inputAction.equalsIgnoreCase("Free Action") && numFreeActionAvail > 0) {
-        System.out.println(allFreeActions);
-        System.out.println("Which free action would you like to take");
-        inputAction = scan.nextLine();
-        switch (inputAction){
-          case "inspect enemy health": this.rollInsight(); numFreeActionAvail--;
-          case "sheath weapon": this.unequip(mainHand); numFreeActionAvail--;
-          case "equip":
-          if (numHandsAvail > 0) {
-            System.out.println("chose a weapon");
-            ArrayList<Weapon> choices = new ArrayList<>();
-            for (Equipment e: allEquipment) {
-              if (e.isWeapon() && this.mainHand.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
-                choices.add(this.mainHand.getAllWeapons().get(e.getName()));
-              }
-            }
-            inputAction = scan.nextLine();
-            for (Weapon w: choices) {
-              if (w.getName().equalsIgnoreCase(inputAction)) this.equip(w);
-            }
-            numFreeActionAvail--;
-            break;
-          }
-
-        }
+        this.numFreeActionAvail = freeAction(inputAction, this.numFreeActionAvail, enemy);
+      }
+      else if (inputAction.equalsIgnoreCase("Bonus Action") && numBonusActionAvail > 0) {
+        this.numBonusActionAvail = bonusAction(inputAction, this.numBonusActionAvail, enemy);
+      }
+      else if (inputAction.equalsIgnoreCase("Action") && numActionAvail > 0) {
+        this.numActionAvail = action(inputAction, this.numActionAvail, enemy);
       }
     }
   }
@@ -189,11 +172,11 @@ public class Character extends Monster {
   public void equip(Weapon weapon) {
     if (weapon.numHands() == 1 && this.numHandsAvail >= weapon.numHands()) {
       if (this.mainHand.equals(null)) {
-        numHandsAvail--;
+        this.numHandsAvail--;
         this.mainHand = weapon;
       }
       else if (this.offHand.equals(null)) {
-        numHandsAvail--;
+        this.numHandsAvail--;
         this.offHand = weapon;
       }
       else System.out.println("for some reason you could not equip this weapon");
@@ -210,5 +193,62 @@ public class Character extends Monster {
     // else { lowerDex = this.getDexMod(); }
     // this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
     // if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+  }
+
+  public int freeAction(String inputAction, int numFreeActionAvail, Monster enemy) {
+    if (numFreeActionAvail > 0) {
+      switch (inputAction){
+        case "inspect enemy health": this.rollInsight(); numFreeActionAvail--;
+        case "sheath weapon": this.unequip(mainHand); numFreeActionAvail--;
+        case "equip":
+        if (numHandsAvail > 0) {
+          ArrayList<Weapon> choices = new ArrayList<>();
+          for (Equipment e: allEquipment) {
+            if (e.isWeapon() && this.mainHand.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
+              choices.add(this.mainHand.getAllWeapons().get(e.getName()));
+            }
+          }
+          System.out.println("chose a weapon");
+          Scanner scan = new Scanner(System.in);
+          inputAction = scan.nextLine();
+          for (Weapon w: choices) {
+            if (w.getName().equalsIgnoreCase(inputAction)) this.equip(w);
+          }
+          numFreeActionAvail--;
+          break;
+        }
+      }
+    }
+    return numFreeActionAvail;
+  }
+  public int bonusAction(String inputAction, int numBonusActionAvail, Monster enemy) {
+    if (numBonusActionAvail > 0) {
+      freeAction(inputAction, numBonusActionAvail, enemy);
+      switch (inputAction) {
+        case "attack": if (this.offHand.numHands() < 2) this.characterClass.attack(offHand, enemy);
+        if (offHand.isRanged() || offHand.getProperties().contains("finesse")) {
+          enemy.setCurrentHp(enemy.getCurrentHp() + this.getDexMod());
+        }
+        enemy.setCurrentHp(enemy.getCurrentHp() + this.getStrMod());
+      }
+    }
+
+    return numBonusActionAvail;
+  }
+
+  public int action(String inputAction, int numActionAvail, Monster enemy) {
+    if (numActionAvail > 0) {
+      switch (inputAction) {
+        case "attack": this.characterClass.attack(mainHand, enemy);
+        numActionAvail--;
+        case "dodge": enemy.attackDisAdv = true;
+        numActionAvail--;
+        case "hide": this.rollStealth();
+        numActionAvail--;
+        break;
+      }
+    }
+
+    return numActionAvail--;
   }
 }

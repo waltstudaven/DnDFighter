@@ -237,6 +237,11 @@ public class Fighter extends CharacterClass{
     return damage;
   }
 
+  public void attack(Weapon weapon, Monster enemy) {
+    if (this.rollToAttack(weapon) >= enemy.getAc())
+    enemy.setCurrentHp(enemy.getCurrentHp() - this.rollDamage(weapon));
+  }
+
 
   @Override
   public String toString() { return "Fighter \t Fighting Style: " + fightStyle; }

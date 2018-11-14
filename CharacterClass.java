@@ -42,6 +42,8 @@ public abstract class CharacterClass {
 
   public abstract void setLvlOne();
 
+    public abstract void attack(Weapon weapon, Monster enemy);
+
   public abstract String getSaveThrows();
 
 }
