@@ -62,8 +62,6 @@ public enum Armor implements Equipment{
 
 
   @Override
-    public boolean isWeapon() {
-      return false;
-    }
+    public boolean isWeapon() { return false; }
 
 }

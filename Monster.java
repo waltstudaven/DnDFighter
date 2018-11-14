@@ -39,18 +39,11 @@ public abstract class Monster {
 
 	abstract int rollInitiative();
 	abstract void action(Monster enemy);
-  public void resetHealth() { this.setCurrentHp(this.getMaxHp()); }
+	public void resetHealth() { this.setCurrentHp(this.getMaxHp()); }
 
-	public void setMaxHp(int hp) {
-		this.maxHp = hp;
-	}
-	public int getMaxHp() {
-		return maxHp;
-	}
-
-	public void setCurrentHp(int hp) {
-		this.currentHp = hp;
-	}
+	public void setMaxHp(int hp) { this.maxHp = hp; }
+	public int getMaxHp() { return maxHp; }
+	public void setCurrentHp(int hp) { this.currentHp = hp; }
 
 	public void damageTaken(int damage, DamageType damageType) {
 		if (this.isResistant(damageType)) damage = damage/2;
@@ -58,48 +51,25 @@ public abstract class Monster {
 
 		this.setCurrentHp(this.getCurrentHp() - damage);
 	}
-	public int getCurrentHp() {
-		return currentHp;
-	}
+	public int getCurrentHp() { return currentHp; }
 
-	public void setSize(Sizes size) {
-		this.size = size;
-	}
-	public Sizes getSize() {
-		return size;
-	}
+	public void setSize(Sizes size) { this.size = size; }
+	public Sizes getSize() { return size; }
 
 	public void setSpeed(int speed) {
-		if (speed < 0) {
-			System.out.println("Not a valid speed");
-			return;
-		}
-		this.speed = speed;
+		if (speed < 0) System.out.println("Not a valid speed");
+		else this.speed = speed;
 	}
-	public int getSpeed() {
-		return speed;
-	}
+	public int getSpeed() { return speed;}
 
-	public void setAc(int ac) {
-		this.ac = ac;
-	}
-	public int getAc() {
-		return ac;
-	}
+	public void setAc(int ac) { this.ac = ac; }
+	public int getAc() { return ac; }
 
-	public void setProfBonus(int profBonus) {
-		this.profBonus = profBonus;
-	}
-	public int getProfBonus() {
-		return profBonus;
-	}
+	public void setProfBonus(int profBonus) { this.profBonus = profBonus; }
+	public int getProfBonus() { return profBonus; }
 
-	public void setDamageDie(Die damageDie) {
-		this.damageDie = damageDie;
-	}
-	public Die getDamageDie() {
-		return damageDie;
-	}
+	public void setDamageDie(Die damageDie) { this.damageDie = damageDie; }
+	public Die getDamageDie() { return damageDie; }
 
 	public abstract boolean isResistant(DamageType damage);
 	public abstract boolean isImmune(DamageType damage);
@@ -108,191 +78,92 @@ public abstract class Monster {
 	all getters and setters
 	*/
 	public void setStrScore(int strScore) {
-		if (strScore < 0) {
-			System.out.println("Not a valid strength score");
-			return;
+		if (strScore < 0) { System.out.println("Not a valid strength score"); }
+		else { this.strScore = strScore;
+			strMod = (strScore - 10) / 2;
+			strSave = strMod;
 		}
-		this.strScore = strScore;
-		strMod = (strScore - 10) / 2;
-		strSave = strMod;
 	}
-	public void setStrMod(int strMod) {
-		this.strMod = strMod;
-	}
-	public void setStrSave(int strSave) {
-		this.strSave = strSave;
-	}
-	public void setStrSaveProf() {
-		//System.out.println("got here" + this.profBonus + " " + this.strMod);
-		setStrSave(strMod+profBonus);
-	}
-	public int getStrScore() {
-		return strScore;
-	}
-	public int getStrMod() {
-		return strMod;
-	}
-	public int getStrSave() {
-		return strSave;
-	}
+	public void setStrMod(int strMod) { this.strMod = strMod; }
+	public void setStrSave(int strSave) { this.strSave = strSave; }
+	public void setStrSaveProf() { setStrSave(strMod+profBonus); }
+	public int getStrScore() { return strScore; }
+	public int getStrMod() { return strMod; }
+	public int getStrSave() { return strSave; }
 
 	public void setDexScore(int dexScore) {
-		if (dexScore < 0) {
-			System.out.println("Not a valid dextarity score");
-			return;
+		if (dexScore < 0) { System.out.println("Not a valid dextarity score"); }
+		else { this.dexScore = dexScore;
+			dexMod = (dexScore - 10) / 2;
+			dexSave = dexMod;
 		}
-		this.dexScore = dexScore;
-		dexMod = (dexScore - 10) / 2;
-		dexSave = dexMod;
 	}
-	public void setDexMod(int dexMod) {
-		this.dexMod = dexMod;
-	}
-	public void setDexSave(int dexSave) {
-		this.dexSave = dexSave;
-	}
-	public void setDexSaveProf() {
-		dexSave = dexMod + profBonus;
-	}
-	public int getDexScore() {
-		return dexScore;
-	}
-	public int getDexMod() {
-		return dexMod;
-	}
-	public int getDexSave() {
-		return dexSave;
-	}
+	public void setDexMod(int dexMod) { this.dexMod = dexMod; }
+	public void setDexSave(int dexSave) { this.dexSave = dexSave; }
+	public void setDexSaveProf() { dexSave = dexMod + profBonus; }
+	public int getDexScore() { return dexScore; }
+	public int getDexMod() { return dexMod; }
+	public int getDexSave() { return dexSave; }
 
 	public void setConScore(int conScore) {
-		if (conScore < 0) {
-			System.out.println("Not a valid constitution score");
-			return;
+		if (conScore < 0) { System.out.println("Not a valid constitution score"); }
+		else { this.conScore = conScore;
+			conMod = (conScore - 10) / 2;
+			conSave = conMod;
 		}
-		this.conScore = conScore;
-		conMod = (conScore - 10) / 2;
-		conSave = conMod;
 	}
-	public void setConMod(int conMod) {
-		this.conMod = conMod;
-	}
-	public void setConSave(int conSave) {
-		this.conSave = conSave;
-	}
-	public void setConSaveProf() {
-		conSave = conMod + profBonus;
-	}
-	public int getConScore() {
-		return conScore;
-	}
-	public int getConMod() {
-		return conMod;
-	}
-	public int getConSave() {
-		return conSave;
-	}
+	public void setConMod(int conMod) { this.conMod = conMod; }
+	public void setConSave(int conSave) { this.conSave = conSave; }
+	public void setConSaveProf() { conSave = conMod + profBonus; }
+	public int getConScore() { return conScore; }
+	public int getConMod() { return conMod; }
+	public int getConSave() { return conSave; }
 
 	public void setIntScore(int intScore) {
-		if (intScore < 0) {
-			System.out.println("Not a valid intelligence score");
-			return;
+		if (intScore < 0) { System.out.println("Not a valid intelligence score"); }
+		else { this.intScore = intScore;
+			intMod = (intScore - 10) / 2;
+			intSave = intMod;
 		}
-		this.intScore = intScore;
-		intMod = (intScore - 10) / 2;
-		intSave = intMod;
 	}
-	public void setIntMod(int intMod) {
-		this.intMod = intMod;
-	}
-	public void setIntSave(int intSave) {
-		this.intSave = intSave;
-	}
-	public void setIntSave(boolean hasProf) {
-		if (hasProf)
-		intSave = intMod + profBonus;
-	}
-	public int getIntScore() {
-		return intScore;
-	}
-	public int getIntMod() {
-		return intMod;
-	}
-	public int getIntSave() {
-		return intSave;
-	}
+	public void setIntMod(int intMod) { this.intMod = intMod; }
+	public void setIntSave(int intSave) { this.intSave = intSave; }
+	public void setIntSaveProf() { intSave = intMod + profBonus; }
+	public int getIntScore() { return intScore; }
+	public int getIntMod() { return intMod; }
+	public int getIntSave() { return intSave; }
 
 	public void setWisScore(int wisScore) {
-		if (wisScore < 0) {
-			System.out.println("Not a valid wisdom score");
-			return;
+		if (wisScore < 0) { System.out.println("Not a valid wisdom score"); }
+		else { this.wisScore = wisScore;
+			wisMod = (wisScore - 10) / 2;
+			wisSave = wisMod;
 		}
-		this.wisScore = wisScore;
-		wisMod = (wisScore - 10) / 2;
-		wisSave = wisMod;
 	}
-	public void setWisMod(int wisMod) {
-		this.wisMod = wisMod;
-	}
-	public void setWisSave(int wisSave) {
-		this.wisSave = wisSave;
-	}
-	public void setWisSave(boolean hasProf) {
-		if (hasProf)
-		wisSave = wisMod + profBonus;
-	}
-	public int getWisScore() {
-		return wisScore;
-	}
-	public int getWisMod() {
-		return wisMod;
-	}
-	public int getWisSave() {
-		return wisSave;
-	}
+	public void setWisMod(int wisMod) { this.wisMod = wisMod; }
+	public void setWisSave(int wisSave) { this.wisSave = wisSave; }
+	public void setWisSaveProf() { wisSave = wisMod + profBonus; }
+	public int getWisScore() { return wisScore; }
+	public int getWisMod() { return wisMod; }
+	public int getWisSave() { return wisSave; }
 
 	public void setCharScore(int charScore) {
-		if (charScore < 0) {
-			System.out.println("Not a valid charisma score");
-			return;
+		if (charScore < 0) { System.out.println("Not a valid charisma score"); }
+		else { this.charScore = charScore;
+			charMod = (charScore - 10) / 2;
+			charSave = charMod;
 		}
-		this.charScore = charScore;
-		charMod = (charScore - 10) / 2;
-		charSave = charMod;
 	}
-	public void setCharMod(int charMod) {
-		this.charMod = charMod;
-	}
-	public void setCharSave(int charSave) {
-		this.charSave = charSave;
-	}
-	public void setCharSave(boolean hasProf) {
-		if (hasProf)
-		charSave = charMod + profBonus;
-	}
-	public int getCharScore() {
-		return charScore;
-	}
-	public int getCharMod() {
-		return charMod;
-	}
-	public int getCharSave() {
-		return charSave;
-	}
+	public void setCharMod(int charMod) { this.charMod = charMod; }
+	public void setCharSave(int charSave) { this.charSave = charSave; }
+	public void setCharSaveProf() { charSave = charMod + profBonus; }
+	public int getCharScore() { return charScore; }
+	public int getCharMod() { return charMod; }
+	public int getCharSave() { return charSave; }
 
+	public void setStealthDisAdv(boolean disAdv) { this.stealthDisAdv = disAdv; }
 
-	public void setStealthDisAdv(boolean disAdv) {
-		this.stealthDisAdv = disAdv;
-	}
-
-	public int getInsight() {
-		return insight;
-	}
-
-	public void setInsight() {
-		this.insight = insight;
-	}
-
-	public int rollInsight() {
-		return d20.roll() + this.getInsight();
-	}
+	public void setInsight() { this.insight = insight; }
+	public int getInsight() { return insight; }
+	public int rollInsight() { return d20.roll() + this.getInsight(); }
 }

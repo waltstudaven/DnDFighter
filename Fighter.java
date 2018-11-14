@@ -149,7 +149,8 @@ public class Fighter extends CharacterClass{
 
   @Override
   public String getSaveThrows() {
-    return "Strength: " + super.thisCharacter.getStrSave() + "\t" + "Constitution: " + super.thisCharacter.getConSave();
+    return "Strength: " + super.thisCharacter.getStrSave() + "\t" +
+    "Constitution: " + super.thisCharacter.getConSave();
   }
 
   /**
@@ -238,9 +239,7 @@ public class Fighter extends CharacterClass{
 
 
   @Override
-  public String toString() {
-    return "Fighter \t Fighting Style: " + fightStyle;
-  }
+  public String toString() { return "Fighter \t Fighting Style: " + fightStyle; }
 
 
 }

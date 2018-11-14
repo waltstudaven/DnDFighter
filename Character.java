@@ -45,57 +45,37 @@ public class Character extends Monster {
     numHandsAvail= 2;
   }
 
-  public void addAction(String methodName) {
-    allActions.add(methodName);
-  }
+  public void addAction(String methodName) { allActions.add(methodName); }
 
-  public ArrayList getActions() {
-    return allActions;
-  }
+  public ArrayList getActions() { return allActions; }
 
-  public ArrayList<Equipment> getEquipment() {
-    return allEquipment;
-  }
+  public ArrayList<Equipment> getEquipment() { return allEquipment; }
 
   public void displayActions(){
-    for(String action: allActions){
-      System.out.println(action);
-    }
+    for(String action: allActions) System.out.println(action);
   }
 
   /**
   * Equip a weapon in either one or two hands
   * @param weapon
   */
-  public void equipWeapon(Weapon weapon) {
-    this.weapon = weapon;
+  public void equipWeapon(Weapon weapon) { this.weapon = weapon; }
 
-  }
-  public void unequipWeapon() {
-    this.weapon = null;
+  public void unequipWeapon() { this.weapon = null; }
 
-  }
+  public CharacterClass getCharacterClass() { return this.characterClass; }
 
-  public CharacterClass getCharacterClass() {
-    return this.characterClass;
-  }
-
-  public Race getCharacterRace() {
-    return this.characterRace;
-  }
+  public Race getCharacterRace() { return this.characterRace; }
 
   @Override
-  public void action(Monster enemy) {
-    System.out.println(characterClass);
-  }
+  public void action(Monster enemy) { System.out.println(characterClass); }
 
   @Override
-  public int rollInitiative() {
-    return d20.roll() + this.getDexMod();
-  }
+  public int rollInitiative() { return d20.roll() + this.getDexMod(); }
 
   @Override
   public boolean isImmune(DamageType damage) {return false;}
+
   @Override
   public boolean isResistant(DamageType damage) {return false;}
 
@@ -194,7 +174,5 @@ public class Character extends Monster {
     }
   }
 
-  public Weapon currentWeapon() {
-    return this.weapon;
-  }
+  public Weapon currentWeapon() { return this.weapon; }
 }

@@ -99,7 +99,7 @@ public enum Weapon implements Equipment{
   }
 
   //constructs the weapons stuff
-  private Weapon(String die, DamageType type, String properties, String weaponType, String name){
+  private Weapon(String die, DamageType type, String properties, String weaponType, String name) {
     this.die = die;
     this.type = type;
     this.properties = properties;
@@ -112,35 +112,23 @@ public enum Weapon implements Equipment{
   /**
   * Returns the Die of the Weapon
   */
-  public String getDie(){
-    return die;
-  }
+  public String getDie() { return die; }
 
   /**
   * Returns the Die of the Weapon
   */
-  public DamageType getType(){
-    return type;
-  }
+  public DamageType getType() { return type; }
 
   /**
   * Returns the Die of the Weapon
   */
-  public String getProperties(){
-    return properties;
-  }
+  public String getProperties() { return properties; }
 
-  public String getWeaponType(){
-    return weaponType;
-  }
+  public String getWeaponType() { return weaponType; }
 
-  public String getName(){
-    return name;
-  }
+  public String getName() { return name; }
 
-  public HashMap<String, Weapon> getAllWeapons(){
-    return allWeapons;
-  }
+  public HashMap<String, Weapon> getAllWeapons() { return allWeapons; }
 
 
 
@@ -150,9 +138,7 @@ public enum Weapon implements Equipment{
   /**
   * Rolls a d20 and returns what it rolled
   */
-  public int rollToAttack(){
-    return d.roll(20);
-  }
+  public int rollToAttack() { return d.roll(20); }
 
 
 
@@ -163,22 +149,16 @@ public enum Weapon implements Equipment{
     String s[] = die.split("d");
     int rollDamage = 0;
 
-    for(int i = 0; i < Integer.parseInt(s[0]); i++){
-      rollDamage += d.roll(Integer.parseInt(s[1]));
-    }
+    for(int i = 0; i < Integer.parseInt(s[0]); i++) rollDamage += d.roll(Integer.parseInt(s[1]));
 
     return rollDamage;
   }
-
-
 
   /**
   * Returns true if the dagger is ranged
   */
   public boolean isRanged(){
-    if(properties.contains("range")){
-      return true;
-    }
+    if(properties.contains("range")) return true;
     return false;
   }
 
@@ -186,9 +166,7 @@ public enum Weapon implements Equipment{
   * Returns true if the dagger is melee
   */
   public boolean isMelee(){
-    if(isRanged() == false){
-      return true;
-    }
+    if(isRanged() == false) return true;
     return false;
   }
 
@@ -196,32 +174,23 @@ public enum Weapon implements Equipment{
   * Returns true if the dagger is two-handed
   */
   public boolean isTwoHanded(){
-    if(properties.contains("two-handed")){
-      return true;
-    }
+    if(properties.contains("two-handed")) return true;
     return false;
   }
-
 
   /**
   * Returns true if the dagger is versatile
   */
   public boolean isVersatile(){
-    if(properties.contains("versatile")){
-      return true;
-    }
+    if(properties.contains("versatile")) return true;
     return false;
   }
 
 
-  public String toString() {
-    return this.name;
-  }
+  public String toString() { return this.name; }
 
   @Override
-  public boolean isWeapon() {
-    return true;
-  }
+  public boolean isWeapon() { return true; }
 
   public int numHands() {
     if (this.getProperties().contains("two-handed")) return 2;

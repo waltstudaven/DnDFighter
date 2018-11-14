@@ -9,12 +9,9 @@ public enum DamageType {
 
 	private String damageType;
 
-	DamageType(String damageType) {
-		this.damageType = damageType;
+	DamageType(String damageType) { this.damageType = damageType;
 	}
 
-	public String getDamageType() {
-		return damageType;
-	}
+	public String getDamageType() { return damageType; }
 
 }

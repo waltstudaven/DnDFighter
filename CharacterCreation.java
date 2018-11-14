@@ -77,7 +77,7 @@ public class CharacterCreation {
     newCharacter.getCharacterClass().setCharacter(newCharacter);
     newCharacter.getCharacterClass().setLvl(inputLvl);
 
-System.out.println(newCharacter);
+    System.out.println(newCharacter);
   }
 
   public Race getCharacterRace() { return this.characterRace; }
