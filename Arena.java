@@ -1,10 +1,16 @@
 public class Arena {
   public static void main(String[] args) {
+    Monster thug = new Thug();
+    CharacterCreation creatingCharacter = new CharacterCreation();
+    Character mainCharacter = creatingCharacter.characterCreator();
 
+    Arena arena = new Arena();
   }
 
   public Arena(Monster m1, Character m2) {
-    rollInitiative(m1, m2);
+    if (rollInitiative(m1, m2) == m1) System.out.println("\t" + fight(m1, m2));
+    else System.out.println("\t" +fight (m2, m1));
+
   }
 
   public Monster fight(Monster first, Monster second) {
