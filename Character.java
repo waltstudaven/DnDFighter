@@ -1,15 +1,20 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 public class Character extends Monster {
   private final String NAME;
   public CharacterClass characterClass;
   public Race characterRace;
   public int level, profBonus;
-  public ArrayList<String> allActions;
   public int i = 0;
   public Weapon weapon;
+  public int numHandsAvail;
 
   public ArrayList<Equipment> allEquipment;
 
+
+  public ArrayList<String> allActions;
+  public ArrayList<String> allBonusActions;
+  public ArrayList<String> allFreeActions;
 
   public Character (String NAME, CharacterClass characterClass, Race characterRace, int level,
   int strScore, int dexScore, int conScore, int intScore, int wisScore, int charScore) {
@@ -23,10 +28,29 @@ public class Character extends Monster {
     this.profBonus = profBonus;
 
     allEquipment = new ArrayList<>();
+
+    allActions = new ArrayList<>();
+    allBonusActions = new ArrayList<>();
+    allFreeActions = new ArrayList<>();
+
+    allActions.add("Attack");
+    allActions.add("Cast a Spell");
+    allActions.add("Dash");
+    allActions.add("Disengage");
+    allActions.add("Dodge");
+    allActions.add("Hide");
+    allActions.add("Use an Item");
+    allActions.add("Skip turn");
+
+    numHandsAvail= 2;
   }
 
   public void addAction(String methodName) {
     allActions.add(methodName);
+  }
+
+  public ArrayList getActions() {
+    return allActions;
   }
 
   public ArrayList<Equipment> getEquipment() {
@@ -45,6 +69,10 @@ public class Character extends Monster {
   */
   public void equipWeapon(Weapon weapon) {
     this.weapon = weapon;
+
+  }
+  public void unequipWeapon() {
+    this.weapon = null;
 
   }
 
@@ -100,8 +128,8 @@ public class Character extends Monster {
 
     if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
     else { lowerDex = this.getDexMod(); }
-      this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
-      if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+    this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
+    if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
   }
 
   public boolean canEquip(Armor armor) {
@@ -117,5 +145,56 @@ public class Character extends Monster {
 
   public String getName() {
     return this.NAME;
+  }
+
+  public void turn() {
+    int numFreeActionAvail = 2;
+    int numBonusActionAvail = 1;
+    int numActionAvail = 1;
+
+    Scanner scan = new Scanner(System.in);
+
+    while (numActionAvail > 0) {
+      System.out.println("Options: \t-> Action");
+      if (numFreeActionAvail > 0 || numBonusActionAvail>0){
+        if(numFreeActionAvail>0){
+          System.out.println("\t-> Free Action");
+        }
+        if(numBonusActionAvail >0){
+          System.out.println("\t-> Bonus Action");
+        }
+      }
+      String inputAction = scan.nextLine();
+
+      if (inputAction.equalsIgnoreCase("Free Action") && numFreeActionAvail > 0) {
+        System.out.println(allFreeActions);
+        System.out.println("Which free action would you like to take");
+        inputAction = scan.nextLine();
+        switch (inputAction){
+          case "inspect enemy health": this.rollInsight(); numFreeActionAvail--;
+          case "sheath weapon": this.unequipWeapon(); numFreeActionAvail--;
+          case "equip":
+          if (numHandsAvail > 0) {
+            System.out.println("chose a weapon");
+            ArrayList<Weapon> choices = new ArrayList<>();
+            for (Equipment e: allEquipment) {
+              if (e.isWeapon()) {
+                if (numHandsAvail >= (Weapon) e.numHands()){
+                  choices.add(e);
+                  System.out.println(e + "\n");
+                }
+              }
+            }
+            inputAction = scan.nextLine();
+            this.equipWeapon(inputAction);
+            numFreeActionAvail--;
+          }
+        }
+      }
+    }
+  }
+
+  public Weapon currentWeapon() {
+    return this.weapon;
   }
 }

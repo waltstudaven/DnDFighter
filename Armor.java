@@ -61,6 +61,9 @@ public enum Armor implements Equipment{
   public String armorSize(){ return this.armorSize; }
 
 
-
+  @Override
+    public boolean isWeapon() {
+      return false;
+    }
 
 }

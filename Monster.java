@@ -283,4 +283,16 @@ public abstract class Monster {
 	public void setStealthDisAdv(boolean disAdv) {
 		this.stealthDisAdv = disAdv;
 	}
+
+	public int getInsight() {
+		return insight;
+	}
+
+	public void setInsight() {
+		this.insight = insight;
+	}
+
+	public int rollInsight() {
+		return d20.roll() + this.getInsight();
+	}
 }

@@ -60,7 +60,7 @@ public enum Weapon implements Equipment{
 
 
   static{
-allWeapons = new HashMap<>();
+    allWeapons = new HashMap<>();
 
     allWeapons.put(Weapon.CLUB.getName(), Weapon.CLUB);
     allWeapons.put(Weapon.DAGGER.getName(), Weapon.DAGGER);
@@ -218,4 +218,13 @@ allWeapons = new HashMap<>();
     return this.name;
   }
 
+  @Override
+  public boolean isWeapon() {
+    return true;
+  }
+
+  public int numHands() {
+    if (this.getProperties().contains("two-handed")) return 2;
+    return 1;
+  }
 }

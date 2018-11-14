@@ -241,4 +241,6 @@ public class Fighter extends CharacterClass{
   public String toString() {
     return "Fighter \t Fighting Style: " + fightStyle;
   }
+
+
 }
