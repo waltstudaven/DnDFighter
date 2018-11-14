@@ -57,20 +57,20 @@ public class Fighter extends CharacterClass{
     String armor = scan.nextLine();
 
     if (armor.equals("a")){                                                           //makes it easier to say the choice
-      if (super.thisCharacter.canEquip(Armor.CHAINMAIL)) {                            //if the character can equipt chainmail then give it chainmail
-        thisCharacter.equipt(Armor.CHAINMAIL);
+      if (super.thisCharacter.canEquip(Armor.CHAINMAIL)) {                            //if the character can equip chainmail then give it chainmail
+        thisCharacter.equip(Armor.CHAINMAIL);
         characterEqupiment.add(Armor.CHAINMAIL);
       }
       else {                                                                          //otherwise it has to take leather armor
         System.out.println("Assigning " + mainCharacter.getName() + " Leather Armor");
         characterEqupiment.add(Armor.LEATHER);
-        thisCharacter.equipt(Armor.LEATHER);
+        thisCharacter.equip(Armor.LEATHER);
       }
     }
     else {                                                                            //otherwise it chose to take the leather armor
       System.out.println("Assigning " + mainCharacter.getName() + " Leather Armor");
       characterEqupiment.add(Armor.LEATHER);
-      thisCharacter.equipt(Armor.LEATHER);
+      thisCharacter.equip(Armor.LEATHER);
     }
 
     System.out.println("Would you like (a) a martial weapon and a shield " +          //choice 2
@@ -225,7 +225,7 @@ public class Fighter extends CharacterClass{
       if (weaponProperties.contains("twoHanded")) {                                       //if the weapon is two handed
         if (fightStyle.contains("great weapon fighting")) {                               //if the fighting style is GWF
           if (damage == 1 || damage == 2) {                                               //if the base rolll was a 1 or 2
-            damage = super.thisCharacter.weapon.rollDamage() + super.thisCharacter.getStrMod(); //they get to reroll the base
+            damage = weapon.rollDamage() + super.thisCharacter.getStrMod();               //they get to reroll the base
           }
         }
         damage += super.thisCharacter.getStrMod();                                        //add in the strMod

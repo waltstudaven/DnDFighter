@@ -6,7 +6,8 @@ public class Character extends Monster {
   public Race characterRace;
   public int level, profBonus;
   public int i = 0;
-  public Weapon weapon;
+  public Weapon mainHand;
+  public Weapon offHand;
   public int numHandsAvail;
 
   public ArrayList<Equipment> allEquipment;
@@ -59,9 +60,18 @@ public class Character extends Monster {
   * Equip a weapon in either one or two hands
   * @param weapon
   */
-  public void equipWeapon(Weapon weapon) { this.weapon = weapon; }
+  //public void equipWeapon(Weapon weapon) { this.weapon = weapon; }
 
-  public void unequipWeapon() { this.weapon = null; }
+  public void unequip(Weapon weapon) {
+    if (mainHand.equals(weapon)) {
+      numHandsAvail++;
+      mainHand = null;
+    }
+    if (offHand.equals(weapon)) {
+      numHandsAvail++;
+      offHand = null;
+    }
+  }
 
   public CharacterClass getCharacterClass() { return this.characterClass; }
 
@@ -103,7 +113,7 @@ public class Character extends Monster {
     return toString;
   }
 
-  public void equipt(Armor armor) {
+  public void equip(Armor armor) {
     int lowerDex = 0;
 
     if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
@@ -152,27 +162,53 @@ public class Character extends Monster {
         inputAction = scan.nextLine();
         switch (inputAction){
           case "inspect enemy health": this.rollInsight(); numFreeActionAvail--;
-          case "sheath weapon": this.unequipWeapon(); numFreeActionAvail--;
+          case "sheath weapon": this.unequip(mainHand); numFreeActionAvail--;
           case "equip":
           if (numHandsAvail > 0) {
             System.out.println("chose a weapon");
             ArrayList<Weapon> choices = new ArrayList<>();
             for (Equipment e: allEquipment) {
-              if (e.isWeapon()) {
-                if (numHandsAvail >= (Weapon) e.numHands()){
-                  choices.add(e);
-                  System.out.println(e + "\n");
-                }
+              if (e.isWeapon() && this.mainHand.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
+                choices.add(this.mainHand.getAllWeapons().get(e.getName()));
               }
             }
             inputAction = scan.nextLine();
-            this.equipWeapon(inputAction);
+            for (Weapon w: choices) {
+              if (w.getName().equalsIgnoreCase(inputAction)) this.equip(w);
+            }
             numFreeActionAvail--;
+            break;
           }
+
         }
       }
     }
   }
 
-  public Weapon currentWeapon() { return this.weapon; }
+
+  public void equip(Weapon weapon) {
+    if (weapon.numHands() == 1 && this.numHandsAvail >= weapon.numHands()) {
+      if (this.mainHand.equals(null)) {
+        numHandsAvail--;
+        this.mainHand = weapon;
+      }
+      else if (this.offHand.equals(null)) {
+        numHandsAvail--;
+        this.offHand = weapon;
+      }
+      else System.out.println("for some reason you could not equip this weapon");
+    }
+
+    else if (weapon.numHands() == 2 && this.numHandsAvail >= weapon.numHands()) {
+      this.mainHand = weapon;
+      this.offHand = weapon;
+      numHandsAvail -= 2;
+    }
+
+    else System.out.println("could not equip this weapon");
+    // if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+    // else { lowerDex = this.getDexMod(); }
+    // this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
+    // if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+  }
 }

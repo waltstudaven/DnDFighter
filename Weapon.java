@@ -126,6 +126,7 @@ public enum Weapon implements Equipment{
 
   public String getWeaponType() { return weaponType; }
 
+  @Override
   public String getName() { return name; }
 
   public HashMap<String, Weapon> getAllWeapons() { return allWeapons; }
