@@ -4,7 +4,7 @@ public class Arena {
     CharacterCreation creatingCharacter = new CharacterCreation();
     Character mainCharacter = creatingCharacter.characterCreator();
 
-    Arena arena = new Arena();
+    Arena arena = new Arena(thug, mainCharacter);
   }
 
   public Arena(Monster m1, Character m2) {
