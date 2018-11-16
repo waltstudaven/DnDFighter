@@ -206,7 +206,7 @@ public class Character extends Monster {
         if (numHandsAvail > 0) {
           ArrayList<Weapon> choices = new ArrayList<>();
           for (Equipment e: allEquipment) {
-            if (e.isWeapon() && this.mainHand.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
+            if (e.isWeapon() && Weapon.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
               choices.add(this.mainHand.getAllWeapons().get(e.getName()));
             }
           }
