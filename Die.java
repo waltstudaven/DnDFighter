@@ -28,4 +28,10 @@ class Die {
 		* @param	theSides	New amount of sides.
 		*/
 		public void setSides(int theSides){ this.sides = theSides; }
+
+		/**
+		* Sets the Die to desired amount of sides
+		* @return the number of sided
+		*/
+		public int getSides() { return sides; }
 	}

@@ -115,9 +115,17 @@ public class Tester2{
 
 
 
-    
+    Die randomDie = new Die();
+    System.out.println("Roll a die with 20 sides: " + randomDie.roll(20));
+    System.out.println("Setting my die to have 5 sides");
+    randomDie.setSides(5);
+    System.out.println("Roll the die with " + randomDie.getSides() + " sides: " + randomDie.roll());
 
 
-
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
   }
 }
