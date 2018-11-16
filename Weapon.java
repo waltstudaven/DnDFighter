@@ -99,7 +99,7 @@ public enum Weapon implements Equipment{
   }
 
   //constructs the weapons stuff
-  private Weapon(String die, DamageType type, String properties, String weaponType, String name) {
+  private Weapon(String die, DamageType type, String properties, String weaponType, String name){
     this.die = die;
     this.type = type;
     this.properties = properties;
@@ -129,7 +129,7 @@ public enum Weapon implements Equipment{
   @Override
   public String getName() { return name; }
 
-  public HashMap<String, Weapon> getAllWeapons() { return allWeapons; }
+  public static HashMap<String, Weapon> getAllWeapons() { return allWeapons; }
 
 
 
