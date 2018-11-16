@@ -67,11 +67,11 @@ public class Character extends Monster {
   //public void equipWeapon(Weapon weapon) { this.weapon = weapon; }
 
   public void unequip(Weapon weapon) {
-    if (mainHand.equals(weapon)) {
+    if (null != mainHand && mainHand.equals(weapon)) {
       numHandsAvail++;
       mainHand = null;
     }
-    if (offHand.equals(weapon)) {
+    if (null != offHand && offHand.equals(weapon)) {
       numHandsAvail++;
       offHand = null;
     }
@@ -177,11 +177,11 @@ public class Character extends Monster {
 
   public void equip(Weapon weapon) {
     if (weapon.numHands() == 1 && this.numHandsAvail >= weapon.numHands()) {
-      if (this.mainHand.equals(null)) {
+      if (null == this.mainHand) {
         this.numHandsAvail--;
         this.mainHand = weapon;
       }
-      else if (this.offHand.equals(null)) {
+      else if (null == this.offHand) {
         this.numHandsAvail--;
         this.offHand = weapon;
       }
@@ -206,7 +206,7 @@ public class Character extends Monster {
         if (numHandsAvail > 0) {
           ArrayList<Weapon> choices = new ArrayList<>();
           for (Equipment e: allEquipment) {
-            if (e.isWeapon() && this.mainHand.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
+            if (e.isWeapon() && Weapon.getAllWeapons().get(e.getName()).numHands() <= numHandsAvail) {
               choices.add(this.mainHand.getAllWeapons().get(e.getName()));
             }
           }
@@ -223,6 +223,7 @@ public class Character extends Monster {
     }
     return numFreeActionAvail;
   }
+
   public int bonusAction(String inputAction, int numBonusActionAvail, Monster enemy) {
     if (numBonusActionAvail > 0) {
       freeAction(inputAction, numBonusActionAvail, enemy);
@@ -254,6 +255,13 @@ public class Character extends Monster {
     return numActionAvail--;
   }
 
+
+  public Weapon getMainHand() {
+    return mainHand;
+  }
+  public Weapon getOffHand() {
+    return offHand;
+  }
   public void setArmor(Armor armor) { currentArmor = armor; }
 
   public Armor getArmor() { return currentArmor; }
