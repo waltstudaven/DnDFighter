@@ -30,6 +30,10 @@ public class CharacterTester {
     System.out.println("\nCharacter's new Armor:\t" + mainCharacter.getArmor());
     System.out.println("Character new AC:\t" + mainCharacter.getAc());
 
+    //can the character equip plate armor?
+    System.out.println("\nAttempting to equip plate armor:");
+    mainCharacter.canEquip(Armor.PLATE);
+
 
     //the character's options on their turn
     System.out.println("\nCharacter's actions:");
@@ -37,6 +41,6 @@ public class CharacterTester {
 
     //the character's options on their turn
     System.out.println("\nCharacter's equipped weapons:");
-    mainCharacter.displayActions();
+    mainCharacter.();
   }
 }
