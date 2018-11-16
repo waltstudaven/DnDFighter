@@ -1,3 +1,4 @@
+import junit.framework.TestCase;
 public class CharacterTester {
   Character mainCharacter;
   public static void main(String[] args) {
