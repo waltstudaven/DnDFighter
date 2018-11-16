@@ -9,6 +9,7 @@ public class Character extends Monster {
   public Weapon mainHand;
   public Weapon offHand;
   public int numHandsAvail;
+  public Armor currentArmor;
 
   public int numFreeActionAvail, numBonusActionAvail, numActionAvail;
 
@@ -119,6 +120,7 @@ public class Character extends Monster {
   public void equip(Armor armor) {
     int lowerDex = 0;
 
+    this.unequipArmor()
     if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
     else { lowerDex = this.getDexMod(); }
     this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
@@ -189,10 +191,6 @@ public class Character extends Monster {
     }
 
     else System.out.println("could not equip this weapon");
-    // if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
-    // else { lowerDex = this.getDexMod(); }
-    // this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
-    // if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
   }
 
   public int freeAction(String inputAction, int numFreeActionAvail, Monster enemy) {
@@ -250,5 +248,21 @@ public class Character extends Monster {
     }
 
     return numActionAvail--;
+  }
+
+  public void setArmor(Armor armor) { currentArmor = armor; }
+
+  public Armor getArmor() { return currentArmor; }
+
+  public void unequipArmor() {
+    int lowerDex = 0;
+
+    if (this.getArmor().equals(null)) {
+      return;
+    }
+    if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+    else { lowerDex = this.getDexMod(); }
+    this.setAc(this.getArmor() - armor.getBaseAc() - lowerDex);
+    this.setArmor(null);
   }
 }
