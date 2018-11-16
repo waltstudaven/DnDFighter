@@ -410,7 +410,6 @@ public class Interface {
         JButton Avg = new JButton("Set Average Attributes");
         Avg.addActionListener(e ->{
             for(Component js: spinners.getComponents()) {
-                System.out.println(js.getName());
                 if((js.getName() != null) && (js.getName().equalsIgnoreCase("js Strength: ") ||
                         js.getName().equalsIgnoreCase( "js Dexterity: ") ||
                         js.getName().equalsIgnoreCase("js Constitution: ") ||
@@ -436,7 +435,6 @@ public class Interface {
         submit.addActionListener(e -> {
             //final att scores;
             for(Component js: spinners.getComponents()) {
-                System.out.println(js.getName());
                 if((js.getName() != null) && (js.getName().equalsIgnoreCase("js Strength: "))){
                     Str = (int)((JSpinner)js).getValue();
                 } else if((js.getName() != null) && js.getName().equalsIgnoreCase( "js Dexterity: ")){

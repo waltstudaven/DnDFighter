@@ -95,9 +95,9 @@ public class ClassComboBox extends JPanel
     }
 
     protected void updateLabel(String name) {
-        System.out.println(name);
-        ImageIcon iconLeft = createImageIcon("C:\\Users\\Brandon\\Desktop\\School\\Senior\\SoftwareEngineering\\HelloWorld\\data\\" + name + "Male.png");
-        ImageIcon iconRight = createImageIcon("C:\\Users\\Brandon\\Desktop\\School\\Senior\\SoftwareEngineering\\HelloWorld\\data\\" + name + "Female.png");
+        final String dir = System.getProperty("user.dir");
+        ImageIcon iconLeft = createImageIcon(dir + "\\data\\" + name + "Male.png");
+        ImageIcon iconRight = createImageIcon(dir + "\\data\\" + name + "Female.png");
         // pictureLeft.setIcon(iconLeft);
         pictureLeft.setIcon(new ImageIcon(getScaledImage(iconLeft.getImage(), 367, 550)));
         // pictureRight.setIcon(iconRight);

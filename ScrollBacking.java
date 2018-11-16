@@ -11,7 +11,8 @@ public class ScrollBacking {
     public ScrollBacking(){
 
         //This sets the background image for the main menu
-        backImage = new Image("Walters-MacBook-Pro:Downloads/SCroll.png⁩");
+        final String dir = System.getProperty("user.dir");
+        backImage = new Image(dir + "\\data\\Scroll Background.png");
         backImage.setLayout(new FlowLayout());
     }
 

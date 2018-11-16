@@ -18,7 +18,9 @@ public class MainMenu {
 
 
         //This sets the background image for the main menu
-        backImage = new Image("C:\\Users\\Brandon\\Desktop\\School\\Senior\\SoftwareEngineering\\HelloWorld\\data\\Red Dragon vs Blue Dragon.png");
+        final String dir = System.getProperty("user.dir");
+
+        backImage = new Image(dir + "\\data\\Red Dragon vs Blue Dragon.png");
         backImage.setLayout(new GridBagLayout());
     }
 
