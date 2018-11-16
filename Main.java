@@ -1,21 +1,19 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java. awt.event.*;
-import java.util.ArrayList;
-import javax.swing.*;
 
 
 
 public class Main  {
 
     public static void main(String[] args) {
+        System.out.println("This Runs the interactive interface for the user. \n" +
+                "The main menu presents two buttons, \n 1) Select Monster, which currently only presents a list of buttons which let you print out the monster's name \n" +
+                "and 2)Create Character, which lets the user enter the inputs needed for insantiating a character. \n" +
+                "At the end, the last submit button prints out the toString for the character just Created." +
+                "\n this submit button is located on the character naming page");
         Interface game = new Interface();
         game.addMainMenuButtons();
         game.addSelectMonsterButtons();
+        game.addCharCreater1Buttons();
 
         JFrame f = new JFrame("Monster Fighter");
         f.add(game.homeContainer);
