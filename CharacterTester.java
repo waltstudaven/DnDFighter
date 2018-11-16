@@ -51,14 +51,18 @@ public class CharacterTester {
     System.out.println("Off Hand: " + mainCharacter.getOffHand());
 
     //doing a free action: equip a weapon from the inventory
-    System.out.println("Number Free Actions Available: " + mainCharacter.freeAction("equip", mainCharacter.numFreeActionAvail, new Thug()));
+    System.out.println("Number Free Actions Available: " +mainCharacter.numFreeActionAvail);
 
+    mainCharacter.freeAction("equip", mainCharacter.numFreeActionAvail, new Thug());
     System.out.println("\nCharacter's equipped weapons:");
     System.out.println("Main Hand: " + mainCharacter.getMainHand());
     System.out.println("Off Hand: " + mainCharacter.getOffHand());
 
-    //doing a free action: equip a weapon from the inventory
-    System.out.println("Number Free Actions Available: " + mainCharacter.freeAction("inspect enemy health", mainCharacter.numFreeActionAvail, new Thug()));
+    //doing a free action: rolling insight
+    System.out.println("Number Free Actions Available: " + mainCharacter.numFreeActionAvail);
+    System.out.println("\nRolling insight:" + mainCharacter.freeAction("inspect enemy health", mainCharacter.numFreeActionAvail, new Thug()));
+
+    System.out.println("Number Free Actions Available: " + mainCharacter.freeAction("sheath", mainCharacter.numFreeActionAvail, new Thug()));
 
     System.out.println("\nCharacter's equipped weapons:");
     System.out.println("Main Hand: " + mainCharacter.getMainHand());
