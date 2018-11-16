@@ -1,4 +1,4 @@
-import junit.framework.TestCase;
+// import junit.framework.TestCase;
 public class CharacterTester {
   Character mainCharacter;
   public static void main(String[] args) {
@@ -14,13 +14,25 @@ public class CharacterTester {
     tester.getCharacterClass().setLvl(1);
     CharacterTester test = new CharacterTester(tester);
 
+
+
+
   }
 
   public CharacterTester(Character mainCharacter) {
     this.mainCharacter = mainCharacter;
 
+    //prints out the character
     System.out.println(mainCharacter.toString());
+
+    //change the character's armor
     mainCharacter.equip(Armor.LEATHER);
-    System.out.println("Character AC:\t" + mainCharacter.getAc());
+    System.out.println("\nCharacter's Armor:\t" + mainCharacter.getArmor());
+    System.out.println("Character new AC:\t" + mainCharacter.getAc());
+
+
+    //the character's options on their turn
+    System.out.println("\nCharacter actions:");
+    mainCharacter.displayActions();
   }
 }
