@@ -1,5 +1,9 @@
 // Java program to play an Audio
 // file using Clip Object
+
+
+//https://www.freesounds.info/music-loops/electronic-rhythms/     //Sounds
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -26,7 +30,7 @@ public class Music{
       stream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
       clip = AudioSystem.getClip();
       clip.open(stream);
-      status = "paused";
+  //    status = "paused";
   }
 
 
