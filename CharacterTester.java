@@ -27,12 +27,16 @@ public class CharacterTester {
 
     //change the character's armor
     mainCharacter.equip(Armor.LEATHER);
-    System.out.println("\nCharacter's Armor:\t" + mainCharacter.getArmor());
+    System.out.println("\nCharacter's new Armor:\t" + mainCharacter.getArmor());
     System.out.println("Character new AC:\t" + mainCharacter.getAc());
 
 
     //the character's options on their turn
-    System.out.println("\nCharacter actions:");
+    System.out.println("\nCharacter's actions:");
+    mainCharacter.displayActions();
+
+    //the character's options on their turn
+    System.out.println("\nCharacter's equipped weapons:");
     mainCharacter.displayActions();
   }
 }

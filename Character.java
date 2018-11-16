@@ -94,7 +94,7 @@ public class Character extends Monster {
   public boolean isResistant(DamageType damage) {return false;}
 
   public String toString() {
-    String toString = "";
+    String toString = "\nName: " + this.getName() + "\n";
     toString += "Max HP: " + this.getMaxHp() + " \n";
 
     toString += "AC: " + this.getAc() + " \n";
