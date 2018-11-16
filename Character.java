@@ -120,11 +120,15 @@ public class Character extends Monster {
   public void equip(Armor armor) {
     int lowerDex = 0;
 
-    this.unequipArmor()
-    if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
-    else { lowerDex = this.getDexMod(); }
-    this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
-    if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+    if (this.canEquip(armor)){
+      this.unequipArmor();
+      if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+      else { lowerDex = this.getDexMod(); }
+      this.setAc(this.getAc() + armor.getBaseAc() + lowerDex);
+      if (armor.getStealthDisAdv()) { this.setStealthDisAdv(true); }
+      this.setArmor(armor);
+    }
+    else System.out.println("armor could not be equipped");
   }
 
   public boolean canEquip(Armor armor) {
@@ -257,12 +261,12 @@ public class Character extends Monster {
   public void unequipArmor() {
     int lowerDex = 0;
 
-    if (this.getArmor().equals(null)) {
+    if (null == this.getArmor()) {
       return;
     }
-    if (this.getDexMod() > armor.getMaxDex()) { lowerDex = armor.getMaxDex(); }
+    if (this.getDexMod() > this.getArmor().getMaxDex()) { lowerDex = this.getArmor().getMaxDex(); }
     else { lowerDex = this.getDexMod(); }
-    this.setAc(this.getArmor() - armor.getBaseAc() - lowerDex);
+    this.setAc(this.getAc() - this.getArmor().getBaseAc() - lowerDex);
     this.setArmor(null);
   }
 }
