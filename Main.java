@@ -1,5 +1,5 @@
 import javax.swing.*;
-
+import java.awt.*;
 
 
 public class Main  {
@@ -20,10 +20,10 @@ public class Main  {
 
         //creates the back most frame
         //and sets it's title to Monster Fighter
-        f.setSize( 600, 400);
+        //f.setPreferredSize(new Dimension( 600, 400));
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
-        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         f.pack();
         f.setVisible(true);
         game.startGame();
