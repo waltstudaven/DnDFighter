@@ -469,6 +469,7 @@ public class Interface {
     }
 
     public void addMainMenuButtons(){
+        mainMenu.setPreferredSize(new Dimension(mainMenu.getWidth(), mainMenu.getHeight()));
         JButton b1, b2;
         JLabel lab;
 
@@ -478,12 +479,15 @@ public class Interface {
         b1.setBackground(button);
         b1.setFont(new Font("Verdana", 0, 30));
         b1.addActionListener(e -> cl.show(homeContainer, "CharCreate1"));
+        b1.setSize(b1.getPreferredSize());
 
         b2 = new JButton("Select Monster");
         b2.setBackground(button);
         b2.setFont(new Font("Verdana", 0, 30));
         JDialog jd = new JDialog();
         b2.addActionListener(e -> cl.show(homeContainer, "Select Monster"));
+        b2.setSize(b2.getPreferredSize());
+
 
         //makes the label (not necessary)
         lab = new JLabel("MONSTER FIGHTER");
@@ -500,6 +504,7 @@ public class Interface {
         c.gridy=0;
         //c.weighty = ;
         c.anchor = GridBagConstraints.PAGE_START;
+        lab.setSize(lab.getPreferredSize());
         mainMenu.add(lab,c);
 
 
