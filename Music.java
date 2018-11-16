@@ -30,7 +30,7 @@ public class Music{
       stream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
       clip = AudioSystem.getClip();
       clip.open(stream);
-  //    status = "paused";
+      status = "paused";
   }
 
 
@@ -70,10 +70,6 @@ public class Music{
 
 
   public void stop() throws UnsupportedAudioFileException, IOException, LineUnavailableException{
-    if (status.equals("paused")){
-      System.out.println("audio is already not playing");
-      return;
-    }
     clip.stop();
     frame = 0L;
     clip.setMicrosecondPosition(frame);

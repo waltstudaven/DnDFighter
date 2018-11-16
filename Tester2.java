@@ -158,10 +158,11 @@ public class Tester2{
     System.out.println();
     System.out.println();
 
-    //testing playing music
-    Music song = new Music("television_hype.wav");
-    song.playLoop();
 
+
+    //testing playing music
+    Music song = new Music("rosey.wav");
+    song.playLoop();
 
 
 
