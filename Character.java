@@ -200,7 +200,8 @@ public class Character extends Monster {
   public int freeAction(String inputAction, int numFreeActionAvail, Monster enemy) {
     if (numFreeActionAvail > 0) {
       switch (inputAction){
-        case "inspect enemy health": this.rollInsight(); numFreeActionAvail--;
+        case "inspect enemy health":
+        if (this.rollInsight() >=15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); } numFreeActionAvail--;
         case "sheath weapon": this.unequip(mainHand); numFreeActionAvail--;
         case "equip":
         if (numHandsAvail > 0) {
