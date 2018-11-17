@@ -23,6 +23,8 @@ public class Main  {
         //f.setPreferredSize(new Dimension( 600, 400));
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        f.setMaximumSize(screenSize);
         f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         f.pack();
         f.setVisible(true);
