@@ -58,6 +58,8 @@ public class CharacterTester {
     System.out.println("Main Hand: " + mainCharacter.getMainHand());
     System.out.println("Off Hand: " + mainCharacter.getOffHand());
 
+    System.out.println("Number Free Actions Available: " + mainCharacter.numFreeActionAvail);
+
     //doing a free action: rolling insight
     // System.out.println("Number Free Actions Available: " + mainCharacter.numFreeActionAvail);
     // System.out.println("\nRolling insight:" + mainCharacter.freeAction("inspect enemy health", mainCharacter.numFreeActionAvail, new Thug()));

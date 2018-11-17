@@ -198,11 +198,11 @@ public class Character extends Monster {
   }
 
   public int freeAction(String inputAction, int numFreeActionAvail, Monster enemy) {
-    if (numFreeActionAvail > 0) {
+    if (this.numFreeActionAvail > 0) {
       switch (inputAction){
         case "inspect enemy health":
         if (this.rollInsight() >=15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); } numFreeActionAvail--;
-        case "sheath weapon": this.unequip(mainHand); numFreeActionAvail--;
+        case "sheath weapon": this.unequip(mainHand); this.numFreeActionAvail--;
         case "equip":
         if (numHandsAvail > 0) {
           ArrayList<Weapon> choices = new ArrayList<>();
@@ -217,12 +217,12 @@ public class Character extends Monster {
           for (Weapon w: choices) {
             if (w.getName().equalsIgnoreCase(inputAction)) this.equip(w);
           }
-          numFreeActionAvail--;
+          this.numFreeActionAvail--;
           break;
         }
       }
     }
-    return numFreeActionAvail;
+    return this.numFreeActionAvail;
   }
 
   public int bonusAction(String inputAction, int numBonusActionAvail, Monster enemy) {
@@ -277,5 +277,11 @@ public class Character extends Monster {
     else { lowerDex = this.getDexMod(); }
     this.setAc(this.getAc() - this.getArmor().getBaseAc() - lowerDex);
     this.setArmor(null);
+  }
+
+  private void endTurn() {
+    this.numFreeActionAvail = 2;
+    this.numBonusActionAvail = 1;
+    this.numActionAvail = 1;
   }
 }
