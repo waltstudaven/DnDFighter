@@ -523,6 +523,9 @@ public class Interface {
         c.gridy = 2;
         mainMenu.add(b2,c);
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        mainMenu.setMaximumSize(screenSize);
+
     }
     public void addSelectMonsterButtons(){
         selectMonster.setLayout(new GridBagLayout());
