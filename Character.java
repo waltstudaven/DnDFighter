@@ -201,8 +201,16 @@ public class Character extends Monster {
     if (this.numFreeActionAvail > 0) {
       switch (inputAction){
         case "inspect enemy health":
-        if (this.rollInsight() >=15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); } numFreeActionAvail--;
-        case "sheath weapon": this.unequip(mainHand); this.numFreeActionAvail--;
+        int roll = this.rollInsight();
+        if (roll >=15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); }
+        System.out.println("INSIGHT ROLL: " + roll);
+        this.numFreeActionAvail--;
+        break;
+
+        case "sheath weapon": this.unequip(mainHand);
+        this.numFreeActionAvail--;
+        break;
+
         case "equip":
         if (numHandsAvail > 0) {
           ArrayList<Weapon> choices = new ArrayList<>();
@@ -215,8 +223,11 @@ public class Character extends Monster {
           Scanner scan = new Scanner(System.in);
           inputAction = scan.nextLine();
           for (Weapon w: choices) {
-            if (w.getName().equalsIgnoreCase(inputAction)) this.equip(w);
+            if (w.getName().equalsIgnoreCase(inputAction)) {
+              this.equip(w);
+              break;
           }
+        }
           this.numFreeActionAvail--;
           break;
         }
@@ -224,6 +235,7 @@ public class Character extends Monster {
     }
     return this.numFreeActionAvail;
   }
+
 
   public int bonusAction(String inputAction, int numBonusActionAvail, Monster enemy) {
     if (numBonusActionAvail > 0) {
