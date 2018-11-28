@@ -163,13 +163,16 @@ public class Character extends Monster {
       String inputAction = scan.nextLine();
 
       if (inputAction.equalsIgnoreCase("Free Action") && numFreeActionAvail > 0) {
-        this.numFreeActionAvail = freeAction(inputAction, this.numFreeActionAvail, enemy);
+        this.numFreeActionAvail = freeAction(scan, this.numFreeActionAvail, enemy);
       }
       else if (inputAction.equalsIgnoreCase("Bonus Action") && numBonusActionAvail > 0) {
-        this.numBonusActionAvail = bonusAction(inputAction, this.numBonusActionAvail, enemy);
+        this.numBonusActionAvail = bonusAction(scan, this.numBonusActionAvail, enemy);
       }
       else if (inputAction.equalsIgnoreCase("Action") && numActionAvail > 0) {
-        this.numActionAvail = action(inputAction, this.numActionAvail, enemy);
+        this.numActionAvail = action(scan, this.numActionAvail, enemy);
+      }
+      else if (inputAction.equalsIgnoreCase("exit")) {
+        break;
       }
     }
   }
@@ -197,7 +200,10 @@ public class Character extends Monster {
     else System.out.println("could not equip this weapon");
   }
 
-  public int freeAction(String inputAction, int numFreeActionAvail, Monster enemy) {
+  public int freeAction(Scanner scan, int numFreeActionAvail, Monster enemy) {
+    System.out.println("What free action would you like to take");
+String inputAction = scan.nextLine();
+
     if (this.numFreeActionAvail > 0) {
       switch (inputAction){
         case "inspect enemy health":
@@ -220,7 +226,6 @@ public class Character extends Monster {
             }
           }
           System.out.println("chose a weapon");
-          Scanner scan = new Scanner(System.in);
           inputAction = scan.nextLine();
           for (Weapon w: choices) {
             if (w.getName().equalsIgnoreCase(inputAction)) {
@@ -237,9 +242,11 @@ public class Character extends Monster {
   }
 
 
-  public int bonusAction(String inputAction, int numBonusActionAvail, Monster enemy) {
+  public int bonusAction(Scanner scan, int numBonusActionAvail, Monster enemy) {
+    System.out.println("What bonus action would you like to take");
+String inputAction = scan.nextLine();
     if (numBonusActionAvail > 0) {
-      freeAction(inputAction, numBonusActionAvail, enemy);
+      freeAction(scan, numBonusActionAvail, enemy);
       switch (inputAction) {
         case "attack": if (this.offHand.numHands() < 2) this.characterClass.attack(offHand, enemy);
         if (offHand.isRanged() || offHand.getProperties().contains("finesse")) {
@@ -252,7 +259,9 @@ public class Character extends Monster {
     return numBonusActionAvail;
   }
 
-  public int action(String inputAction, int numActionAvail, Monster enemy) {
+  public int action(Scanner scan, int numActionAvail, Monster enemy) {
+    System.out.println("What action would you like to take");
+    String inputAction = scan.nextLine();
     if (numActionAvail > 0) {
       switch (inputAction) {
         case "attack": this.characterClass.attack(mainHand, enemy);

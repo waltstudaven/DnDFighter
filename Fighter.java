@@ -238,6 +238,7 @@ public class Fighter extends CharacterClass{
   }
 
   public void attack(Weapon weapon, Monster enemy) {
+    System.out.println("Current weapon is: " + weapon);
     if (this.rollToAttack(weapon) >= enemy.getAc())
     enemy.setCurrentHp(enemy.getCurrentHp() - this.rollDamage(weapon));
   }

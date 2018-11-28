@@ -3,6 +3,7 @@ public class Arena {
     Monster thug = new Thug();
     CharacterCreation creatingCharacter = new CharacterCreation();
     Character mainCharacter = creatingCharacter.characterCreator();
+    mainCharacter.setCurrentHp(mainCharacter.getMaxHp());
 
     Arena arena = new Arena(thug, mainCharacter);
   }
@@ -15,6 +16,8 @@ public class Arena {
 
   public Monster fight(Monster first, Monster second) {
     while (true) {
+        System.out.println(first.getCurrentHp() + "\t" + first.getMaxHp());
+        System.out.println(second.getCurrentHp() + "\t" + second.getMaxHp());
       if (first.getCurrentHp() < 1) return second;
       else if (second.getCurrentHp() < 1) return first;
       first.turn(second);
