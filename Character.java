@@ -151,24 +151,24 @@ public class Character extends Monster {
     Scanner scan = new Scanner(System.in);
 
     while (numActionAvail > 0) {
-      System.out.println("Options: \t-> Action");
+      System.out.println("Options: \n\t-> (a) Action");
       if (numFreeActionAvail > 0 || numBonusActionAvail>0){
+      if(numBonusActionAvail >0){
+        System.out.println("\t-> (b) Bonus Action");
+      }
         if(numFreeActionAvail>0){
-          System.out.println("\t-> Free Action");
-        }
-        if(numBonusActionAvail >0){
-          System.out.println("\t-> Bonus Action");
+          System.out.println("\t-> (c) Free Action");
         }
       }
       String inputAction = scan.nextLine();
 
-      if (inputAction.equalsIgnoreCase("Free Action") && numFreeActionAvail > 0) {
+      if (inputAction.equalsIgnoreCase("c") && numFreeActionAvail > 0) {
         this.numFreeActionAvail = freeAction(scan, this.numFreeActionAvail, enemy);
       }
-      else if (inputAction.equalsIgnoreCase("Bonus Action") && numBonusActionAvail > 0) {
+      else if (inputAction.equalsIgnoreCase("b") && numBonusActionAvail > 0) {
         this.numBonusActionAvail = bonusAction(scan, this.numBonusActionAvail, enemy);
       }
-      else if (inputAction.equalsIgnoreCase("Action") && numActionAvail > 0) {
+      else if (inputAction.equalsIgnoreCase("a") && numActionAvail > 0) {
         this.numActionAvail = action(scan, this.numActionAvail, enemy);
       }
       else if (inputAction.equalsIgnoreCase("exit")) {
@@ -202,22 +202,23 @@ public class Character extends Monster {
 
   public int freeAction(Scanner scan, int numFreeActionAvail, Monster enemy) {
     System.out.println("What free action would you like to take");
-String inputAction = scan.nextLine();
+    System.out.println("(b) Inspect Enemy Health\n(c) Sheath Weapon\n(d) Equip Weapon");
+    String inputAction = scan.nextLine();
 
     if (this.numFreeActionAvail > 0) {
       switch (inputAction){
-        case "inspect enemy health":
+        case "b":
         int roll = this.rollInsight();
         if (roll >=15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); }
         System.out.println("INSIGHT ROLL: " + roll);
         this.numFreeActionAvail--;
         break;
 
-        case "sheath weapon": this.unequip(mainHand);
+        case "c": this.unequip(mainHand);
         this.numFreeActionAvail--;
         break;
 
-        case "equip":
+        case "d":
         if (numHandsAvail > 0) {
           ArrayList<Weapon> choices = new ArrayList<>();
           for (Equipment e: allEquipment) {
@@ -228,11 +229,12 @@ String inputAction = scan.nextLine();
           System.out.println("chose a weapon");
           inputAction = scan.nextLine();
           for (Weapon w: choices) {
+            System.out.println(w);
             if (w.getName().equalsIgnoreCase(inputAction)) {
               this.equip(w);
               break;
+            }
           }
-        }
           this.numFreeActionAvail--;
           break;
         }
@@ -244,15 +246,24 @@ String inputAction = scan.nextLine();
 
   public int bonusAction(Scanner scan, int numBonusActionAvail, Monster enemy) {
     System.out.println("What bonus action would you like to take");
-String inputAction = scan.nextLine();
+    System.out.println("(a) Attack\n(b) Inspect Enemy Health\n(c) Sheath Weapon\n(d) Equip Weapon");
+    String inputAction = scan.nextLine();
     if (numBonusActionAvail > 0) {
-      freeAction(scan, numBonusActionAvail, enemy);
       switch (inputAction) {
-        case "attack": if (this.offHand.numHands() < 2) this.characterClass.attack(offHand, enemy);
-        if (offHand.isRanged() || offHand.getProperties().contains("finesse")) {
-          enemy.setCurrentHp(enemy.getCurrentHp() + this.getDexMod());
+        case "a":
+        if (null == this.offHand) this.attackUnarmed(enemy);
+        else if (this.offHand.numHands() < 2) this.characterClass.attack(offHand, enemy);
+        else {
+          System.out.println("could use your bonus action to attack");
         }
-        enemy.setCurrentHp(enemy.getCurrentHp() + this.getStrMod());
+        break;
+        // if (offHand.isRanged() || offHand.getProperties().contains("finesse")) {
+        //   enemy.setCurrentHp(enemy.getCurrentHp() + this.getDexMod());
+        // }
+        // enemy.setCurrentHp(enemy.getCurrentHp() + this.getStrMod());
+        default:
+        freeAction(scan, numBonusActionAvail, enemy);
+        break;
       }
     }
 
@@ -261,15 +272,21 @@ String inputAction = scan.nextLine();
 
   public int action(Scanner scan, int numActionAvail, Monster enemy) {
     System.out.println("What action would you like to take");
+    System.out.println("(a) Attack\n(b) Dodge\n(c) Hide");
     String inputAction = scan.nextLine();
     if (numActionAvail > 0) {
       switch (inputAction) {
-        case "attack": this.characterClass.attack(mainHand, enemy);
+        case "a": this.characterClass.attack(mainHand, enemy);
         numActionAvail--;
-        case "dodge": enemy.attackDisAdv = true;
+        endTurn();
+        break;
+        case "b": enemy.attackDisAdv = true;
         numActionAvail--;
-        case "hide": this.rollStealth();
+        endTurn();
+        break;
+        case "c": this.rollStealth();
         numActionAvail--;
+        endTurn();
         break;
       }
     }
@@ -304,5 +321,12 @@ String inputAction = scan.nextLine();
     this.numFreeActionAvail = 2;
     this.numBonusActionAvail = 1;
     this.numActionAvail = 1;
+  }
+
+  public void attackUnarmed(Monster enemy) {
+      System.out.println("Current weapon is: Unarmed");
+      Die d20 = new Die(20);
+      if (d20.roll() + this.getStrMod() >= enemy.getAc())
+      enemy.setCurrentHp(enemy.getCurrentHp() - this.getStrMod());
   }
 }

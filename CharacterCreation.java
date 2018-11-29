@@ -45,19 +45,23 @@ public class CharacterCreation {
     scan.nextLine();
     System.out.println("What is your character's race?");
     System.out.print("Options: ");
+
+    int i = 1;
     for(String s: allRaces.keySet()){
-      System.out.print(s + ", ");
+      System.out.print(i + " " + s + ", ");
     }
     System.out.println();
-    String inputRace = scan.nextLine();
+    int inputRace = scan.nextInt();
 
     System.out.println("What is your character's class?");
     System.out.print("Options: ");
+
+    i = 1;
     for(String s: allClasses.keySet()){
-      System.out.print(s + ", ");
+      System.out.print(i + " " + s + ", ");
     }
     System.out.println();
-    String inputClass = scan.nextLine();
+    int inputClass = scan.nextInt();
 
     System.out.println("What is your character's name?");
     String inputName = scan.nextLine();
@@ -66,9 +70,24 @@ public class CharacterCreation {
     System.out.println("What is your character's level?");
     int inputLvl = scan.nextInt();
 
-    newCharacter = new Character(inputName, allClasses.get(inputClass), allRaces.get(inputRace), inputLvl, inputStrScore, inputDexScore,
+String actualInputRace = "";
+String actualInputClass = "";
+    switch(inputRace) {
+      case 1: actualInputRace = "Human";
+
+    }
+    switch(inputClass) {
+      case 1: actualInputClass = "Fighter";
+
+    }
+    System.out.println(inputRace + " " + inputClass);
+
+
+
+    newCharacter = new Character(inputName, allClasses.get(actualInputClass), allRaces.get(actualInputRace), inputLvl, inputStrScore, inputDexScore,
     inputConScore, inputIntScore, inputWisScore, inputCharScore);
 
+    System.out.println(newCharacter.getCharacterRace());
     newCharacter.getCharacterRace().setCharacter(newCharacter);
     newCharacter.getCharacterRace().editScores();
 

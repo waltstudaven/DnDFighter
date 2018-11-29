@@ -33,8 +33,8 @@ public class Fighter extends CharacterClass{
 
 
     //fighting style
-    System.out.println("What would you like your fighting style to be from this list:" + "\nArchery" +
-    "\nDefense" + "\nDueling" +"\nGreat Weapon Fighting");
+    System.out.println("What would you like your fighting style to be from this list:" + "\n(a) Archery" +
+    "\n(b) Defense" + "\n(c) Dueling" +"\n(d) Great Weapon Fighting");
     Scanner scan = new Scanner(System.in);
     String fightStyle = scan.nextLine();
     setFightStyle(fightStyle);
@@ -167,14 +167,14 @@ public class Fighter extends CharacterClass{
   */
   private void setFightStyle(String fightStyle) {
     //for later use
-    if (fightStyle.equalsIgnoreCase("archery")) this.fightStyle += "archery";
-    else if (fightStyle.equalsIgnoreCase("defense")) {
+    if (fightStyle.equalsIgnoreCase("a")) this.fightStyle += "archery";
+    else if (fightStyle.equalsIgnoreCase("b")) {
       //the characters ac is equal to it's ac plus 1
       super.thisCharacter.setAc(super.thisCharacter.getAc() +1);
       this.fightStyle += "defense";
     }
-    else if (fightStyle.equalsIgnoreCase("dueling")) this.fightStyle += "dueling";
-    else if (fightStyle.equalsIgnoreCase("great weapon fighting")) this.fightStyle += "great weapon fighting";
+    else if (fightStyle.equalsIgnoreCase("c")) this.fightStyle += "dueling";
+    else if (fightStyle.equalsIgnoreCase("d")) this.fightStyle += "great weapon fighting";
   }
 
   /**
