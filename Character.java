@@ -175,6 +175,7 @@ public class Character extends Monster {
         break;
       }
     }
+    endTurn();
   }
 
 
@@ -209,7 +210,7 @@ public class Character extends Monster {
       switch (inputAction){
         case "b":
         int roll = this.rollInsight();
-        if (roll >=15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); }
+        if (roll >= 15) { System.out.println("Enemy Health: " + enemy.getCurrentHp()); }
         System.out.println("INSIGHT ROLL: " + roll);
         this.numFreeActionAvail--;
         break;
@@ -226,10 +227,12 @@ public class Character extends Monster {
               choices.add(this.mainHand.getAllWeapons().get(e.getName()));
             }
           }
+          for (Weapon w: choices) {
+            System.out.println(w);
+          }
           System.out.println("chose a weapon");
           inputAction = scan.nextLine();
           for (Weapon w: choices) {
-            System.out.println(w);
             if (w.getName().equalsIgnoreCase(inputAction)) {
               this.equip(w);
               break;
@@ -276,17 +279,19 @@ public class Character extends Monster {
     String inputAction = scan.nextLine();
     if (numActionAvail > 0) {
       switch (inputAction) {
-        case "a": this.characterClass.attack(mainHand, enemy);
+        case "a":
+        if (null == this.mainHand) {
+          attackUnarmed(enemy);
+}
+else {          this.characterClass.attack(mainHand, enemy);
+}
         numActionAvail--;
-        endTurn();
         break;
         case "b": enemy.attackDisAdv = true;
         numActionAvail--;
-        endTurn();
         break;
         case "c": this.rollStealth();
         numActionAvail--;
-        endTurn();
         break;
       }
     }

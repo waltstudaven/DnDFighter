@@ -66,7 +66,6 @@ public class CharacterCreation {
     System.out.println("What is your character's name?");
     String inputName = scan.nextLine();
 
-
     System.out.println("What is your character's level?");
     int inputLvl = scan.nextInt();
 
