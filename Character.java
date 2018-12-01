@@ -153,9 +153,9 @@ public class Character extends Monster {
     while (numActionAvail > 0) {
       System.out.println("Options: \n\t-> (a) Action");
       if (numFreeActionAvail > 0 || numBonusActionAvail>0){
-      if(numBonusActionAvail >0){
-        System.out.println("\t-> (b) Bonus Action");
-      }
+        if(numBonusActionAvail >0){
+          System.out.println("\t-> (b) Bonus Action");
+        }
         if(numFreeActionAvail>0){
           System.out.println("\t-> (c) Free Action");
         }
@@ -282,9 +282,8 @@ public class Character extends Monster {
         case "a":
         if (null == this.mainHand) {
           attackUnarmed(enemy);
-}
-else {          this.characterClass.attack(mainHand, enemy);
-}
+        }
+        else { this.characterClass.attack(mainHand, enemy); }
         numActionAvail--;
         break;
         case "b": enemy.attackDisAdv = true;
@@ -329,9 +328,13 @@ else {          this.characterClass.attack(mainHand, enemy);
   }
 
   public void attackUnarmed(Monster enemy) {
-      System.out.println("Current weapon is: Unarmed");
-      Die d20 = new Die(20);
-      if (d20.roll() + this.getStrMod() >= enemy.getAc())
+    System.out.println("Current weapon is: Unarmed");
+    Die d20 = new Die(20);
+    int attackRole = d20.roll();
+    System.out.println("you rolled a " + attackRole + this.getStrMod() + " to hit");
+    if (attackRole + this.getStrMod() >= enemy.getAc()) {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.getStrMod());
+      System.out.println("you did " +this.getStrMod() + " damage");
+    }
   }
 }

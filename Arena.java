@@ -10,7 +10,7 @@ public class Arena {
 
   public Arena(Monster m1, Character m2) {
     if (rollInitiative(m1, m2) == m1) System.out.println("\t" + fight(m1, m2));
-    else System.out.println("\t" +fight (m2, m1));
+    else System.out.println(fight(m2, m1));
 
   }
 

@@ -7,6 +7,7 @@ public class Thug extends Monster {
 		damageDie10 = new Die(10);
     setMaxHp(32);
     setCurrentHp(32);
+		this.setAc(11);
 	}
 
 	@Override
