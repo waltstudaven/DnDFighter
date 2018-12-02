@@ -257,7 +257,7 @@ public class Character extends Monster {
         if (null == this.offHand) this.attackUnarmed(enemy);
         else if (this.offHand.numHands() < 2) this.characterClass.attack(offHand, enemy);
         else {
-          System.out.println("could use your bonus action to attack");
+          System.out.println("could not use your bonus action to attack");
         }
         break;
         // if (offHand.isRanged() || offHand.getProperties().contains("finesse")) {
@@ -269,6 +269,7 @@ public class Character extends Monster {
         break;
       }
     }
+    numBonusActionAvail--;
 
     return numBonusActionAvail;
   }
@@ -331,7 +332,7 @@ public class Character extends Monster {
     System.out.println("Current weapon is: Unarmed");
     Die d20 = new Die(20);
     int attackRole = d20.roll();
-    System.out.println("you rolled a " + attackRole + this.getStrMod() + " to hit");
+    System.out.println("you rolled a " + (attackRole + this.getStrMod()) + " to hit");
     if (attackRole + this.getStrMod() >= enemy.getAc()) {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.getStrMod());
       System.out.println("you did " +this.getStrMod() + " damage");

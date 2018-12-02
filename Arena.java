@@ -9,15 +9,15 @@ public class Arena {
   }
 
   public Arena(Monster m1, Character m2) {
-    if (rollInitiative(m1, m2) == m1) System.out.println("\t" + fight(m1, m2));
+    if (rollInitiative(m1, m2) == m1) System.out.println(fight(m1, m2));
     else System.out.println(fight(m2, m1));
 
   }
 
   public Monster fight(Monster first, Monster second) {
     while (true) {
-        System.out.println(first.getCurrentHp() + "\t" + first.getMaxHp());
-        System.out.println(second.getCurrentHp() + "\t" + second.getMaxHp());
+        // System.out.println(first.getCurrentHp() + "\t" + first.getMaxHp());
+        // System.out.println(second.getCurrentHp() + "\t" + second.getMaxHp());
       if (first.getCurrentHp() < 1) return second;
       else if (second.getCurrentHp() < 1) return first;
       first.turn(second);
@@ -27,7 +27,9 @@ public class Arena {
 
   public Monster rollInitiative(Monster m1, Monster m2) {
     int firstRoll = m1.rollInitiative();
+    System.out.println(firstRoll);
     int secondRoll = m2.rollInitiative();
+    System.out.println(secondRoll);
 
     if (firstRoll > secondRoll) return m1;
     else if (firstRoll < secondRoll) return m2;
