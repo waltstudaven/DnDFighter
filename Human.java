@@ -5,6 +5,7 @@ public class Human extends Race {
 
   public Human() {}
 
+    @Override
     public void editScores(){
       super.getCharacter().setStrScore(super.getCharacter().getStrScore() +1);
       super.getCharacter().setDexScore(super.getCharacter().getDexScore() +1);
