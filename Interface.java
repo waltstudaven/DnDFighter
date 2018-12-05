@@ -98,6 +98,8 @@ public class Interface {
             newCharacter.getCharacterClass().setCharacter(newCharacter);
             newCharacter.getCharacterClass().setLvl(1);
 
+            System.out.println(newCharacter);
+
         });
         submit.setBackground(buttColor);
         submit.setFont(new Font("Verdana", 0, 30));
