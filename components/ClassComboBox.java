@@ -21,6 +21,7 @@ public class ClassComboBox extends JPanel
         implements ActionListener {
     JLabel pictureLeft;
     JLabel pictureRight;
+    JComboBox classList;
 
     public ClassComboBox(JPanel Creater) {
         super(new BorderLayout());
@@ -29,7 +30,7 @@ public class ClassComboBox extends JPanel
 
         //Create the combo box, select the item at index 4.
         //Indices start at 0, so 4 specifies the pig.
-        JComboBox classList = new JComboBox(classStrings);
+        classList = new JComboBox(classStrings);
         classList.setName("classList");
         classList.setSelectedIndex(0);
         classList.addActionListener(this);
@@ -81,6 +82,10 @@ public class ClassComboBox extends JPanel
         JComboBox cb = (JComboBox) e.getSource();
         String raceName = (String) cb.getSelectedItem();
         updateLabel(raceName);
+    }
+
+    public String getSelectedClass(){
+        return classList.getSelectedItem().toString();
     }
 
     private Image getScaledImage(Image srcImg, int w, int h){

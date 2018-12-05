@@ -90,9 +90,6 @@ public class Interface {
             charName = tf.getText();
             newCharacter = new Character(charName, allClasses.get(charClass), allRaces.get(race), 1, Str, Dex,
                     Con, Int, Wis, Char);
-
-            System.out.println(newCharacter.getCharacterRace());
-            System.out.println(newCharacter);
             newCharacter.getCharacterRace().setCharacter(newCharacter);
             newCharacter.getCharacterRace().editScores();
 
@@ -101,7 +98,6 @@ public class Interface {
             newCharacter.getCharacterClass().setCharacter(newCharacter);
             newCharacter.getCharacterClass().setLvl(1);
 
-            System.out.println(newCharacter);
         });
         submit.setBackground(buttColor);
         submit.setFont(new Font("Verdana", 0, 30));
@@ -199,11 +195,12 @@ public class Interface {
         //add Submit button
         JButton submit = new JButton("Submit");
         submit.addActionListener(e -> {
-            for(Component compon: ccb.getComponents()){
-                if(compon.getName() != null && compon.getName().equals("classList")){
-                    charClass = ((JComboBox)compon).getSelectedItem().toString();
-                }
-            }
+            charClass = ccb.getSelectedClass();
+//            for(Component compon: ccb.getComponents()){
+//                if(compon.getName() != null && compon.getName().equals("classList")){
+//                    charClass = ((JComboBox)compon).getSelectedItem().toString();
+//                }
+//            }
             ScrollBacking nameSetBacking = new ScrollBacking();
             JPanel nameSetter = nameSetBacking.gui();
             homeContainer.add(nameSetter, "nameSetter");
@@ -263,11 +260,8 @@ public class Interface {
         //add Submit button
         JButton submit = new JButton("Submit");
         submit.addActionListener(e -> {
-            for(Component compon: rcb.getComponents()){
-                if(compon.getName() != null && compon.getName().equals("raceList")){
-                    race = ((JComboBox)compon).getSelectedItem().toString();
-                }
-            }
+             race =  rcb.getSelectedRace();
+
             ScrollBacking CharClassSetBacking = new ScrollBacking();
             JPanel CharClassSetter = CharClassSetBacking.gui();
             homeContainer.add(CharClassSetter, "CharClassSetter");
