@@ -165,7 +165,7 @@ public class Fighter extends CharacterClass{
   /**
   * @param fightStyle chosen fighting style of the character
   */
-  private void setFightStyle(String fightStyle) {
+  protected void setFightStyle(String fightStyle) {
     //for later use
     if (fightStyle.equalsIgnoreCase("a")) this.fightStyle += "archery";
     else if (fightStyle.equalsIgnoreCase("b")) {
@@ -196,7 +196,6 @@ public class Fighter extends CharacterClass{
     int attackRoll = weapon.rollToAttack();                                           //base roll
     String weaponProperties = weapon.getProperties();                                 //to store the weapon's properties
     System.out.println("base roll: " + attackRoll);
-    System.out.println(weapon.getProperties());
     if (weaponProperties.contains("finesse") || weaponProperties.contains("range")){ //if the weapon property is ranged or finesse
       if (fightStyle.contains("archery")) {                                           //if they chose an archery fighting style
         attackRoll += super.thisCharacter.getDexMod() + 2;                            //they get a plus 2 to attack
@@ -242,11 +241,10 @@ public class Fighter extends CharacterClass{
   }
 
   public void attack(Weapon weapon, Monster enemy) {
-    System.out.println("Current weapon is: " + weapon);
+    System.out.println("\nCurrent weapon is: " + weapon);
     int damage = this.rollDamage(weapon);
     int attackRole = this.rollToAttack(weapon);
-    System.out.println("you rolled a " + attackRole + " to hit");
-    System.out.println(enemy.getAc());
+    System.out.println("\nyou rolled a " + attackRole + " to hit");
     if (attackRole >= enemy.getAc()) {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.rollDamage(weapon));
       System.out.println("you did " + damage + " damage");
