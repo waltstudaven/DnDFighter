@@ -8,42 +8,51 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.*;
+import java.util.HashMap;
 
 
 public class Arena {
-  Map allMonsters;
+  private static HashMap allMonsters;
 
+  static {
+    allMonsters = new HashMap<Integer, Monster>();
+    allMonsters.put(1, new Ezmerelda());
+    allMonsters.put(2, new Thug());
+  }
 
   public static void main(String[] args) throws UnsupportedAudioFileException,IOException, LineUnavailableException{
 
     Music music = new Music("rosey.wav");    /////////////////// change !!!!!!!!!!!!!!!!!!!!!!!!!!
     music.playLoop();
 
-
-    Monster thug = new Thug();
     CharacterCreation creatingCharacter = new CharacterCreation();
     Character mainCharacter = creatingCharacter.characterCreator();
     mainCharacter.setCurrentHp(mainCharacter.getMaxHp());
+
+
+
+
+    System.out.println("Who would you like to fight against? ");
+    for (Object i: allMonsters.keySet()) {
+      System.out.println("(" + (Integer)i + ") " + allMonsters.get((Integer) i));
+    }
+    Scanner scan = new Scanner(System.in);
+    Integer monsterChoice = scan.nextInt();
+
 
     music.stop();
 
     Music music2 = new Music("king_pin.wav");
     music2.playLoop();
-    System.out.println("Who would you like to fight against?") {
 
-    }
-    Arena arena = new Arena(thug, mainCharacter);
+
+    Arena arena = new Arena( (Monster) allMonsters.get(monsterChoice), mainCharacter);
 
 
 
   }
 
-
-
-
   public Arena(Monster m1, Character m2) {
-    allMonsters = new HashMap<String, Monster>();
-    allMonsters.put("a", )
     if (rollInitiative(m1, m2) == m1) System.out.println(fight(m1, m2));
     else System.out.println("The winner is: " + fight(m2, m1));
 
@@ -51,8 +60,8 @@ public class Arena {
 
   public Monster fight(Monster first, Monster second) {
     while (true) {
-        // System.out.println(first.getCurrentHp() + "\t" + first.getMaxHp());
-        // System.out.println(second.getCurrentHp() + "\t" + second.getMaxHp());
+      // System.out.println(first.getCurrentHp() + "\t" + first.getMaxHp());
+      // System.out.println(second.getCurrentHp() + "\t" + second.getMaxHp());
       if (first.getCurrentHp() < 1) return second;
       else if (second.getCurrentHp() < 1) return first;
       first.turn(second);

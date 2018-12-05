@@ -12,6 +12,7 @@ public class Ezmerelda extends Monster {
 		damageDie8 = new Die(8);	//does 1d8 damage
 		damageDie6 = new Die(6);
     this.setMaxHp(82);
+		this.setCurrentHp(this.getMaxHp());
     this.setAc(17);
 	}
 
