@@ -148,6 +148,9 @@ public class Character extends Monster {
 
   public void turn(Monster enemy) {
 
+          System.out.println("Max Health: " + this.getMaxHp() );
+      System.out.println("Current Health: " + this.getCurrentHp() );
+
     Scanner scan = new Scanner(System.in);
 
     while (numActionAvail > 0) {
