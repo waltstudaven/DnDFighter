@@ -1,22 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
-
-public class Main  {
-    private static HashMap allMonsters;
-
-    static {
-        allMonsters = new HashMap<Integer, Monster>();
-        allMonsters.put(1, new Ezmerelda());
-        allMonsters.put(2, new Thug());
-    }
-
+public class ComponentTesting {
     public static void main(String[] args) {
-        Music music = new Music("rosey.wav");    /////////////////// change !!!!!!!!!!!!!!!!!!!!!!!!!!
-        music.playLoop();
 
-
+        System.out.println("This next part is done by Brandon: \n This Runs the interactive interface for the user. \n" +
+                "The main menu presents two buttons, \n 1) Select Monster, which currently only presents a list of buttons which let you print out the monster's name \n" +
+                "and 2)Create Character, which lets the user enter the inputs needed for insantiating a character. \n" +
+                "At the end of the GUI, the last submit button sets the name for the character, and continues the rest of the character creation text based. Everything completes as it should." );
         Interface game = new Interface();
         game.addMainMenuButtons();
         game.addSelectMonsterButtons();
@@ -43,4 +34,3 @@ public class Main  {
     }
 
 }
-
