@@ -49,7 +49,8 @@ public class Character extends Monster {
     numBonusActionAvail = 1;
     numActionAvail = 1;
   }
-
+  	
+   
   public void addAction(String methodName) { allActions.add(methodName); }
 
   public ArrayList getActions() { return allActions; }
@@ -78,6 +79,11 @@ public class Character extends Monster {
   }
 
   public CharacterClass getCharacterClass() { return this.characterClass; }
+  
+  public void setCharacterRace(Race race) {
+	  this.characterRace = race;
+	  
+  }
 
   public Race getCharacterRace() { return this.characterRace; }
 
@@ -252,7 +258,7 @@ public class Character extends Monster {
 
   public int bonusAction(Scanner scan, int numBonusActionAvail, Monster enemy) {
     System.out.println("What bonus action would you like to take");
-    System.out.println("(a) Attack\n(b) Free Action");
+    System.out.println("(a) Attack\n(b) Inspect Enemy Health\n(c) Sheath Weapon\n(d) Equip Weapon");
     String inputAction = scan.nextLine();
     if (numBonusActionAvail > 0) {
       switch (inputAction) {
