@@ -49,7 +49,8 @@ public class Character extends Monster {
     numBonusActionAvail = 1;
     numActionAvail = 1;
   }
-
+  	
+   
   public void addAction(String methodName) { allActions.add(methodName); }
 
   public ArrayList getActions() { return allActions; }
@@ -78,6 +79,11 @@ public class Character extends Monster {
   }
 
   public CharacterClass getCharacterClass() { return this.characterClass; }
+  
+  public void setCharacterRace(Race race) {
+	  this.characterRace = race;
+	  
+  }
 
   public Race getCharacterRace() { return this.characterRace; }
 
