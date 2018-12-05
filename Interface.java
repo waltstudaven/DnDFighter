@@ -1,15 +1,22 @@
 import components.ClassComboBox;
 import components.RaceComboBox;
 import layout.SpringUtilities;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import javax.swing.SpringLayout;
+
+
 
 
 public class Interface {
@@ -19,6 +26,8 @@ public class Interface {
     protected Character newCharacter;
     private HashMap<String, CharacterClass> allClasses;
     private HashMap<String, Race> allRaces;
+
+
 
 
 
@@ -34,7 +43,16 @@ public class Interface {
     static CardLayout cl;
     JPanel homeContainer = new JPanel();
 
-    public Interface(){
+
+    private static HashMap allMonsters;
+    Music music;
+    static {
+        allMonsters = new HashMap<Integer, Monster>();
+        allMonsters.put(1, new Ezmerelda());
+        allMonsters.put(2, new Thug());
+    }
+
+    public Interface() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         cl = new CardLayout(5,5);
         homeContainer.setLayout(cl);
         homeContainer.add(mainMenu, "Main Menu");
@@ -47,7 +65,12 @@ public class Interface {
         allClasses.put("Fighter", new Fighter());
         allRaces.put("Human", new Human());
 
-    }
+
+            music = new Music("rosey.wav");    /////////////////// change !!!!!!!!!!!!!!!!!!!!!!!!!!
+            music.playLoop();
+
+
+        }
 
     public void startGame(){
         cl.show(homeContainer, "Main Menu");
@@ -99,6 +122,12 @@ public class Interface {
             newCharacter.getCharacterClass().setLvl(1);
 
             System.out.println(newCharacter);
+            try {
+                doFight();
+            }catch(Exception excep){
+
+            }
+
 
         });
         submit.setBackground(buttColor);
@@ -582,5 +611,26 @@ public class Interface {
         c.gridy = 2;
         //c.weighty = 0.00000000000000001;
         selectMonster.add(back, c);
+    }
+
+    public void doFight() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+
+        this.newCharacter.setCurrentHp(this.newCharacter.getMaxHp());
+
+        System.out.println("Who would you like to fight against? ");
+        for (Object i: allMonsters.keySet()) {
+            System.out.println("(" + (Integer)i + ") " + allMonsters.get((Integer) i));
+        }
+        Scanner scan = new Scanner(System.in);
+        Integer monsterChoice = scan.nextInt();
+
+
+        music.stop();
+
+        Music music2 = new Music("king_pin.wav");
+        music2.playLoop();
+
+
+        Arena arena = new Arena( (Monster) allMonsters.get(monsterChoice), this.newCharacter);
     }
 }
