@@ -62,8 +62,14 @@ public class Arena {
     while (true) {
       // System.out.println(first.getCurrentHp() + "\t" + first.getMaxHp());
       // System.out.println(second.getCurrentHp() + "\t" + second.getMaxHp());
-      if (first.getCurrentHp() < 1) return second;
-      else if (second.getCurrentHp() < 1) return first;
+      if (first.getCurrentHp() < 1) {
+        System.out.println("winner health: " + second.getCurrentHp());
+        return second;
+      }
+      else if (second.getCurrentHp() < 1) {
+        System.out.println("winner health: " +first.getCurrentHp());
+        return first;
+      }
       first.turn(second);
       if (second.getCurrentHp() > 0) second.turn(first);
     }
