@@ -4,8 +4,8 @@
 * @version 1.0
 */
 public abstract class Race {
-  Character thisCharacter;
-  
+  public Character thisCharacter;
+
   public abstract void editScores();
 
   public void setCharacter(Character character) { this.thisCharacter = character; }
