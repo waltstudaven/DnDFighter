@@ -133,8 +133,18 @@ public class RaceComboBox extends JPanel
 
     protected void updateLabel(String name) {
         final String dir = System.getProperty("user.dir");
-        ImageIcon iconLeft = createImageIcon(dir + "\\DnDFighter\\data\\" + name + "Male.png");
-        ImageIcon iconRight = createImageIcon(dir + "\\DnDFighter\\data\\" + name + "Female.png");
+        ImageIcon iconLeft;
+        ImageIcon iconRight;
+        String osName = System.getProperty("os.name").toLowerCase();
+        boolean isMacOs = osName.contains("mac");
+        if (isMacOs)
+        {
+            iconLeft = createImageIcon(dir + "/data/" + name + "Male.png");
+            iconRight = createImageIcon(dir + "/data/" + name + "Female.png");
+        } else {
+             iconLeft = createImageIcon(dir + "\\DnDFighter\\data\\" + name + "Male.png");
+             iconRight = createImageIcon(dir + "\\DnDFighter\\data\\" + name + "Female.png");
+        }
         pictureLeft.setIcon(new ImageIcon(getScaledImage(iconLeft.getImage(), 347, 520)));
         pictureRight.setIcon(new ImageIcon(getScaledImage(iconRight.getImage(), 347, 520)));
 
