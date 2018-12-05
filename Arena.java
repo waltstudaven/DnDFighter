@@ -11,6 +11,9 @@ import java.io.*;
 
 
 public class Arena {
+  Map allMonsters;
+
+
   public static void main(String[] args) throws UnsupportedAudioFileException,IOException, LineUnavailableException{
 
     Music music = new Music("rosey.wav");    /////////////////// change !!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -26,6 +29,9 @@ public class Arena {
 
     Music music2 = new Music("king_pin.wav");
     music2.playLoop();
+    System.out.println("Who would you like to fight against?") {
+
+    }
     Arena arena = new Arena(thug, mainCharacter);
 
 
@@ -36,6 +42,8 @@ public class Arena {
 
 
   public Arena(Monster m1, Character m2) {
+    allMonsters = new HashMap<String, Monster>();
+    allMonsters.put("a", )
     if (rollInitiative(m1, m2) == m1) System.out.println(fight(m1, m2));
     else System.out.println("The winner is: " + fight(m2, m1));
 
