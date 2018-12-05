@@ -32,6 +32,9 @@ public class Arena {
 
   }
 
+
+
+
   public Arena(Monster m1, Character m2) {
     if (rollInitiative(m1, m2) == m1) System.out.println(fight(m1, m2));
     else System.out.println("The winner is: " + fight(m2, m1));

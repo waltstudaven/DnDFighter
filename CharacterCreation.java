@@ -23,9 +23,20 @@ public class CharacterCreation {
   }
 
   protected Character characterCreator() {
+
     Scanner scan = new Scanner(System.in);
-    System.out.println("What is your character's strength score?");
-    int inputStrScore = scan.nextInt();
+
+int inputStrScore = 0;
+boolean toContinue = false;
+  while(toContinue == false){
+    try{
+      System.out.println("What is your character's strength score?");
+      int inputStrScore = scan.nextInt();
+      toContinue = true;
+    }
+    catch(Exception e){
+    }
+  }
 
     System.out.println("What is your character's dexterity score?");
     int inputDexScore = scan.nextInt();
@@ -48,7 +59,7 @@ public class CharacterCreation {
 
     int i = 1;
     for(String s: allRaces.keySet()){
-      System.out.print(i + " " + s + ", ");
+      System.out.print("(" + i + ") " + s);
     }
     System.out.println();
     int inputRace = scan.nextInt();
@@ -58,10 +69,11 @@ public class CharacterCreation {
 
     i = 1;
     for(String s: allClasses.keySet()){
-      System.out.print(i + " " + s + ", ");
+      System.out.print("(" + i + ") " + s);
     }
     System.out.println();
     int inputClass = scan.nextInt();
+    scan.nextLine();
 
     System.out.println("What is your character's name?");
     String inputName = scan.nextLine();
