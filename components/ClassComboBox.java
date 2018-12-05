@@ -26,7 +26,7 @@ public class ClassComboBox extends JPanel
     public ClassComboBox(JPanel Creater) {
         super(new BorderLayout());
 
-        String[] classStrings = {"Fighter"};
+        String[] classStrings = {"Fighter", "Barbarian", "Wizard"};
 
         //Create the combo box, select the item at index 4.
         //Indices start at 0, so 4 specifies the pig.

@@ -56,7 +56,7 @@ public class RaceComboBox extends JPanel
     public RaceComboBox(JPanel Creater) {
         super(new BorderLayout());
 
-        String[] raceStrings = {"Human", "Druid"};
+        String[] raceStrings = {"Human", "Tiefling", "Elf"};
 
         //Create the combo box, select the item at index 4.
         //Indices start at 0, so 4 specifies the pig.

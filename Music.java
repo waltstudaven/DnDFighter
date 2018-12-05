@@ -26,7 +26,13 @@ public class Music{
 
 
   public Music(String file) throws UnsupportedAudioFileException,IOException, LineUnavailableException{
+    String osName = System.getProperty("os.name").toLowerCase();
+    boolean isMacOs = osName.contains("mac");
+    if (isMacOs) {
       filePath = "music/" + file;
+    }else{
+      filePath = "DnDFighter/music/" + file;
+    }
       stream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
       clip = AudioSystem.getClip();
       clip.open(stream);

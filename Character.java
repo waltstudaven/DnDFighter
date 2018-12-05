@@ -252,7 +252,7 @@ public class Character extends Monster {
 
   public int bonusAction(Scanner scan, int numBonusActionAvail, Monster enemy) {
     System.out.println("What bonus action would you like to take");
-    System.out.println("(a) Attack\n(b) Inspect Enemy Health\n(c) Sheath Weapon\n(d) Equip Weapon");
+    System.out.println("(a) Attack\n(b) Free Action");
     String inputAction = scan.nextLine();
     if (numBonusActionAvail > 0) {
       switch (inputAction) {
