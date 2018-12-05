@@ -19,8 +19,14 @@ public class MainMenu {
 
         //This sets the background image for the main menu
         final String dir = System.getProperty("user.dir");
-
-        backImage = new Image(dir + "\\DnDFighter\\data\\Red Dragon vs Blue Dragon.png");
+        String osName = System.getProperty("os.name").toLowerCase();
+        boolean isMacOs = osName.contains("mac");
+        if (isMacOs)
+        {
+            backImage = new Image(dir + "/data/Red Dragon vs Blue Dragon.png");
+        } else {
+            backImage = new Image(dir + "\\DnDFighter\\data\\Red Dragon vs Blue Dragon.png");
+        }
         backImage.setLayout(new GridBagLayout());
     }
 

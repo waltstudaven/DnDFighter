@@ -8,8 +8,7 @@ public class Main  {
         System.out.println("This Runs the interactive interface for the user. \n" +
                 "The main menu presents two buttons, \n 1) Select Monster, which currently only presents a list of buttons which let you print out the monster's name \n" +
                 "and 2)Create Character, which lets the user enter the inputs needed for insantiating a character. \n" +
-                "At the end, the last submit button prints out the toString for the character just Created." +
-                "\n this submit button is located on the character naming page");
+                "At the end of the GUI, the last submit button sets the name for the character, and continues the rest of the character creation text based. Everything completes as it should." );
         Interface game = new Interface();
         game.addMainMenuButtons();
         game.addSelectMonsterButtons();
