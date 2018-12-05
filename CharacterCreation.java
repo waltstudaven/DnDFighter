@@ -183,13 +183,14 @@ public class CharacterCreation {
       System.out.println();
       try{
         inputClass = scan.nextInt();
-        scan.nextLine();
+
         if(inputClass != 1){
           scan.nextLine();
           System.out.println("");
           System.out.println("Error: Please enter a valid option from the list.");
         }
         else{
+          scan.nextLine();
           break;
         }
       }catch(Exception e){
