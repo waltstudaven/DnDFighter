@@ -13,7 +13,7 @@ public class SelectMonster {
         //This sets the background image for the main menu
         final String dir = System.getProperty("user.dir");
 
-        backImage = new Image(dir + "\\data\\Scroll Background.png");
+        backImage = new Image(dir + "\\DnDFighter\\data\\Red Dragon vs Blue Dragon.png");
         backImage.setLayout(new FlowLayout());
     }
 

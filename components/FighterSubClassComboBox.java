@@ -96,8 +96,8 @@ public class FighterSubClassComboBox extends JPanel
 
     protected void updateLabel(String name) {
         final String dir = System.getProperty("user.dir");
-        ImageIcon iconLeft = createImageIcon(dir + "\\data\\" + name + "Male.png");
-        ImageIcon iconRight = createImageIcon(dir + "\\data\\" + name + "Female.png");
+        ImageIcon iconLeft = createImageIcon(dir + "\\DnDFighter\\data\\" + name + "Male.png");
+        ImageIcon iconRight = createImageIcon(dir + "\\DnDFighter\\data\\" + name + "Female.png");
         // pictureLeft.setIcon(iconLeft);
         pictureLeft.setIcon(new ImageIcon(getScaledImage(iconLeft.getImage(), 367, 550)));
         // pictureRight.setIcon(iconRight);
