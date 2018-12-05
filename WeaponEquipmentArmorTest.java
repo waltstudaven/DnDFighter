@@ -15,11 +15,11 @@ public class WeaponEquipmentArmorTest {
 	
 	public void testing() {
 		character.allEquipment.add(Weapon.CLUB);
-		System.out.println("Testing weapon, equipment, and armor. This test is done by Jeremiah Hobbs:");
 		System.out.println(character.allEquipment);
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("Testing weapon, equipment, and armor. This test is done by Jeremiah Hobbs:");
 	    CharacterCreation tester = new CharacterCreation();
 	    Character c = tester.characterCreator();
 		WeaponEquipmentArmorTest t = new WeaponEquipmentArmorTest(c);
