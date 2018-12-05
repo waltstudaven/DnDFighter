@@ -1,5 +1,5 @@
 public class Thug extends Monster {
-	int numAttacks = 2;
+	public int numAttacks = 2;
 
 	public Thug() {
 		super(Sizes.MEDIUM, 2, 15, 11, 14, 10, 10, 11);	//the hp and size and speed, and scores
@@ -19,6 +19,7 @@ public class Thug extends Monster {
 		int roll = d20.roll() + getStrMod() + getProfBonus();
 		return roll;
 	}
+	
 	public int rollDamageMace(Monster enemy) {
 		int bludgeoning = damageDie6.roll() + getStrMod();
 

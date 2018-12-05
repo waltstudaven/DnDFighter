@@ -11,7 +11,7 @@ public class Fighter extends CharacterClass{
   * The fighting style for Fighter determines specific attributes of a character such as their AC, Weapon Type, and
   * Weapon Damage.
   */
-  String fightStyle;
+  public String fightStyle;
 
   /*
   * Constructor for a fighter.
@@ -196,6 +196,7 @@ public class Fighter extends CharacterClass{
     int attackRoll = weapon.rollToAttack();                                           //base roll
     String weaponProperties = weapon.getProperties();                                 //to store the weapon's properties
     System.out.println("base roll: " + attackRoll);
+    System.out.println(weapon.getProperties());
     if (weaponProperties.contains("finesse") || weaponProperties.contains("range")){ //if the weapon property is ranged or finesse
       if (fightStyle.contains("archery")) {                                           //if they chose an archery fighting style
         attackRoll += super.thisCharacter.getDexMod() + 2;                            //they get a plus 2 to attack
