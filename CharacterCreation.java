@@ -26,63 +26,218 @@ public class CharacterCreation {
 
     Scanner scan = new Scanner(System.in);
 
-int inputStrScore = 0;
-boolean toContinue = false;
-  while(toContinue == false){
-    try{
-      System.out.println("What is your character's strength score?");
-      inputStrScore = scan.nextInt();
-      toContinue = true;
+
+    System.out.println("");
+
+
+    int inputStrScore = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's strength score?");
+        inputStrScore = scan.nextInt();
+        scan.nextLine();
+        break;
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
     }
-    catch(Exception e){
+    System.out.println("");
+
+    int inputDexScore = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's dexterity score?");
+        inputDexScore = scan.nextInt();
+        scan.nextLine();
+        break;
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
     }
-  }
 
-    System.out.println("What is your character's dexterity score?");
-    int inputDexScore = scan.nextInt();
+    System.out.println("");
 
-    System.out.println("What is your character's constitution score?");
-    int inputConScore = scan.nextInt();
-
-    System.out.println("What is your character's intelligence score?");
-    int inputIntScore = scan.nextInt();
-
-    System.out.println("What is your character's wisdom score?");
-    int inputWisScore = scan.nextInt();
-
-    System.out.println("What is your character's charisma score?");
-    int inputCharScore = scan.nextInt();
-
-    scan.nextLine();
-    System.out.println("What is your character's race?");
-    System.out.print("Options: ");
-
-    int i = 1;
-    for(String s: allRaces.keySet()){
-      System.out.print("(" + i + ") " + s);
+    int inputConScore = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's constitution score?");
+        inputConScore = scan.nextInt();
+        scan.nextLine();
+        break;
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
     }
-    System.out.println();
-    int inputRace = scan.nextInt();
 
-    System.out.println("What is your character's class?");
-    System.out.print("Options: ");
+    System.out.println("");
 
-    i = 1;
-    for(String s: allClasses.keySet()){
-      System.out.print("(" + i + ") " + s);
+    int inputIntScore = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's intelligence score?");
+        inputIntScore = scan.nextInt();
+        scan.nextLine();
+        break;
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
     }
-    System.out.println();
-    int inputClass = scan.nextInt();
-    scan.nextLine();
+
+    System.out.println("");
+
+
+    int inputWisScore = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's wisdom score?");
+        inputWisScore = scan.nextInt();
+        scan.nextLine();
+        break;
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
+    }
+
+    System.out.println("");
+
+    int inputCharScore = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's charisma score?");
+        inputCharScore = scan.nextInt();
+        scan.nextLine();
+        break;
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
+    }
+
+    System.out.println("");
+
+    int inputRace = 0;
+    while(true){
+
+      System.out.println("What is your character's race?");
+      System.out.print("Options: ");
+
+      int i = 1;
+      for(String s: allRaces.keySet()){
+        System.out.print("(" + i + ") " + s);
+      }
+      System.out.println();
+      try{
+        inputRace = scan.nextInt();
+
+        if(inputRace != 1){
+          scan.nextLine();
+          System.out.println("");
+          System.out.println("Error: Please enter a valid option from the list.");
+        }
+        else{
+          break;
+        }
+      }catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
+
+
+    }
+
+
+    System.out.println("");
+
+
+
+
+
+    int inputClass = 0;
+    while(true){
+
+      System.out.println("What is your character's class?");
+      System.out.print("Options: ");
+
+      int j = 1;
+      for(String s: allClasses.keySet()){
+        System.out.print("(" + j + ") " + s);
+      }
+      System.out.println();
+      try{
+        inputClass = scan.nextInt();
+        scan.nextLine();
+        if(inputClass != 1){
+          scan.nextLine();
+          System.out.println("");
+          System.out.println("Error: Please enter a valid option from the list.");
+        }
+        else{
+          break;
+        }
+      }catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
+    }
+
+
+    System.out.println("");
+
+
 
     System.out.println("What is your character's name?");
     String inputName = scan.nextLine();
 
-    System.out.println("What is your character's level?");
-    int inputLvl = scan.nextInt();
 
-String actualInputRace = "";
-String actualInputClass = "";
+    System.out.println("");
+
+
+
+
+    int inputLvl = 0;
+    while(true){
+      try{
+        System.out.println("What is your character's level? \n Options: (1)");
+        inputLvl = scan.nextInt();
+        if(inputLvl != 1){
+
+        }
+        else{
+          scan.nextLine();
+          break;
+        }
+      }
+      catch(Exception e){
+        scan.nextLine();
+        System.out.println("");
+        System.out.println("Error: Please enter a number.");
+      }
+    }
+
+
+
+
+    String actualInputRace = "";
+    String actualInputClass = "";
     switch(inputRace) {
       case 1: actualInputRace = "Human";
 
