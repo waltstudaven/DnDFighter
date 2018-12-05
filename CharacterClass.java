@@ -7,11 +7,11 @@
 import java.util.ArrayList;
 
 public abstract class CharacterClass {
-  int level;
-  int profBonus;
-  Die hitDie;
-  ArrayList<String> allClassActions;
-  Character thisCharacter;
+  public int level;
+  public int profBonus;
+  protected Die hitDie;
+  public ArrayList<String> allClassActions;
+  protected Character thisCharacter;
 
   public void setProfBonusViaLevel(int level) {
     if (level < 5) setProfBonus(2);
