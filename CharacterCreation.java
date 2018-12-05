@@ -31,7 +31,7 @@ boolean toContinue = false;
   while(toContinue == false){
     try{
       System.out.println("What is your character's strength score?");
-      int inputStrScore = scan.nextInt();
+      inputStrScore = scan.nextInt();
       toContinue = true;
     }
     catch(Exception e){
