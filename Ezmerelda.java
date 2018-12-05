@@ -1,10 +1,18 @@
 public class Ezmerelda extends Monster {
-
+  // Sizes size, int profBonus, int strScore, int dexScore, int conScore,
+  // int intScore, int wisScore, int charScore
+  //
+  // 82, Sizes.MEDIUM, 30, 17, 3, 14, 19, 16, 16, 11, 17
+  //
+  // int hp, Sizes size, int speed, int ac, int profBonus, int strScore, int dexScore, int conScore,
+	// int intScore, int wisScore, int charScore
 	public Ezmerelda() {
-		super(82, Sizes.MEDIUM, 30, 17, 3, 14, 19, 16, 16, 11, 17);	//the hp and size and speed, and scores
-		setWisSave(true);
+		super(Sizes.MEDIUM, 3, 14, 19, 16, 16, 11, 17);	//the hp and size and speed, and scores
+		setWisSaveProf();
 		damageDie8 = new Die(8);	//does 1d8 damage
 		damageDie6 = new Die(6);
+    this.setMaxHp(82);
+    this.setAc(17);
 	}
 
 	@Override
@@ -27,7 +35,7 @@ public class Ezmerelda extends Monster {
 	}
 	public void attackRapier(Monster enemy) {
 		if (rollToAttackRapier() >= enemy.getAc())
-		enemy.setHp(enemy.getHp() - rollDamageRapier(enemy));
+		enemy.setCurrentHp(enemy.getCurrentHp() - rollDamageRapier(enemy));
 	}
 
 	public int rollToAttackHandAxe() {
@@ -45,7 +53,7 @@ public class Ezmerelda extends Monster {
 	}
 	public void attackHandAxe(Monster enemy) {
 		if (rollToAttackHandAxe() >= enemy.getAc())
-		enemy.setHp(enemy.getHp() - rollDamageHandAxe(enemy));
+		enemy.setCurrentHp(enemy.getCurrentHp() - rollDamageHandAxe(enemy));
 	}
 
 	public int rollToAttackSilverShortSword() {
@@ -63,7 +71,7 @@ public class Ezmerelda extends Monster {
 	}
 	public void attackSilverShortSword(Monster enemy) {
 		if (rollToAttackSilverShortSword() >= enemy.getAc())
-		enemy.setHp(enemy.getHp() - rollDamageSilverShortSword(enemy));
+		enemy.setCurrentHp(enemy.getCurrentHp() - rollDamageSilverShortSword(enemy));
 	}
 
 	@Override
@@ -80,6 +88,16 @@ public class Ezmerelda extends Monster {
 
 	@Override
 	public void resetHealth() {
-		setHp(82);
+		setMaxHp(82);
 	}
+
+  @Override
+  public boolean isResistant(DamageType damage) {
+    return false;
+  }
+  @Override
+
+	public boolean isImmune(DamageType damage) {
+      return false;
+    }
 }
