@@ -217,10 +217,12 @@ public class CharacterCreation {
     int inputLvl = 0;
     while(true){
       try{
-        System.out.println("What is your character's level? \n Options: (1)");
+        System.out.println("What is your character's level? \nOptions: (1)");
         inputLvl = scan.nextInt();
         if(inputLvl != 1){
-
+          scan.nextLine();
+          System.out.println("");
+          System.out.println("Error: Please enter a valid option from the list.");
         }
         else{
           scan.nextLine();
