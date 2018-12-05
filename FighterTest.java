@@ -7,6 +7,12 @@ class FighterTest {
   }
 
   public FighterTest (Character hero) {
+    System.out.println("This fight test was conducted by Walter Stuart Davenport." +
+    " the test starts out with showing that fighter edited the main character's saving throws" +
+    " it continues by making the main character's fighting style \"archery\" then attacking a dummie enemy" +
+    " with a longbow. It then adds to the main character's fighting style, this time it is \"defense\"." +
+    " The test continues to add to the character's fighting style and tests attacks that will be edited by" +
+    " that fighting style.");
     Fighter c = (Fighter) hero.characterClass;
     System.out.println(c.getSaveThrows());
 
